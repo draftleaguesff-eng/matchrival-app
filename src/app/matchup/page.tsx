@@ -62,24 +62,24 @@ interface Player {
 
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const NE_OFF_LOS: Player[] = [
-  { display: "A.J. Brown",    initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg",  size: 36 },
-  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  size: 28, maxWidth: 38 },
-  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  size: 28, maxWidth: 38 },
-  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   size: 28, maxWidth: 38 },
-  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  size: 28, maxWidth: 38 },
-  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  size: 28, maxWidth: 38 },
-  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", size: 36 },
-  { display: "M. Hollins",    initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg", size: 36 },
+  { display: "A.J. Brown",    initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg",  size: 26 },
+  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  size: 22, maxWidth: 38 },
+  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  size: 22, maxWidth: 38 },
+  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   size: 22, maxWidth: 38 },
+  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  size: 22, maxWidth: 38 },
+  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  size: 22, maxWidth: 38 },
+  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", size: 26 },
+  { display: "M. Hollins",    initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg", size: 26 },
 ];
 
 // SLOT (rendered in QB row, offset)
 const NE_OFF_SLOT: Player[] = [
-  { display: "E. Chism",      initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", size: 36 },
+  { display: "E. Chism",      initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", size: 26 },
 ];
 
 // QB row
 const NE_OFF_QB: Player[] = [
-  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", size: 52, nameBold: true },
+  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", size: 38, nameBold: true },
 ];
 
 // RB row
@@ -101,7 +101,7 @@ const SEA_DEF_SEC: Player[] = [
 const SEA_DEF_LB: Player[] = [
   { display: "D. Witherspoon", initials: "DW", ringType: "lb",  badgeType: "lb",  badgeLabel: "SLB · #21", headshot: "Witherspoon_Devon.jpg" },
   { display: "D. Thomas",      initials: "DT", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #32" },
-  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", size: 50 },
+  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", size: 36 },
   { display: "U. Nwosu",       initials: "UN", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #7",  headshot: "Nwosu_Uchenna.jpg" },
 ];
 
@@ -116,24 +116,24 @@ const SEA_DEF_DL: Player[] = [
 
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const SEA_OFF_LOS: Player[] = [
-  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg", size: 36 },
-  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  size: 28, maxWidth: 38 },
-  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  size: 28, maxWidth: 38 },
-  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   size: 28, maxWidth: 38 },
-  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  size: 28, maxWidth: 38 },
-  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  size: 28, maxWidth: 38 },
-  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg",           size: 36 },
-  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg",          size: 36 },
+  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg", size: 26 },
+  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  size: 22, maxWidth: 38 },
+  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  size: 22, maxWidth: 38 },
+  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   size: 22, maxWidth: 38 },
+  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  size: 22, maxWidth: 38 },
+  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  size: 22, maxWidth: 38 },
+  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg",           size: 26 },
+  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg",          size: 26 },
 ];
 
 // SLOT (rendered in QB row, offset)
 const SEA_OFF_SLOT: Player[] = [
-  { display: "R. Shaheed",    initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg", size: 36 },
+  { display: "R. Shaheed",    initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg", size: 26 },
 ];
 
 // QB row
 const SEA_OFF_QB: Player[] = [
-  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", size: 52, nameBold: true },
+  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", size: 38, nameBold: true },
 ];
 
 // RB row
@@ -155,7 +155,7 @@ const NE_DEF_SEC: Player[] = [
 const NE_DEF_LB: Player[] = [
   { display: "R. Spillane", initials: "RS", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #14", headshot: "Spillane_Robert.jpg" },
   { display: "K.J. Britt",  initials: "KB", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #35" },
-  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", size: 50 },
+  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", size: 36 },
   { display: "D. Jones",    initials: "DJ", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #5" },
 ];
 
@@ -185,7 +185,7 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
       <span style={{
         display: "none", position: "absolute", inset: 0,
         alignItems: "center", justifyContent: "center",
-        fontSize: 13, fontWeight: 800, letterSpacing: "-0.02em", color,
+        fontSize: 10, fontWeight: 800, letterSpacing: "-0.02em", color,
         background: "#151B28",
       }}>
         {initials}
@@ -197,10 +197,10 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
 function PlayerBubble({ p }: { p: Player }) {
   const ring  = RING[p.ringType]  || RING.wr;
   const badge = BADGE[p.badgeType] || BADGE.wr;
-  const size  = p.size ?? 44;
+  const size  = p.size ?? 34;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, maxWidth: p.maxWidth ?? 74, flexShrink: 0 }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 54, flexShrink: 0 }}>
       <div style={{
         width: size, height: size, borderRadius: "50%",
         border: `2px solid ${ring.border}`,
@@ -214,21 +214,21 @@ function PlayerBubble({ p }: { p: Player }) {
         {p.headshot ? (
           <PlayerImage src={`/headshots/${p.headshot}`} initials={p.initials} color={ring.color} />
         ) : (
-          <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: "-0.02em", color: ring.color }}>
+          <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "-0.02em", color: ring.color }}>
             {p.initials}
           </span>
         )}
       </div>
       <span style={{
-        fontSize: 8.5, fontWeight: p.nameBold ? 700 : 600,
+        fontSize: 6.5, fontWeight: p.nameBold ? 700 : 600,
         color: p.nameBold ? "#CBD5E1" : "#94A3B8",
         whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-        maxWidth: 72, textAlign: "center",
+        maxWidth: 52, textAlign: "center",
       }}>
         {p.display}
       </span>
       <span style={{
-        fontSize: 7.5, fontWeight: 800, letterSpacing: "0.04em",
+        fontSize: 5.5, fontWeight: 800, letterSpacing: "0.04em",
         padding: "1px 5px", borderRadius: 4, textTransform: "uppercase",
         whiteSpace: "nowrap",
         background: badge.bg, color: badge.color,
@@ -393,7 +393,7 @@ export default function MatchupPage() {
       </div>
 
       {/* ── Field ── */}
-      <div style={{ position: "relative", background: fieldBg, overflow: "hidden", transform: "scale(0.82)", transformOrigin: "top center", marginBottom: "-18%" }}>
+      <div style={{ position: "relative", background: fieldBg, overflow: "hidden" }}>
         {/* Zone labels — DEFENSE top, OFFENSE bottom */}
         <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, top: 24, color: "#EF4444" }}>DEFENSE</span>
         <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, bottom: 24, color: "#22C55E" }}>OFFENSE</span>
@@ -408,23 +408,23 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "10px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 12 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 10 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "7px 4px 3px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 9 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 7 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── NE Offense — bottom ── */}
-            <div style={{ padding: "4px 4px 8px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+            <div style={{ padding: "3px 4px 6px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
               {/* LOS row: WR · OL×5 · TE · WR */}
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 4 }}>
                 <FormationRow players={NE_OFF_LOS} justify="space-between" padding="0 4px" />
               </div>
               {/* SLOT + QB row */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 16, marginBottom: 6 }}>
-                <div style={{ marginTop: 12 }}><PlayerBubble p={NE_OFF_SLOT[0]} /></div>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 4 }}>
+                <div style={{ marginTop: 9 }}><PlayerBubble p={NE_OFF_SLOT[0]} /></div>
                 <PlayerBubble p={NE_OFF_QB[0]} />
               </div>
               {/* RB row */}
@@ -448,23 +448,23 @@ export default function MatchupPage() {
                 logo="/headshots/logo_ne.png"
               />
             </div>
-            <div style={{ padding: "10px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 12 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 10 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "7px 4px 3px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 9 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 7 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── SEA Offense — bottom ── */}
-            <div style={{ padding: "4px 4px 8px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+            <div style={{ padding: "3px 4px 6px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
               {/* LOS row: WR · OL×5 · TE · WR */}
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 4 }}>
                 <FormationRow players={SEA_OFF_LOS} justify="space-between" padding="0 4px" />
               </div>
               {/* SLOT + QB row */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 16, marginBottom: 6 }}>
-                <div style={{ marginTop: 12 }}><PlayerBubble p={SEA_OFF_SLOT[0]} /></div>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 4 }}>
+                <div style={{ marginTop: 9 }}><PlayerBubble p={SEA_OFF_SLOT[0]} /></div>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
               </div>
               {/* RB row */}
