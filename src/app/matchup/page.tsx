@@ -62,24 +62,24 @@ interface Player {
 
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const NE_OFF_LOS: Player[] = [
-  { display: "A.J. Brown",    initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg",  size: 26 },
-  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  size: 22, maxWidth: 38 },
-  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  size: 22, maxWidth: 38 },
-  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   size: 22, maxWidth: 38 },
-  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  size: 22, maxWidth: 38 },
-  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  size: 22, maxWidth: 38 },
-  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", size: 26 },
-  { display: "M. Hollins",    initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg", size: 26 },
+  { display: "A.J. Brown",    initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg" },
+  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT" },
+  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG" },
+  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C" },
+  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG" },
+  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT" },
+  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg" },
+  { display: "M. Hollins",    initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg" },
 ];
 
 // SLOT (rendered in QB row, offset)
 const NE_OFF_SLOT: Player[] = [
-  { display: "E. Chism",      initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", size: 26 },
+  { display: "E. Chism",      initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT" },
 ];
 
 // QB row
 const NE_OFF_QB: Player[] = [
-  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", size: 38, nameBold: true },
+  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", nameBold: true },
 ];
 
 // RB row
@@ -101,7 +101,7 @@ const SEA_DEF_SEC: Player[] = [
 const SEA_DEF_LB: Player[] = [
   { display: "D. Witherspoon", initials: "DW", ringType: "lb",  badgeType: "lb",  badgeLabel: "SLB · #21", headshot: "Witherspoon_Devon.jpg" },
   { display: "D. Thomas",      initials: "DT", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #32" },
-  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", size: 36 },
+  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg" },
   { display: "U. Nwosu",       initials: "UN", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #7",  headshot: "Nwosu_Uchenna.jpg" },
 ];
 
@@ -116,24 +116,24 @@ const SEA_DEF_DL: Player[] = [
 
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const SEA_OFF_LOS: Player[] = [
-  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg", size: 26 },
-  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  size: 22, maxWidth: 38 },
-  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  size: 22, maxWidth: 38 },
-  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   size: 22, maxWidth: 38 },
-  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  size: 22, maxWidth: 38 },
-  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  size: 22, maxWidth: 38 },
-  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg",           size: 26 },
-  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg",          size: 26 },
+  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg" },
+  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT" },
+  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG" },
+  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C" },
+  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG" },
+  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT" },
+  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg" },
+  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg" },
 ];
 
 // SLOT (rendered in QB row, offset)
 const SEA_OFF_SLOT: Player[] = [
-  { display: "R. Shaheed",    initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg", size: 26 },
+  { display: "R. Shaheed",    initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg" },
 ];
 
 // QB row
 const SEA_OFF_QB: Player[] = [
-  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", size: 38, nameBold: true },
+  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", nameBold: true },
 ];
 
 // RB row
@@ -155,7 +155,7 @@ const NE_DEF_SEC: Player[] = [
 const NE_DEF_LB: Player[] = [
   { display: "R. Spillane", initials: "RS", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #14", headshot: "Spillane_Robert.jpg" },
   { display: "K.J. Britt",  initials: "KB", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #35" },
-  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", size: 36 },
+  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg" },
   { display: "D. Jones",    initials: "DJ", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #5" },
 ];
 
