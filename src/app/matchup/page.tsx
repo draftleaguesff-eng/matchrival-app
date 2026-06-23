@@ -56,114 +56,115 @@ interface Player {
   size?: number;
   maxWidth?: number;
   nameBold?: boolean;
+  rating?: number;
 }
 
 // ── NE OFFENSE (Side 0 — bottom) ──────────────────────────────────────────────
 
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const NE_OFF_LOS: Player[] = [
-  { display: "A.J. Brown",    initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg" },
-  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  maxWidth: 38 },
-  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  maxWidth: 38 },
-  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   maxWidth: 38 },
-  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  maxWidth: 38 },
-  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  maxWidth: 38 },
-  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", maxWidth: 38 },
-  { display: "M. Hollins",    initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg" },
+  { display: "A.J. Brown",     initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg", rating: 89 },
+  { display: "J. Hudson III",  initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  maxWidth: 30, rating: 63 },
+  { display: "A. Vera-Tucker", initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  maxWidth: 30, rating: 83 },
+  { display: "B. Brown",       initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   maxWidth: 30, rating: 65 },
+  { display: "M. Onwenu",      initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  maxWidth: 30, rating: 86 },
+  { display: "M. Moses",       initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  maxWidth: 30, rating: 82 },
+  { display: "H. Henry",       initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", maxWidth: 30, rating: 86 },
+  { display: "M. Hollins",     initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg", rating: 77 },
 ];
 
 // SLOT (rendered in QB row, offset)
 const NE_OFF_SLOT: Player[] = [
-  { display: "E. Chism",      initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT" },
+  { display: "E. Chism III", initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", rating: 68 },
 ];
 
 // QB row
 const NE_OFF_QB: Player[] = [
-  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", nameBold: true },
+  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", nameBold: true, rating: 93 },
 ];
 
 // RB row
 const NE_OFF_RB: Player[] = [
-  { display: "R. Stevenson", initials: "RS", ringType: "rb", badgeType: "rb", badgeLabel: "RB · #38", headshot: "Stevenson_Rhamondre.jpg" },
+  { display: "R. Stevenson", initials: "RS", ringType: "rb", badgeType: "rb", badgeLabel: "RB · #38", headshot: "Stevenson_Rhamondre.jpg", rating: 77 },
 ];
 
 // ── SEA DEFENSE (Side 0 — top), 3-4 Hybrid ────────────────────────────────────
 
 // Secondary row (furthest from LOS)
 const SEA_DEF_SEC: Player[] = [
-  { display: "J. Jobe",  initials: "JJ", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #29" },
-  { display: "J. Love",  initials: "JL", ringType: "ss", badgeType: "ss", badgeLabel: "SS · #20", headshot: "Love_Julian.jpg" },
-  { display: "D. Bell",  initials: "DB", ringType: "fs", badgeType: "fs", badgeLabel: "FS · #23", headshot: "Bell_D'Anthony.jpg" },
-  { display: "B. Clark", initials: "BC", ringType: "nb", badgeType: "nb", badgeLabel: "NB · #9",  headshot: "Clark_Bud.jpg" },
+  { display: "J. Jobe",  initials: "JJ", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #29", rating: 77 },
+  { display: "J. Love",  initials: "JL", ringType: "ss", badgeType: "ss", badgeLabel: "SS · #20", headshot: "Love_Julian.jpg", rating: 85 },
+  { display: "D. Bell",  initials: "DB", ringType: "fs", badgeType: "fs", badgeLabel: "FS · #23", headshot: "Bell_D'Anthony.jpg", rating: 70 },
+  { display: "B. Clark", initials: "BC", ringType: "nb", badgeType: "nb", badgeLabel: "NB · #9",  headshot: "Clark_Bud.jpg", rating: 68 },
 ];
 
 // LB row
 const SEA_DEF_LB: Player[] = [
-  { display: "D. Witherspoon", initials: "DW", ringType: "lb",  badgeType: "lb",  badgeLabel: "SLB · #21", headshot: "Witherspoon_Devon.jpg" },
-  { display: "D. Thomas",      initials: "DT", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #32" },
-  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg" },
-  { display: "U. Nwosu",       initials: "UN", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #7",  headshot: "Nwosu_Uchenna.jpg" },
+  { display: "D. Witherspoon", initials: "DW", ringType: "lb",  badgeType: "lb",  badgeLabel: "SLB · #21", headshot: "Witherspoon_Devon.jpg", rating: 91 },
+  { display: "D. Thomas",      initials: "DT", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #32", rating: 75 },
+  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", rating: 83 },
+  { display: "U. Nwosu",       initials: "UN", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #7",  headshot: "Nwosu_Uchenna.jpg", rating: 77 },
 ];
 
 // DL row (closest to LOS)
 const SEA_DEF_DL: Player[] = [
-  { display: "L. Williams", initials: "LW", ringType: "de", badgeType: "de", badgeLabel: "LDE · #99", headshot: "Williams_Leonard.jpg" },
-  { display: "J. Reed",     initials: "JR", ringType: "dt", badgeType: "dt", badgeLabel: "NT · #90",  headshot: "Reed_Jarran.jpg" },
-  { display: "D. Lawrence", initials: "DL", ringType: "de", badgeType: "de", badgeLabel: "RDE · #0",  headshot: "Lawrence_DeMarcus.jpg" },
+  { display: "L. Williams", initials: "LW", ringType: "de", badgeType: "de", badgeLabel: "LDE · #99", headshot: "Williams_Leonard.jpg", rating: 88 },
+  { display: "J. Reed",     initials: "JR", ringType: "dt", badgeType: "dt", badgeLabel: "NT · #90",  headshot: "Reed_Jarran.jpg", rating: 78 },
+  { display: "D. Lawrence", initials: "DL", ringType: "de", badgeType: "de", badgeLabel: "RDE · #0",  headshot: "Lawrence_DeMarcus.jpg", rating: 87 },
 ];
 
 // ── SEA OFFENSE (Side 1 — bottom) ─────────────────────────────────────────────
 
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const SEA_OFF_LOS: Player[] = [
-  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg" },
-  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  maxWidth: 38 },
-  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  maxWidth: 38 },
-  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   maxWidth: 38 },
-  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  maxWidth: 38 },
-  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  maxWidth: 38 },
-  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg",   maxWidth: 38 },
-  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg" },
+  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg", rating: 95 },
+  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  maxWidth: 30, rating: 83 },
+  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  maxWidth: 30, rating: 69 },
+  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   maxWidth: 30, rating: 66 },
+  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  maxWidth: 30, rating: 72 },
+  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  maxWidth: 30, rating: 83 },
+  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg", maxWidth: 30, rating: 75 },
+  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg", rating: 84 },
 ];
 
 // SLOT (rendered in QB row, offset)
 const SEA_OFF_SLOT: Player[] = [
-  { display: "R. Shaheed",    initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg" },
+  { display: "R. Shaheed", initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg", rating: 79 },
 ];
 
 // QB row
 const SEA_OFF_QB: Player[] = [
-  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", nameBold: true },
+  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", nameBold: true, rating: 85 },
 ];
 
 // RB row
 const SEA_OFF_RB: Player[] = [
-  { display: "Z. Charbonnet", initials: "ZC", ringType: "rb", badgeType: "rb", badgeLabel: "RB · #26", headshot: "Charbonnet_Zach.jpg" },
+  { display: "Z. Charbonnet", initials: "ZC", ringType: "rb", badgeType: "rb", badgeLabel: "RB · #26", headshot: "Charbonnet_Zach.jpg", rating: 82 },
 ];
 
 // ── NE DEFENSE (Side 1 — top), 3-4 Base ───────────────────────────────────────
 
 // Secondary row (furthest from LOS)
 const NE_DEF_SEC: Player[] = [
-  { display: "C. Davis",    initials: "CD", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #7",  headshot: "Davis_Carlton.jpg" },
-  { display: "K. Byard",   initials: "KB", ringType: "ss", badgeType: "ss", badgeLabel: "SS · #31", headshot: "Byard_Kevin.jpg" },
-  { display: "M. Jones",   initials: "MJ", ringType: "nb", badgeType: "nb", badgeLabel: "NB · #25" },
-  { display: "C. Gonzalez",initials: "CG", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #0",  headshot: "Gonzalez_Christian.jpg" },
+  { display: "C. Davis",    initials: "CD", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #7",  headshot: "Davis_Carlton.jpg", rating: 85 },
+  { display: "K. Byard",   initials: "KB", ringType: "ss", badgeType: "ss", badgeLabel: "SS · #31", headshot: "Byard_Kevin.jpg", rating: 84 },
+  { display: "M. Jones",   initials: "MJ", ringType: "nb", badgeType: "nb", badgeLabel: "NB · #25", rating: 82 },
+  { display: "C. Gonzalez",initials: "CG", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #0",  headshot: "Gonzalez_Christian.jpg", rating: 98 },
 ];
 
 // LB row
 const NE_DEF_LB: Player[] = [
-  { display: "R. Spillane", initials: "RS", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #14", headshot: "Spillane_Robert.jpg" },
-  { display: "K.J. Britt",  initials: "KB", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #35" },
-  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg" },
-  { display: "D. Jones",    initials: "DJ", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #5" },
+  { display: "R. Spillane", initials: "RS", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #14", headshot: "Spillane_Robert.jpg", rating: 85 },
+  { display: "K.J. Britt",  initials: "KB", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #35", rating: 71 },
+  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", rating: 70 },
+  { display: "D. Jones",    initials: "DJ", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #5",  rating: 75 },
 ];
 
 // DL row (closest to LOS)
 const NE_DEF_DL: Player[] = [
-  { display: "C. Barmore", initials: "CB", ringType: "de", badgeType: "de", badgeLabel: "LDE · #90", headshot: "Barmore_Christian.jpg" },
-  { display: "C. Durden",  initials: "CD", ringType: "dt", badgeType: "dt", badgeLabel: "NT · #94",  headshot: "Durden_Cory.jpg" },
-  { display: "H. Landry",  initials: "HL", ringType: "de", badgeType: "de", badgeLabel: "RDE · #2",  headshot: "Landry_Harold.jpg" },
+  { display: "C. Barmore", initials: "CB", ringType: "de", badgeType: "de", badgeLabel: "LDE · #90", headshot: "Barmore_Christian.jpg", rating: 79 },
+  { display: "C. Durden",  initials: "CD", ringType: "dt", badgeType: "dt", badgeLabel: "NT · #94",  headshot: "Durden_Cory.jpg", rating: 68 },
+  { display: "H. Landry",  initials: "HL", ringType: "de", badgeType: "de", badgeLabel: "RDE · #2",  headshot: "Landry_Harold.jpg", rating: 82 },
 ];
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
@@ -185,7 +186,7 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
       <span style={{
         display: "none", position: "absolute", inset: 0,
         alignItems: "center", justifyContent: "center",
-        fontSize: 10, fontWeight: 800, letterSpacing: "-0.02em", color,
+        fontSize: 8, fontWeight: 800, letterSpacing: "-0.02em", color,
         background: "#151B28",
       }}>
         {initials}
@@ -197,10 +198,10 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
 function PlayerBubble({ p }: { p: Player }) {
   const ring  = RING[p.ringType]  || RING.wr;
   const badge = BADGE[p.badgeType] || BADGE.wr;
-  const size  = p.size ?? 26;
+  const size  = p.size ?? 20;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 54, flexShrink: 0 }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 42, flexShrink: 0 }}>
       <div style={{
         width: size, height: size, borderRadius: "50%",
         border: `2px solid ${ring.border}`,
@@ -214,8 +215,18 @@ function PlayerBubble({ p }: { p: Player }) {
         {p.headshot ? (
           <PlayerImage src={`/headshots/${p.headshot}`} initials={p.initials} color={ring.color} />
         ) : (
-          <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "-0.02em", color: ring.color }}>
+          <span style={{ fontSize: 8, fontWeight: 800, letterSpacing: "-0.02em", color: ring.color }}>
             {p.initials}
+          </span>
+        )}
+        {p.rating !== undefined && (
+          <span style={{
+            position: "absolute", bottom: 1, right: 1,
+            fontSize: 7, fontWeight: 900,
+            background: "rgba(0,0,0,0.75)", borderRadius: 3, padding: "0px 2px",
+            color: p.rating >= 90 ? "#FFD700" : p.rating >= 80 ? "#22C55E" : p.rating >= 70 ? "#60A5FA" : "#94A3B8",
+          }}>
+            {p.rating}
           </span>
         )}
       </div>
@@ -223,7 +234,7 @@ function PlayerBubble({ p }: { p: Player }) {
         fontSize: 6.5, fontWeight: p.nameBold ? 700 : 600,
         color: p.nameBold ? "#CBD5E1" : "#94A3B8",
         whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-        maxWidth: 52, textAlign: "center",
+        maxWidth: 40, textAlign: "center",
       }}>
         {p.display}
       </span>
@@ -411,7 +422,7 @@ export default function MatchupPage() {
             <div style={{ padding: "20px 4px 12px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               <div style={{ marginBottom: 24 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
               <div style={{ marginBottom: 22 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
-              <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
+              <FormationRow players={SEA_DEF_DL} justify="space-between" padding="0 38% 0 19%" />
             </div>
 
             <LOS />
@@ -428,7 +439,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={NE_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "36%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "32%", marginBottom: 0 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
                 <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
@@ -454,7 +465,7 @@ export default function MatchupPage() {
             <div style={{ padding: "16px 4px 6px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               <div style={{ marginBottom: 14 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
               <div style={{ marginBottom: 12 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
-              <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
+              <FormationRow players={NE_DEF_DL} justify="space-between" padding="0 38% 0 19%" />
             </div>
 
             <LOS />
@@ -471,7 +482,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={SEA_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "36%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "32%", marginBottom: 0 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
                 <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
