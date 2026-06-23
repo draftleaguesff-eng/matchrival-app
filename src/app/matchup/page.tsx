@@ -408,9 +408,9 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "16px 4px 6px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 14 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 12 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "20px 4px 12px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 24 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 22 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
             </div>
 
