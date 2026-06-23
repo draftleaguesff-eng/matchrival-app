@@ -219,17 +219,16 @@ function PlayerBubble({ p }: { p: Player }) {
             {p.initials}
           </span>
         )}
-        {p.rating !== undefined && (
-          <span style={{
-            position: "absolute", bottom: 1, right: 1,
-            fontSize: 7, fontWeight: 900,
-            background: "rgba(0,0,0,0.75)", borderRadius: 3, padding: "0px 2px",
-            color: p.rating >= 90 ? "#FFD700" : p.rating >= 80 ? "#22C55E" : p.rating >= 70 ? "#60A5FA" : "#94A3B8",
-          }}>
-            {p.rating}
-          </span>
-        )}
       </div>
+      {p.rating !== undefined && (
+        <span style={{
+          fontSize: 6, fontWeight: 900, lineHeight: 1,
+          background: "rgba(0,0,0,0.6)", borderRadius: 3, padding: "1px 3px",
+          color: p.rating >= 90 ? "#FFD700" : p.rating >= 80 ? "#22C55E" : p.rating >= 70 ? "#60A5FA" : "#94A3B8",
+        }}>
+          {p.rating}
+        </span>
+      )}
       <span style={{
         fontSize: 6.5, fontWeight: p.nameBold ? 700 : 600,
         color: p.nameBold ? "#CBD5E1" : "#94A3B8",
