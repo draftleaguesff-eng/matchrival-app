@@ -417,9 +417,9 @@ export default function MatchupPage() {
             <LOS />
 
             {/* ── NE Offense — bottom ── */}
-            <div style={{ padding: "6px 4px 16px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+            <div style={{ padding: "20px 4px 25px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
               {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 30 }}>
                 <PlayerBubble p={NE_OFF_LOS[0]} />
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                   {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
@@ -428,7 +428,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={NE_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 0 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
                 <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
@@ -460,9 +460,9 @@ export default function MatchupPage() {
             <LOS />
 
             {/* ── SEA Offense — bottom ── */}
-            <div style={{ padding: "6px 4px 16px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+            <div style={{ padding: "20px 4px 25px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
               {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 30 }}>
                 <PlayerBubble p={SEA_OFF_LOS[0]} />
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                   {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
@@ -471,7 +471,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={SEA_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 0 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
                 <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
