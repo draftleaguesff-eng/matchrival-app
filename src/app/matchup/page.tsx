@@ -428,7 +428,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={NE_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "32%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "36%", marginBottom: 0 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
                 <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
@@ -471,7 +471,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={SEA_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "32%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "36%", marginBottom: 0 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
                 <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
