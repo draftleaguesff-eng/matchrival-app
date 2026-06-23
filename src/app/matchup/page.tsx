@@ -238,16 +238,19 @@ function PlayerBubble({ p }: { p: Player }) {
   );
 }
 
-function FormationRow({ players, justify = "space-evenly", padded = false }: {
+function FormationRow({ players, justify = "space-evenly", padded = false, gap, padding }: {
   players: Player[];
-  justify?: "space-evenly" | "center";
+  justify?: "space-evenly" | "center" | "space-between";
   padded?: boolean;
+  gap?: number;
+  padding?: string;
 }) {
   return (
     <div style={{
       display: "flex", alignItems: "flex-start", width: "100%",
       justifyContent: justify,
-      padding: padded ? "0 8px" : undefined,
+      padding: padding ?? (padded ? "0 8px" : undefined),
+      gap,
     }}>
       {players.map((p, i) => <PlayerBubble key={i} p={p} />)}
     </div>
@@ -405,17 +408,17 @@ export default function MatchupPage() {
               />
             </div>
             <div style={{ padding: "10px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 10 }}><FormationRow players={SEA_DEF_SEC} /></div>
-              <div style={{ marginBottom: 10 }}><FormationRow players={SEA_DEF_LB} padded /></div>
-              <FormationRow players={SEA_DEF_DL} />
+              <div style={{ marginBottom: 12 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+              <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── NE Offense — bottom ── */}
             <div style={{ padding: "4px 4px 8px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              <div style={{ marginBottom: 8 }}><FormationRow players={NE_OFF_REC} /></div>
-              <div style={{ marginBottom: 6 }}><FormationRow players={NE_OFF_OL} /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={NE_OFF_REC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 6 }}><FormationRow players={NE_OFF_OL} justify="center" gap={8} /></div>
               <div style={{ marginBottom: 6 }}><FormationRow players={NE_OFF_QB} justify="center" /></div>
               <div style={{ marginBottom: 4 }}><FormationRow players={NE_OFF_RB} justify="center" /></div>
             </div>
@@ -438,17 +441,17 @@ export default function MatchupPage() {
               />
             </div>
             <div style={{ padding: "10px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 10 }}><FormationRow players={NE_DEF_SEC} /></div>
-              <div style={{ marginBottom: 10 }}><FormationRow players={NE_DEF_LB} padded /></div>
-              <FormationRow players={NE_DEF_DL} />
+              <div style={{ marginBottom: 12 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+              <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── SEA Offense — bottom ── */}
             <div style={{ padding: "4px 4px 8px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_OFF_REC} /></div>
-              <div style={{ marginBottom: 6 }}><FormationRow players={SEA_OFF_OL} /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_OFF_REC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 6 }}><FormationRow players={SEA_OFF_OL} justify="center" gap={8} /></div>
               <div style={{ marginBottom: 6 }}><FormationRow players={SEA_OFF_QB} justify="center" /></div>
               <div style={{ marginBottom: 4 }}><FormationRow players={SEA_OFF_RB} justify="center" /></div>
             </div>
