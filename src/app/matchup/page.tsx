@@ -69,16 +69,16 @@ const NE_OFF_REC: Player[] = [
 
 // OL row: LT · LG · C · RG · RT
 const NE_OFF_OL: Player[] = [
-  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol", badgeLabel: "LT · #51", size: 32 },
-  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol", badgeLabel: "LG · #75", size: 32 },
-  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol", badgeLabel: "C · #77",  size: 32 },
-  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol", badgeLabel: "RG · #71", size: 32 },
-  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol", badgeLabel: "RT · #76", size: 32 },
+  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol", badgeLabel: "LT · #51", size: 36 },
+  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol", badgeLabel: "LG · #75", size: 36 },
+  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol", badgeLabel: "C · #77",  size: 36 },
+  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol", badgeLabel: "RG · #71", size: 36 },
+  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol", badgeLabel: "RT · #76", size: 36 },
 ];
 
 // QB row
 const NE_OFF_QB: Player[] = [
-  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", size: 42, nameBold: true },
+  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", size: 52, nameBold: true },
 ];
 
 // RB row
@@ -100,7 +100,7 @@ const SEA_DEF_SEC: Player[] = [
 const SEA_DEF_LB: Player[] = [
   { display: "D. Witherspoon", initials: "DW", ringType: "lb",  badgeType: "lb",  badgeLabel: "SLB · #21", headshot: "Witherspoon_Devon.jpg" },
   { display: "D. Thomas",      initials: "DT", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #32" },
-  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", size: 40 },
+  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", size: 50 },
   { display: "U. Nwosu",       initials: "UN", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #7",  headshot: "Nwosu_Uchenna.jpg" },
 ];
 
@@ -123,16 +123,16 @@ const SEA_OFF_REC: Player[] = [
 
 // OL row
 const SEA_OFF_OL: Player[] = [
-  { display: "C. Cross",     initials: "CC", ringType: "ol", badgeType: "ol", badgeLabel: "LT · #67", size: 32 },
-  { display: "J. Sundell",   initials: "JS", ringType: "ol", badgeType: "ol", badgeLabel: "LG · #61", size: 32 },
-  { display: "O. Oluwatimi", initials: "OO", ringType: "ol", badgeType: "ol", badgeLabel: "C · #55",  size: 32 },
-  { display: "A. Bradford",  initials: "AB", ringType: "ol", badgeType: "ol", badgeLabel: "RG · #75", size: 32 },
-  { display: "A. Lucas",     initials: "AL", ringType: "ol", badgeType: "ol", badgeLabel: "RT · #72", size: 32 },
+  { display: "C. Cross",     initials: "CC", ringType: "ol", badgeType: "ol", badgeLabel: "LT · #67", size: 36 },
+  { display: "J. Sundell",   initials: "JS", ringType: "ol", badgeType: "ol", badgeLabel: "LG · #61", size: 36 },
+  { display: "O. Oluwatimi", initials: "OO", ringType: "ol", badgeType: "ol", badgeLabel: "C · #55",  size: 36 },
+  { display: "A. Bradford",  initials: "AB", ringType: "ol", badgeType: "ol", badgeLabel: "RG · #75", size: 36 },
+  { display: "A. Lucas",     initials: "AL", ringType: "ol", badgeType: "ol", badgeLabel: "RT · #72", size: 36 },
 ];
 
 // QB row
 const SEA_OFF_QB: Player[] = [
-  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", size: 42, nameBold: true },
+  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", size: 52, nameBold: true },
 ];
 
 // RB row
@@ -154,7 +154,7 @@ const NE_DEF_SEC: Player[] = [
 const NE_DEF_LB: Player[] = [
   { display: "R. Spillane", initials: "RS", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #14", headshot: "Spillane_Robert.jpg" },
   { display: "K.J. Britt",  initials: "KB", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #35" },
-  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", size: 40 },
+  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", size: 50 },
   { display: "D. Jones",    initials: "DJ", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #5" },
 ];
 
@@ -184,7 +184,7 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
       <span style={{
         display: "none", position: "absolute", inset: 0,
         alignItems: "center", justifyContent: "center",
-        fontSize: 11, fontWeight: 800, letterSpacing: "-0.02em", color,
+        fontSize: 13, fontWeight: 800, letterSpacing: "-0.02em", color,
         background: "#151B28",
       }}>
         {initials}
@@ -196,10 +196,10 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
 function PlayerBubble({ p }: { p: Player }) {
   const ring  = RING[p.ringType]  || RING.wr;
   const badge = BADGE[p.badgeType] || BADGE.wr;
-  const size  = p.size ?? 36;
+  const size  = p.size ?? 44;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: 60, flexShrink: 0 }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, maxWidth: 74, flexShrink: 0 }}>
       <div style={{
         width: size, height: size, borderRadius: "50%",
         border: `2px solid ${ring.border}`,
@@ -213,21 +213,21 @@ function PlayerBubble({ p }: { p: Player }) {
         {p.headshot ? (
           <PlayerImage src={`/headshots/${p.headshot}`} initials={p.initials} color={ring.color} />
         ) : (
-          <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "-0.02em", color: ring.color }}>
+          <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: "-0.02em", color: ring.color }}>
             {p.initials}
           </span>
         )}
       </div>
       <span style={{
-        fontSize: 7.5, fontWeight: p.nameBold ? 700 : 600,
+        fontSize: 8.5, fontWeight: p.nameBold ? 700 : 600,
         color: p.nameBold ? "#CBD5E1" : "#94A3B8",
         whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-        maxWidth: 58, textAlign: "center",
+        maxWidth: 72, textAlign: "center",
       }}>
         {p.display}
       </span>
       <span style={{
-        fontSize: 6.5, fontWeight: 800, letterSpacing: "0.04em",
+        fontSize: 7.5, fontWeight: 800, letterSpacing: "0.04em",
         padding: "1px 5px", borderRadius: 4, textTransform: "uppercase",
         whiteSpace: "nowrap",
         background: badge.bg, color: badge.color,
@@ -392,7 +392,7 @@ export default function MatchupPage() {
       </div>
 
       {/* ── Field ── */}
-      <div style={{ position: "relative", background: fieldBg, overflow: "hidden" }}>
+      <div style={{ position: "relative", background: fieldBg, overflow: "hidden", transform: "scale(0.82)", transformOrigin: "top center", marginBottom: "-18%" }}>
         {/* Zone labels — DEFENSE top, OFFENSE bottom */}
         <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, top: 24, color: "#EF4444" }}>DEFENSE</span>
         <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, bottom: 24, color: "#22C55E" }}>OFFENSE</span>
@@ -407,19 +407,19 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "6px 4px 2px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 6 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "10px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 12 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 10 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── NE Offense — bottom ── */}
-            <div style={{ padding: "2px 4px 6px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              <div style={{ marginBottom: 6 }}><FormationRow players={NE_OFF_REC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 4 }}><FormationRow players={NE_OFF_OL} justify="center" gap={8} /></div>
-              <div style={{ marginBottom: 3 }}><FormationRow players={NE_OFF_QB} justify="center" /></div>
+            <div style={{ padding: "4px 4px 8px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+              <div style={{ marginBottom: 10 }}><FormationRow players={NE_OFF_REC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={NE_OFF_OL} justify="center" gap={8} /></div>
+              <div style={{ marginBottom: 6 }}><FormationRow players={NE_OFF_QB} justify="center" /></div>
               <div style={{ marginBottom: 4 }}><FormationRow players={NE_OFF_RB} justify="center" /></div>
             </div>
             <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
@@ -440,19 +440,19 @@ export default function MatchupPage() {
                 logo="/headshots/logo_ne.png"
               />
             </div>
-            <div style={{ padding: "6px 4px 2px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 8 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 6 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "10px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 12 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 10 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── SEA Offense — bottom ── */}
-            <div style={{ padding: "2px 4px 6px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              <div style={{ marginBottom: 6 }}><FormationRow players={SEA_OFF_REC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 4 }}><FormationRow players={SEA_OFF_OL} justify="center" gap={8} /></div>
-              <div style={{ marginBottom: 3 }}><FormationRow players={SEA_OFF_QB} justify="center" /></div>
+            <div style={{ padding: "4px 4px 8px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+              <div style={{ marginBottom: 10 }}><FormationRow players={SEA_OFF_REC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_OFF_OL} justify="center" gap={8} /></div>
+              <div style={{ marginBottom: 6 }}><FormationRow players={SEA_OFF_QB} justify="center" /></div>
               <div style={{ marginBottom: 4 }}><FormationRow players={SEA_OFF_RB} justify="center" /></div>
             </div>
             <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
