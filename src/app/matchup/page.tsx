@@ -63,12 +63,12 @@ interface Player {
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const NE_OFF_LOS: Player[] = [
   { display: "A.J. Brown",    initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg" },
-  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT" },
-  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG" },
-  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C" },
-  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG" },
-  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT" },
-  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg" },
+  { display: "J. Hudson",     initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  maxWidth: 38 },
+  { display: "A. Vera-Tucker",initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  maxWidth: 38 },
+  { display: "B. Brown",      initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   maxWidth: 38 },
+  { display: "M. Onwenu",     initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  maxWidth: 38 },
+  { display: "M. Moses",      initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  maxWidth: 38 },
+  { display: "H. Henry",      initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", maxWidth: 38 },
   { display: "M. Hollins",    initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg" },
 ];
 
@@ -117,12 +117,12 @@ const SEA_DEF_DL: Player[] = [
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const SEA_OFF_LOS: Player[] = [
   { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg" },
-  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT" },
-  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG" },
-  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C" },
-  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG" },
-  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT" },
-  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg" },
+  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  maxWidth: 38 },
+  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  maxWidth: 38 },
+  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   maxWidth: 38 },
+  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  maxWidth: 38 },
+  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  maxWidth: 38 },
+  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg",   maxWidth: 38 },
   { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg" },
 ];
 
@@ -197,7 +197,7 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
 function PlayerBubble({ p }: { p: Player }) {
   const ring  = RING[p.ringType]  || RING.wr;
   const badge = BADGE[p.badgeType] || BADGE.wr;
-  const size  = p.size ?? 34;
+  const size  = p.size ?? 26;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 54, flexShrink: 0 }}>
@@ -428,7 +428,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={NE_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "32%", marginBottom: 0 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
                 <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
@@ -471,7 +471,7 @@ export default function MatchupPage() {
                 <PlayerBubble p={SEA_OFF_LOS[7]} />
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "32%", marginBottom: 0 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
                 <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
