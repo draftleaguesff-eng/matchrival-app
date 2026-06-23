@@ -421,7 +421,7 @@ export default function MatchupPage() {
               {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
               <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 8 }}>
                 <PlayerBubble p={NE_OFF_LOS[0]} />
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                   {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
                 </div>
                 <PlayerBubble p={NE_OFF_SLOT[0]} />
@@ -464,7 +464,7 @@ export default function MatchupPage() {
               {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
               <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 8 }}>
                 <PlayerBubble p={SEA_OFF_LOS[0]} />
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                   {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
                 </div>
                 <PlayerBubble p={SEA_OFF_SLOT[0]} />
