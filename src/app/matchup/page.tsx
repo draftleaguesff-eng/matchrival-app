@@ -393,7 +393,7 @@ export default function MatchupPage() {
       </div>
 
       {/* ── Field ── */}
-      <div style={{ position: "relative", background: fieldBg, overflow: "hidden" }}>
+      <div style={{ position: "relative", background: fieldBg, overflow: "hidden", paddingTop: 16, paddingBottom: 16 }}>
         {/* Zone labels — DEFENSE top, OFFENSE bottom */}
         <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, top: 24, color: "#EF4444" }}>DEFENSE</span>
         <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, bottom: 24, color: "#22C55E" }}>OFFENSE</span>
@@ -408,27 +408,33 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "7px 4px 3px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 9 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 7 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "16px 4px 6px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 14 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 12 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── NE Offense — bottom ── */}
-            <div style={{ padding: "3px 4px 6px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR · OL×5 · TE · WR */}
-              <div style={{ marginBottom: 4 }}>
-                <FormationRow players={NE_OFF_LOS} justify="space-between" padding="0 4px" />
+            <div style={{ padding: "6px 4px 16px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+              {/* LOS row: WR-L | OL+TE cluster | WR-R */}
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px" }}>
+                  <PlayerBubble p={NE_OFF_LOS[0]} />
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
+                    {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
+                  </div>
+                  <PlayerBubble p={NE_OFF_LOS[7]} />
+                </div>
               </div>
               {/* SLOT + QB row */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 4 }}>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
                 <div style={{ marginTop: 9 }}><PlayerBubble p={NE_OFF_SLOT[0]} /></div>
                 <PlayerBubble p={NE_OFF_QB[0]} />
               </div>
               {/* RB row */}
-              <div style={{ marginBottom: 4 }}><FormationRow players={NE_OFF_RB} justify="center" /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={NE_OFF_RB} justify="center" /></div>
             </div>
             <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
               <FormationHeader
@@ -448,27 +454,33 @@ export default function MatchupPage() {
                 logo="/headshots/logo_ne.png"
               />
             </div>
-            <div style={{ padding: "7px 4px 3px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              <div style={{ marginBottom: 9 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
-              <div style={{ marginBottom: 7 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
+            <div style={{ padding: "16px 4px 6px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+              <div style={{ marginBottom: 14 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
+              <div style={{ marginBottom: 12 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
               <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── SEA Offense — bottom ── */}
-            <div style={{ padding: "3px 4px 6px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR · OL×5 · TE · WR */}
-              <div style={{ marginBottom: 4 }}>
-                <FormationRow players={SEA_OFF_LOS} justify="space-between" padding="0 4px" />
+            <div style={{ padding: "6px 4px 16px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+              {/* LOS row: WR-L | OL+TE cluster | WR-R */}
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px" }}>
+                  <PlayerBubble p={SEA_OFF_LOS[0]} />
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
+                    {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
+                  </div>
+                  <PlayerBubble p={SEA_OFF_LOS[7]} />
+                </div>
               </div>
               {/* SLOT + QB row */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 4 }}>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
                 <div style={{ marginTop: 9 }}><PlayerBubble p={SEA_OFF_SLOT[0]} /></div>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
               </div>
               {/* RB row */}
-              <div style={{ marginBottom: 4 }}><FormationRow players={SEA_OFF_RB} justify="center" /></div>
+              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_OFF_RB} justify="center" /></div>
             </div>
             <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
               <FormationHeader
