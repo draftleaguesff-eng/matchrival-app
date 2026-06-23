@@ -418,23 +418,20 @@ export default function MatchupPage() {
 
             {/* ── NE Offense — bottom ── */}
             <div style={{ padding: "6px 4px 16px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR-L | OL+TE cluster | WR-R */}
-              <div style={{ marginBottom: 8 }}>
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px" }}>
-                  <PlayerBubble p={NE_OFF_LOS[0]} />
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
-                    {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
-                  </div>
-                  <PlayerBubble p={NE_OFF_LOS[7]} />
+              {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 8 }}>
+                <PlayerBubble p={NE_OFF_LOS[0]} />
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
+                  {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
                 </div>
+                <PlayerBubble p={NE_OFF_SLOT[0]} />
+                <PlayerBubble p={NE_OFF_LOS[7]} />
               </div>
-              {/* SLOT + QB row */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
-                <div style={{ marginTop: 9 }}><PlayerBubble p={NE_OFF_SLOT[0]} /></div>
+              {/* Shotgun backfield: QB behind C, RB to QB's right */}
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 8 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
+                <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
-              {/* RB row */}
-              <div style={{ marginBottom: 8 }}><FormationRow players={NE_OFF_RB} justify="center" /></div>
             </div>
             <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
               <FormationHeader
@@ -464,23 +461,20 @@ export default function MatchupPage() {
 
             {/* ── SEA Offense — bottom ── */}
             <div style={{ padding: "6px 4px 16px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR-L | OL+TE cluster | WR-R */}
-              <div style={{ marginBottom: 8 }}>
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px" }}>
-                  <PlayerBubble p={SEA_OFF_LOS[0]} />
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
-                    {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
-                  </div>
-                  <PlayerBubble p={SEA_OFF_LOS[7]} />
+              {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 8 }}>
+                <PlayerBubble p={SEA_OFF_LOS[0]} />
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
+                  {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
                 </div>
+                <PlayerBubble p={SEA_OFF_SLOT[0]} />
+                <PlayerBubble p={SEA_OFF_LOS[7]} />
               </div>
-              {/* SLOT + QB row */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
-                <div style={{ marginTop: 9 }}><PlayerBubble p={SEA_OFF_SLOT[0]} /></div>
+              {/* Shotgun backfield: QB behind C, RB to QB's right */}
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "28%", marginBottom: 8 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
+                <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
-              {/* RB row */}
-              <div style={{ marginBottom: 8 }}><FormationRow players={SEA_OFF_RB} justify="center" /></div>
             </div>
             <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
               <FormationHeader
