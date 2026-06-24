@@ -426,23 +426,28 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "4px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            <div style={{ padding: "2px 4px 2px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               {/* Safeties — deep */}
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 4 }}>
                 <FormationRow players={[SEA_DEF_SEC[1], SEA_DEF_SEC[2]]} justify="center" gap={60} />
               </div>
               {/* LBs */}
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 4 }}>
                 <FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" />
               </div>
-              {/* DL */}
-              <div style={{ marginBottom: 6 }}>
-                <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
-              </div>
-              {/* CBs — near LOS, matched up on WRs */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "0 4px" }}>
-                <PlayerBubble p={SEA_DEF_SEC[0]} />
-                <PlayerBubble p={SEA_DEF_SEC[3]} />
+              {/* DL + CBs — at LOS, facing off against OL/WRs */}
+              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
+                <div style={{ position: "absolute", left: 4 }}>
+                  <PlayerBubble p={SEA_DEF_SEC[0]} />
+                </div>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
+                  <PlayerBubble p={SEA_DEF_DL[0]} />
+                  <PlayerBubble p={SEA_DEF_DL[1]} />
+                  <PlayerBubble p={SEA_DEF_DL[2]} />
+                </div>
+                <div style={{ position: "absolute", right: 4 }}>
+                  <PlayerBubble p={SEA_DEF_SEC[3]} />
+                </div>
               </div>
             </div>
 
@@ -487,24 +492,29 @@ export default function MatchupPage() {
                 logo="/headshots/logo_ne.png"
               />
             </div>
-            <div style={{ padding: "4px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            <div style={{ padding: "2px 4px 2px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               {/* Safety — deep */}
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 4 }}>
                 <FormationRow players={[NE_DEF_SEC[1]]} justify="center" />
               </div>
               {/* LBs */}
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 4 }}>
                 <FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" />
               </div>
-              {/* DL */}
-              <div style={{ marginBottom: 6 }}>
-                <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
-              </div>
-              {/* CBs — near LOS */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "0 4px" }}>
-                <PlayerBubble p={NE_DEF_SEC[0]} />
-                <PlayerBubble p={NE_DEF_SEC[2]} />
-                <PlayerBubble p={NE_DEF_SEC[3]} />
+              {/* DL + CBs — at LOS, facing off against OL/WRs */}
+              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
+                <div style={{ position: "absolute", left: 4 }}>
+                  <PlayerBubble p={NE_DEF_SEC[0]} />
+                </div>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
+                  <PlayerBubble p={NE_DEF_DL[0]} />
+                  <PlayerBubble p={NE_DEF_DL[1]} />
+                  <PlayerBubble p={NE_DEF_DL[2]} />
+                </div>
+                <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
+                  <PlayerBubble p={NE_DEF_SEC[2]} />
+                  <PlayerBubble p={NE_DEF_SEC[3]} />
+                </div>
               </div>
             </div>
 
