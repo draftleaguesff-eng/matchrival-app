@@ -426,13 +426,13 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "2px 4px 2px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               {/* Safeties — deep */}
-              <div style={{ marginBottom: 4 }}>
+              <div style={{ marginBottom: 12 }}>
                 <FormationRow players={[SEA_DEF_SEC[1], SEA_DEF_SEC[2]]} justify="center" gap={60} />
               </div>
               {/* LBs */}
-              <div style={{ marginBottom: 4 }}>
+              <div style={{ marginBottom: 12 }}>
                 <FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" />
               </div>
               {/* DL + CBs — at LOS, facing off against OL/WRs */}
@@ -492,13 +492,13 @@ export default function MatchupPage() {
                 logo="/headshots/logo_ne.png"
               />
             </div>
-            <div style={{ padding: "2px 4px 2px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               {/* Safety — deep */}
-              <div style={{ marginBottom: 4 }}>
+              <div style={{ marginBottom: 12 }}>
                 <FormationRow players={[NE_DEF_SEC[1]]} justify="center" />
               </div>
               {/* LBs */}
-              <div style={{ marginBottom: 4 }}>
+              <div style={{ marginBottom: 12 }}>
                 <FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" />
               </div>
               {/* DL + CBs — at LOS, facing off against OL/WRs */}
