@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
@@ -315,6 +315,14 @@ function FormationHeader({
 export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = NE Off / SEA Def  |  1 = SEA Off / NE Def
 
+  const [zoom, setZoom] = useState(1);
+  useEffect(() => {
+    const update = () => setZoom(window.innerWidth > 430 ? window.innerWidth / 430 : 1);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const fieldBg = `
     repeating-linear-gradient(180deg,
       rgba(255,255,255,0.016) 0px, rgba(255,255,255,0.016) 1px,
@@ -324,7 +332,7 @@ export default function MatchupPage() {
   `;
 
   return (
-    <div style={{ maxWidth: 430, margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112 }}>
+    <div style={{ maxWidth: 430, margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112, ...(zoom > 1 ? { zoom } as unknown as React.CSSProperties : {}) }}>
 
       {/* ── Sticky header ── */}
       <div style={{
