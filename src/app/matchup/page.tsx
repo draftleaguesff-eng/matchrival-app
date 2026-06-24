@@ -442,7 +442,7 @@ export default function MatchupPage() {
                 </div>
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "41%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "44%", marginBottom: 0 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
                 <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
@@ -489,7 +489,7 @@ export default function MatchupPage() {
                 </div>
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "41%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "44%", marginBottom: 0 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
                 <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
