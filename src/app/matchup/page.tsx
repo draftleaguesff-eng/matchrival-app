@@ -426,17 +426,17 @@ export default function MatchupPage() {
                 logo="/headshots/logo_sea.png"
               />
             </div>
-            <div style={{ padding: "12px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            <div style={{ padding: "4px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               {/* Safeties — deep */}
-              <div style={{ marginBottom: 10 }}>
+              <div style={{ marginBottom: 6 }}>
                 <FormationRow players={[SEA_DEF_SEC[1], SEA_DEF_SEC[2]]} justify="center" gap={60} />
               </div>
               {/* LBs */}
-              <div style={{ marginBottom: 10 }}>
+              <div style={{ marginBottom: 6 }}>
                 <FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" />
               </div>
               {/* DL */}
-              <div style={{ marginBottom: 10 }}>
+              <div style={{ marginBottom: 6 }}>
                 <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
               </div>
               {/* CBs — near LOS, matched up on WRs */}
@@ -487,17 +487,17 @@ export default function MatchupPage() {
                 logo="/headshots/logo_ne.png"
               />
             </div>
-            <div style={{ padding: "12px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            <div style={{ padding: "4px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               {/* Safety — deep */}
-              <div style={{ marginBottom: 10 }}>
+              <div style={{ marginBottom: 6 }}>
                 <FormationRow players={[NE_DEF_SEC[1]]} justify="center" />
               </div>
               {/* LBs */}
-              <div style={{ marginBottom: 10 }}>
+              <div style={{ marginBottom: 6 }}>
                 <FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" />
               </div>
               {/* DL */}
-              <div style={{ marginBottom: 10 }}>
+              <div style={{ marginBottom: 6 }}>
                 <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
               </div>
               {/* CBs — near LOS */}
