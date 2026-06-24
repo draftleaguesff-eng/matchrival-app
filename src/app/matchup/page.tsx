@@ -201,7 +201,7 @@ function PlayerBubble({ p }: { p: Player }) {
   const size  = p.size ?? 20;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 42, flexShrink: 0 }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 42, flexShrink: 0, overflow: "hidden" }}>
       <div style={{
         width: size, height: size, borderRadius: "50%",
         border: `2px solid ${ring.border}`,
@@ -233,7 +233,7 @@ function PlayerBubble({ p }: { p: Player }) {
         fontSize: 6.5, fontWeight: p.nameBold ? 700 : 600,
         color: p.nameBold ? "#CBD5E1" : "#94A3B8",
         whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-        maxWidth: 40, textAlign: "center",
+        maxWidth: "100%", textAlign: "center",
       }}>
         {p.display}
       </span>
