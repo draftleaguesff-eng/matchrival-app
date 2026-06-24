@@ -421,24 +421,28 @@ export default function MatchupPage() {
             <div style={{ padding: "20px 4px 12px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               <div style={{ marginBottom: 24 }}><FormationRow players={SEA_DEF_SEC} justify="space-between" padding="0 6px" /></div>
               <div style={{ marginBottom: 22 }}><FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
-              <FormationRow players={SEA_DEF_DL} justify="space-between" padding="0 32% 0 24%" />
+              <FormationRow players={SEA_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── NE Offense — bottom ── */}
             <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 54 }}>
-                <PlayerBubble p={NE_OFF_LOS[0]} />
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 0, marginLeft: 24 }}>
+              {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
+              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
+                <div style={{ position: "absolute", left: 4 }}>
+                  <PlayerBubble p={NE_OFF_LOS[0]} />
+                </div>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                   {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
                 </div>
-                <PlayerBubble p={NE_OFF_SLOT[0]} />
-                <PlayerBubble p={NE_OFF_LOS[7]} />
+                <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
+                  <PlayerBubble p={NE_OFF_SLOT[0]} />
+                  <PlayerBubble p={NE_OFF_LOS[7]} />
+                </div>
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "37%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "40%", marginBottom: 0 }}>
                 <PlayerBubble p={NE_OFF_QB[0]} />
                 <PlayerBubble p={NE_OFF_RB[0]} />
               </div>
@@ -464,24 +468,28 @@ export default function MatchupPage() {
             <div style={{ padding: "20px 4px 12px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
               <div style={{ marginBottom: 24 }}><FormationRow players={NE_DEF_SEC} justify="space-between" padding="0 6px" /></div>
               <div style={{ marginBottom: 22 }}><FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" /></div>
-              <FormationRow players={NE_DEF_DL} justify="space-between" padding="0 32% 0 24%" />
+              <FormationRow players={NE_DEF_DL} justify="center" gap={28} />
             </div>
 
             <LOS />
 
             {/* ── SEA Offense — bottom ── */}
             <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR-L | OL+TE cluster | SLOT | WR-R */}
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "0 4px", marginBottom: 54 }}>
-                <PlayerBubble p={SEA_OFF_LOS[0]} />
+              {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
+              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
+                <div style={{ position: "absolute", left: 4 }}>
+                  <PlayerBubble p={SEA_OFF_LOS[0]} />
+                </div>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                   {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
                 </div>
-                <PlayerBubble p={SEA_OFF_SLOT[0]} />
-                <PlayerBubble p={SEA_OFF_LOS[7]} />
+                <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
+                  <PlayerBubble p={SEA_OFF_SLOT[0]} />
+                  <PlayerBubble p={SEA_OFF_LOS[7]} />
+                </div>
               </div>
               {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "37%", marginBottom: 0 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "40%", marginBottom: 0 }}>
                 <PlayerBubble p={SEA_OFF_QB[0]} />
                 <PlayerBubble p={SEA_OFF_RB[0]} />
               </div>
