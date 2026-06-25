@@ -55,7 +55,7 @@ export const GAME_DATA: GameMatchupData = {
       LG:       { display: "S. Avila", initials: "SA", ringType: "ol", badgeType: "ol", badgeLabel: "LG", rating: 86, maxWidth: 36 , headshot: "Avila_Steve.jpg" },
       C:        { display: "B. Allen", initials: "BA", ringType: "ol", badgeType: "ol", badgeLabel: "C", rating: 78, maxWidth: 36 , headshot: "Allen_Brian.jpg" },
       RG:       { display: "J. Jackson", initials: "JJ", ringType: "ol", badgeType: "ol", badgeLabel: "RG", rating: 82, maxWidth: 36 , headshot: "Jackson_Jonah.jpg" },
-      RT:       { display: "W. McClendon", initials: "WM", ringType: "ol", badgeType: "ol", badgeLabel: "RT", rating: 73, maxWidth: 36 },
+      RT:       { display: "W. McClendon", initials: "WM", ringType: "ol", badgeType: "ol", badgeLabel: "RT", rating: 73, maxWidth: 36 , headshot: "McClendon_Warren.jpg" },
       TE:       { display: "T. Higbee", initials: "TH", ringType: "te", badgeType: "te", badgeLabel: "TE", rating: 78 , headshot: "Higbee_Tyler.jpg" },
       SLOT:     { display: "T. Atwell", initials: "TA", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", rating: 75 , headshot: "Atwell_Tutu.jpg" },
       WR_RIGHT: { display: "D. Adams", initials: "DA", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 88 , headshot: "Adams_Davante.jpg" },
@@ -65,7 +65,7 @@ export const GAME_DATA: GameMatchupData = {
     defense: {
       CB_LEFT: { display: "C. Durant", initials: "CD", ringType: "cb", badgeType: "cb", badgeLabel: "CB", rating: 78 , headshot: "Durant_Cobie.jpg" },
       SS:      { display: "T. Moehrig", initials: "TM", ringType: "ss", badgeType: "ss", badgeLabel: "SS", rating: 78 , headshot: "Moehrig_Tre'Von.jpg" },
-      FS:      { display: "E. Scott Jr.", initials: "ES", ringType: "fs", badgeType: "fs", badgeLabel: "FS", rating: 72 },
+      FS:      { display: "E. Scott Jr.", initials: "ES", ringType: "fs", badgeType: "fs", badgeLabel: "FS", rating: 72 , headshot: "Scott Jr._Eric.jpg" },
       NB:      { display: "D. Kendrick", initials: "DK", ringType: "cb", badgeType: "cb", badgeLabel: "CB", rating: 74 , headshot: "Kendrick_Derion.jpg" },
       OLB_L:   { display: "B. Huff", initials: "BH", ringType: "lb", badgeType: "lb", badgeLabel: "OLB", rating: 82 },
       ILB_L:   { display: "C. Rozeboom", initials: "CR", ringType: "lb", badgeType: "lb", badgeLabel: "ILB", rating: 72 , headshot: "Rozeboom_Christian.jpg" },

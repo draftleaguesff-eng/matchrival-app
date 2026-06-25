@@ -14,7 +14,7 @@ export const GAME_DATA: GameMatchupData = {
     defDescription: "Green Bay's 4-3 pairs Rashan Gary (86 OVR) off the edge with Kenny Clark (88 OVR) as the space-eating NT. Jaire Alexander (90 OVR) plays aggressive press-man on the boundary. De'Vondre Campbell steadies the inside linebacker corps. Cover 3 zone with Keisean Nixon as the versatile nickel defender.",
     offense: {
       WR_LEFT:  { display: "C. Watson", initials: "CW", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 81 , headshot: "Watson_Christian.jpg" },
-      LT:       { display: "D. Bakhtiari", initials: "DB", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 88, maxWidth: 36 },
+      LT:       { display: "D. Bakhtiari", initials: "DB", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 88, maxWidth: 36 , headshot: "Bakhtiari_David.jpg" },
       LG:       { display: "E. Jenkins", initials: "EJ", ringType: "ol", badgeType: "ol", badgeLabel: "LG", rating: 84, maxWidth: 36 , headshot: "Jenkins_Elgton.jpg" },
       C:        { display: "J. Myers", initials: "JM", ringType: "ol", badgeType: "ol", badgeLabel: "C", rating: 76, maxWidth: 36 , headshot: "Myers_Josh.jpg" },
       RG:       { display: "Z. Tom", initials: "ZT", ringType: "ol", badgeType: "ol", badgeLabel: "RG", rating: 87, maxWidth: 36 , headshot: "Tom_Zach.jpg" },
@@ -36,7 +36,7 @@ export const GAME_DATA: GameMatchupData = {
       OLB_R:   { display: "P. Smith", initials: "PS", ringType: "lb", badgeType: "lb", badgeLabel: "OLB", rating: 76 , headshot: "Smith_Preston.jpg" },
       DE_L:    { display: "D. Wyatt", initials: "DW", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 78 , headshot: "Wyatt_Devonte.jpg" },
       NT:      { display: "K. Clark", initials: "KC", ringType: "nt", badgeType: "nt", badgeLabel: "NT", rating: 88 , headshot: "Clark_Kenny.jpg" },
-      DE_R:    { display: "J. Reed", initials: "JR", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 78 },
+      DE_R:    { display: "J. Reed", initials: "JR", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 78 , headshot: "Reed_Jarran.jpg" },
     },
   },
   home: {
