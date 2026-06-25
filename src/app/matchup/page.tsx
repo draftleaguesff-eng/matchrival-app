@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import type { GameMatchupData } from "@/lib/matchup-types";
 import { NE_SEA } from "@/lib/matchup-data/ne-sea";
+import { ALL_GAMES } from "@/lib/matchup-data";
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
 
@@ -224,28 +225,28 @@ function FormationHeader({
 
 const MATCHUP_GAMES = [
   { time: "Wed · Sep 9 · 8:20 PM",  away: "NE",  home: "SEA", awayLogo: "/headshots/logo_ne.png",                                        homeLogo: "/headshots/logo_sea.png",                                        available: true  },
-  { time: "Thu · Sep 10 · 8:35 PM", away: "SF",  home: "LAR", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "CHI", home: "CAR", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "TB",  home: "CIN", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "NO",  home: "DET", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "BUF", home: "HOU", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "BAL", home: "IND", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "CLE", home: "JAX", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "ATL", home: "PIT", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",              available: false },
-  { time: "Sun · Sep 13 · 1:00 PM", away: "NYJ", home: "TEN", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",              available: false },
-  { time: "Sun · Sep 13 · 4:25 PM", away: "ARI", home: "LAC", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",              available: false },
-  { time: "Sun · Sep 13 · 4:25 PM", away: "MIA", home: "LV",  awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png",               available: false },
-  { time: "Sun · Sep 13 · 4:25 PM", away: "GB",  home: "MIN", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png",              available: false },
-  { time: "Sun · Sep 13 · 4:25 PM", away: "WAS", home: "PHI", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",              available: false },
-  { time: "Sun · Sep 13 · 8:20 PM", away: "DAL", home: "NYG", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",              available: false },
-  { time: "Mon · Sep 14 · 8:15 PM", away: "DEN", home: "KC",  awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",               available: false },
+  { time: "Thu · Sep 10 · 8:35 PM", away: "SF",  home: "LAR", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "CHI", home: "CAR", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "TB",  home: "CIN", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "NO",  home: "DET", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "BUF", home: "HOU", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "BAL", home: "IND", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "CLE", home: "JAX", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "ATL", home: "PIT", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",              available: true},
+  { time: "Sun · Sep 13 · 1:00 PM", away: "NYJ", home: "TEN", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",              available: true},
+  { time: "Sun · Sep 13 · 4:25 PM", away: "ARI", home: "LAC", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",              available: true},
+  { time: "Sun · Sep 13 · 4:25 PM", away: "MIA", home: "LV",  awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png",               available: true},
+  { time: "Sun · Sep 13 · 4:25 PM", away: "GB",  home: "MIN", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",              homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png",              available: true},
+  { time: "Sun · Sep 13 · 4:25 PM", away: "WAS", home: "PHI", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",              available: true},
+  { time: "Sun · Sep 13 · 8:20 PM", away: "DAL", home: "NYG", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",              available: true},
+  { time: "Mon · Sep 14 · 8:15 PM", away: "DEN", home: "KC",  awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",               available: true},
 ];
 
 export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = away Off / home Def  |  1 = home Off / away Def
   const [defTooltip, setDefTooltip] = useState<null | { side: 0 | 1; x: number; y: number }>(null);
   const [selectedGame, setSelectedGame] = useState(0);
-  const [gameData] = useState<GameMatchupData>(NE_SEA);
+  const gameData: GameMatchupData = ALL_GAMES[selectedGame] ?? NE_SEA;
 
   const [zoom, setZoom] = useState(1);
   useEffect(() => {
