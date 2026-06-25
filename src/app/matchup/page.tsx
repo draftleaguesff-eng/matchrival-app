@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import type { GameMatchupData } from "@/lib/matchup-types";
+import { NE_SEA } from "@/lib/matchup-data/ne-sea";
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
 
@@ -59,113 +61,6 @@ interface Player {
   rating?: number;
 }
 
-// ── NE OFFENSE (Side 0 — bottom) ──────────────────────────────────────────────
-
-// LOS row: WR · LT · LG · C · RG · RT · TE · WR
-const NE_OFF_LOS: Player[] = [
-  { display: "A.J. Brown",     initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg", rating: 89 },
-  { display: "J. Hudson III",  initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  headshot: "Hudson_James.jpg",      maxWidth: 36, rating: 63 },
-  { display: "A. Vera-Tucker", initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  headshot: "Vera-Tucker_Alijah.jpg", maxWidth: 36, rating: 83 },
-  { display: "B. Brown",       initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   headshot: "Brown_Ben.jpg",           maxWidth: 36, rating: 65 },
-  { display: "M. Onwenu",      initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  headshot: "Onwenu_Mike.jpg",         maxWidth: 36, rating: 86 },
-  { display: "M. Moses",       initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  headshot: "Moses_Morgan.jpg",        maxWidth: 36, rating: 82 },
-  { display: "H. Henry",       initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", maxWidth: 36, rating: 86 },
-  { display: "M. Hollins",     initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg", rating: 77 },
-];
-
-// SLOT (rendered in QB row, offset)
-const NE_OFF_SLOT: Player[] = [
-  { display: "E. Chism III", initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Chism_Efton.jpg", rating: 68 },
-];
-
-// QB row
-const NE_OFF_QB: Player[] = [
-  { display: "D. Maye", initials: "DM", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg", nameBold: true, rating: 93 },
-];
-
-// RB row
-const NE_OFF_RB: Player[] = [
-  { display: "R. Stevenson", initials: "RS", ringType: "rb", badgeType: "rb", badgeLabel: "RB · #38", headshot: "Stevenson_Rhamondre.jpg", rating: 77 },
-];
-
-// ── SEA DEFENSE (Side 0 — top), 3-4 Hybrid ────────────────────────────────────
-
-// Secondary row (furthest from LOS)
-const SEA_DEF_SEC: Player[] = [
-  { display: "J. Jobe",  initials: "JJ", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #29", headshot: "Jobe_Josh.jpg", rating: 77 },
-  { display: "J. Love",  initials: "JL", ringType: "ss", badgeType: "ss", badgeLabel: "SS · #20", headshot: "Love_Julian.jpg", rating: 85 },
-  { display: "D. Bell",  initials: "DB", ringType: "fs", badgeType: "fs", badgeLabel: "FS · #23", headshot: "Bell_D'Anthony.jpg", rating: 70 },
-  { display: "B. Clark", initials: "BC", ringType: "nb", badgeType: "nb", badgeLabel: "NB · #9",  headshot: "Clark_Bud.jpg", rating: 68 },
-];
-
-// LB row
-const SEA_DEF_LB: Player[] = [
-  { display: "D. Witherspoon", initials: "DW", ringType: "lb",  badgeType: "lb",  badgeLabel: "SLB · #21", headshot: "Witherspoon_Devon.jpg", rating: 91 },
-  { display: "D. Thomas",      initials: "DT", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #32", headshot: "Thomas_Drake.jpg", rating: 75 },
-  { display: "E. Jones",       initials: "EJ", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #13", headshot: "Jones_Ernest.jpg", rating: 83 },
-  { display: "U. Nwosu",       initials: "UN", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #7",  headshot: "Nwosu_Uchenna.jpg", rating: 77 },
-];
-
-// DL row (closest to LOS)
-const SEA_DEF_DL: Player[] = [
-  { display: "L. Williams", initials: "LW", ringType: "de", badgeType: "de", badgeLabel: "LDE · #99", headshot: "Williams_Leonard.jpg", rating: 88 },
-  { display: "J. Reed",     initials: "JR", ringType: "dt", badgeType: "dt", badgeLabel: "NT · #90",  headshot: "Reed_Jarran.jpg", rating: 78 },
-  { display: "D. Lawrence", initials: "DL", ringType: "de", badgeType: "de", badgeLabel: "RDE · #0",  headshot: "Lawrence_DeMarcus.jpg", rating: 87 },
-];
-
-// ── SEA OFFENSE (Side 1 — bottom) ─────────────────────────────────────────────
-
-// LOS row: WR · LT · LG · C · RG · RT · TE · WR
-const SEA_OFF_LOS: Player[] = [
-  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg", rating: 95 },
-  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  headshot: "Cross_Charles.jpg",    maxWidth: 36, rating: 83 },
-  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  headshot: "Sundell_Jalen.jpg",    maxWidth: 36, rating: 69 },
-  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   headshot: "Oluwatimi_Olu.jpg",    maxWidth: 36, rating: 66 },
-  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  headshot: "Bradford_Anthony.jpg", maxWidth: 36, rating: 72 },
-  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  headshot: "Lucas_Abraham.jpg",    maxWidth: 36, rating: 83 },
-  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg", maxWidth: 36, rating: 75 },
-  { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg", rating: 84 },
-];
-
-// SLOT (rendered in QB row, offset)
-const SEA_OFF_SLOT: Player[] = [
-  { display: "R. Shaheed", initials: "RS", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", headshot: "Shaheed_Rashid.jpg", rating: 79 },
-];
-
-// QB row
-const SEA_OFF_QB: Player[] = [
-  { display: "S. Darnold", initials: "SD", ringType: "qb", badgeType: "qb", badgeLabel: "QB · #14", headshot: "Darnold_Sam.jpg", nameBold: true, rating: 85 },
-];
-
-// RB row
-const SEA_OFF_RB: Player[] = [
-  { display: "Z. Charbonnet", initials: "ZC", ringType: "rb", badgeType: "rb", badgeLabel: "RB · #26", headshot: "Charbonnet_Zach.jpg", rating: 82 },
-];
-
-// ── NE DEFENSE (Side 1 — top), 3-4 Base ───────────────────────────────────────
-
-// Secondary row (furthest from LOS)
-const NE_DEF_SEC: Player[] = [
-  { display: "C. Davis",    initials: "CD", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #7",  headshot: "Davis_Carlton.jpg", rating: 85 },
-  { display: "K. Byard",   initials: "KB", ringType: "ss", badgeType: "ss", badgeLabel: "SS · #31", headshot: "Byard_Kevin.jpg", rating: 84 },
-  { display: "M. Jones",   initials: "MJ", ringType: "nb", badgeType: "nb", badgeLabel: "NB · #25", headshot: "Jones_Marcus.jpg", rating: 82 },
-  { display: "C. Gonzalez",initials: "CG", ringType: "cb", badgeType: "cb", badgeLabel: "CB · #0",  headshot: "Gonzalez_Christian.jpg", rating: 98 },
-];
-
-// LB row
-const NE_DEF_LB: Player[] = [
-  { display: "R. Spillane", initials: "RS", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #14", headshot: "Spillane_Robert.jpg", rating: 85 },
-  { display: "K.J. Britt",  initials: "KB", ringType: "lb",  badgeType: "lb",  badgeLabel: "ILB · #35", headshot: "Britt_KJ.jpg", rating: 71 },
-  { display: "C. Muma",     initials: "CM", ringType: "mlb", badgeType: "mlb", badgeLabel: "ILB · #49", headshot: "Muma_Chad.jpg", rating: 70 },
-  { display: "D. Jones",    initials: "DJ", ringType: "lb",  badgeType: "lb",  badgeLabel: "OLB · #5",  headshot: "Jones_DReMont.jpg", rating: 75 },
-];
-
-// DL row (closest to LOS)
-const NE_DEF_DL: Player[] = [
-  { display: "C. Barmore", initials: "CB", ringType: "de", badgeType: "de", badgeLabel: "LDE · #90", headshot: "Barmore_Christian.jpg", rating: 79 },
-  { display: "C. Durden",  initials: "CD", ringType: "dt", badgeType: "dt", badgeLabel: "NT · #94",  headshot: "Durden_Cory.jpg", rating: 68 },
-  { display: "H. Landry",  initials: "HL", ringType: "de", badgeType: "de", badgeLabel: "RDE · #2",  headshot: "Landry_Harold.jpg", rating: 82 },
-];
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
@@ -347,9 +242,10 @@ const MATCHUP_GAMES = [
 ];
 
 export default function MatchupPage() {
-  const [side, setSide] = useState<0 | 1>(0); // 0 = NE Off / SEA Def  |  1 = SEA Off / NE Def
+  const [side, setSide] = useState<0 | 1>(0); // 0 = away Off / home Def  |  1 = home Off / away Def
   const [defTooltip, setDefTooltip] = useState<null | { side: 0 | 1; x: number; y: number }>(null);
   const [selectedGame, setSelectedGame] = useState(0);
+  const [gameData] = useState<GameMatchupData>(NE_SEA);
 
   const [zoom, setZoom] = useState(1);
   useEffect(() => {
@@ -358,6 +254,32 @@ export default function MatchupPage() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
+  const awayOff = gameData.away.offense;
+  const homeOff = gameData.home.offense;
+  const awayDef = gameData.away.defense;
+  const homeDef = gameData.home.defense;
+
+  const OFF_LOS  = side === 0
+    ? [awayOff.WR_LEFT, awayOff.LT, awayOff.LG, awayOff.C, awayOff.RG, awayOff.RT, awayOff.TE, awayOff.WR_RIGHT]
+    : [homeOff.WR_LEFT, homeOff.LT, homeOff.LG, homeOff.C, homeOff.RG, homeOff.RT, homeOff.TE, homeOff.WR_RIGHT];
+  const OFF_SLOT = side === 0 ? [awayOff.SLOT] : [homeOff.SLOT];
+  const OFF_QB   = side === 0 ? awayOff.QB : homeOff.QB;
+  const OFF_RB   = side === 0 ? awayOff.RB : homeOff.RB;
+
+  const DEF_LB  = side === 0
+    ? [homeDef.OLB_L, homeDef.ILB_L, homeDef.ILB_R, homeDef.OLB_R]
+    : [awayDef.OLB_L, awayDef.ILB_L, awayDef.ILB_R, awayDef.OLB_R];
+  const DEF_DL  = side === 0
+    ? [homeDef.DE_L, homeDef.NT, homeDef.DE_R]
+    : [awayDef.DE_L, awayDef.NT, awayDef.DE_R];
+  const DEF_SAF = side === 0 ? [homeDef.SS, homeDef.FS] : [awayDef.SS, awayDef.FS];
+  const DEF_CB  = side === 0
+    ? { left: homeDef.CB_LEFT, right: homeDef.NB }
+    : { left: awayDef.CB_LEFT, right: awayDef.NB };
+
+  const defTeam = side === 0 ? gameData.home : gameData.away;
+  const offTeam = side === 0 ? gameData.away : gameData.home;
 
   const fieldBg = `
     repeating-linear-gradient(180deg,
@@ -436,8 +358,8 @@ export default function MatchupPage() {
       {/* ── Side toggle ── */}
       <div style={{ display: "flex", background: "#0E1016", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "0 4px" }}>
         {[
-          { label: "NE Off vs SEA Def",  pipColor: "#C8102E" },
-          { label: "SEA Off vs NE Def",  pipColor: "#69BE28" },
+          { label: `${gameData.away.abbr} Off vs ${gameData.home.abbr} Def`, pipColor: gameData.away.color },
+          { label: `${gameData.home.abbr} Off vs ${gameData.away.abbr} Def`, pipColor: gameData.home.color },
         ].map((opt, i) => (
           <button
             key={i}
@@ -459,148 +381,73 @@ export default function MatchupPage() {
       {/* ── Field ── */}
       <div style={{ position: "relative", background: fieldBg, overflow: "hidden", paddingTop: 16, paddingBottom: 16 }}>
 
-{side === 0 ? (
-          <>
-            {/* ── SEA Defense — top ── */}
-            <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
-              <FormationHeader
-                teamColor="#69BE28" teamName="SEAHAWKS"
-                subLabel="Defensive Formation" pillLabel="3-4 Hybrid" pillType="def"
-                logo="/headshots/logo_sea.png"
-                onPillClick={(e) => {
-                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                  setDefTooltip(defTooltip?.side === 0 ? null : { side: 0, x: rect.left + rect.width / 2, y: rect.bottom });
-                }}
-              />
+<>
+          {/* ── Defense — top ── */}
+          <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
+            <FormationHeader
+              teamColor={defTeam.color} teamName={defTeam.name}
+              subLabel="Defensive Formation" pillLabel={defTeam.defFormation} pillType="def"
+              logo={defTeam.logo}
+              onPillClick={(e) => {
+                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                setDefTooltip(defTooltip?.side === side ? null : { side, x: rect.left + rect.width / 2, y: rect.bottom });
+              }}
+            />
+          </div>
+          <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+            {/* Safeties — deep */}
+            <div style={{ marginBottom: 12 }}>
+              <FormationRow players={DEF_SAF} justify="center" gap={60} />
             </div>
-            <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              {/* Safeties — deep */}
-              <div style={{ marginBottom: 12 }}>
-                <FormationRow players={[SEA_DEF_SEC[1], SEA_DEF_SEC[2]]} justify="center" gap={60} />
+            {/* LBs */}
+            <div style={{ marginBottom: 12 }}>
+              <FormationRow players={DEF_LB} justify="space-evenly" padding="0 24px" />
+            </div>
+            {/* DL + CBs at LOS */}
+            <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
+              <div style={{ position: "absolute", left: 4 }}>
+                <PlayerBubble p={DEF_CB.left} />
               </div>
-              {/* LBs */}
-              <div style={{ marginBottom: 12 }}>
-                <FormationRow players={SEA_DEF_LB} justify="space-evenly" padding="0 24px" />
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
+                {DEF_DL.map((p, i) => <PlayerBubble key={i} p={p} />)}
               </div>
-              {/* DL + CBs — at LOS, facing off against OL/WRs */}
-              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
-                <div style={{ position: "absolute", left: 4 }}>
-                  <PlayerBubble p={SEA_DEF_SEC[0]} />
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
-                  <PlayerBubble p={SEA_DEF_DL[0]} />
-                  <PlayerBubble p={SEA_DEF_DL[1]} />
-                  <PlayerBubble p={SEA_DEF_DL[2]} />
-                </div>
-                <div style={{ position: "absolute", right: 4 }}>
-                  <PlayerBubble p={SEA_DEF_SEC[3]} />
-                </div>
+              <div style={{ position: "absolute", right: 4 }}>
+                <PlayerBubble p={DEF_CB.right} />
               </div>
             </div>
+          </div>
 
-            <LOS />
+          <LOS />
 
-            {/* ── NE Offense — bottom ── */}
-            <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
-              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
-                <div style={{ position: "absolute", left: 4 }}>
-                  <PlayerBubble p={NE_OFF_LOS[0]} />
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
-                  {NE_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
-                </div>
-                <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <PlayerBubble p={NE_OFF_SLOT[0]} />
-                  <PlayerBubble p={NE_OFF_LOS[7]} />
-                </div>
+          {/* ── Offense — bottom ── */}
+          <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+            {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
+            <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
+              <div style={{ position: "absolute", left: 4 }}>
+                <PlayerBubble p={OFF_LOS[0]} />
               </div>
-              {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "43%", marginBottom: 0 }}>
-                <PlayerBubble p={NE_OFF_QB[0]} />
-                <PlayerBubble p={NE_OFF_RB[0]} />
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
+                {OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
+              </div>
+              <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
+                <PlayerBubble p={OFF_SLOT[0]} />
+                <PlayerBubble p={OFF_LOS[7]} />
               </div>
             </div>
-            <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
-              <FormationHeader
-                teamColor="#C8102E" teamName="PATRIOTS"
-                subLabel="Offensive Formation" pillLabel="11 Personnel" pillType="off"
-                logo="/headshots/logo_ne.png"
-              />
+            {/* Shotgun backfield: QB behind C, RB to QB's right */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "43%", marginBottom: 0 }}>
+              <PlayerBubble p={OFF_QB} />
+              <PlayerBubble p={OFF_RB} />
             </div>
-          </>
-        ) : (
-          <>
-            {/* ── NE Defense — top ── */}
-            <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
-              <FormationHeader
-                teamColor="#C8102E" teamName="PATRIOTS"
-                subLabel="Defensive Formation" pillLabel="4-3 Base" pillType="def"
-                logo="/headshots/logo_ne.png"
-                onPillClick={(e) => {
-                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                  setDefTooltip(defTooltip?.side === 1 ? null : { side: 1, x: rect.left + rect.width / 2, y: rect.bottom });
-                }}
-              />
-            </div>
-            <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-              {/* Safety — deep */}
-              <div style={{ marginBottom: 12 }}>
-                <FormationRow players={[NE_DEF_SEC[1]]} justify="center" />
-              </div>
-              {/* LBs */}
-              <div style={{ marginBottom: 12 }}>
-                <FormationRow players={NE_DEF_LB} justify="space-evenly" padding="0 24px" />
-              </div>
-              {/* DL + CBs — at LOS, facing off against OL/WRs */}
-              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
-                <div style={{ position: "absolute", left: 4 }}>
-                  <PlayerBubble p={NE_DEF_SEC[0]} />
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
-                  <PlayerBubble p={NE_DEF_DL[0]} />
-                  <PlayerBubble p={NE_DEF_DL[1]} />
-                  <PlayerBubble p={NE_DEF_DL[2]} />
-                </div>
-                <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <PlayerBubble p={NE_DEF_SEC[2]} />
-                  <PlayerBubble p={NE_DEF_SEC[3]} />
-                </div>
-              </div>
-            </div>
-
-            <LOS />
-
-            {/* ── SEA Offense — bottom ── */}
-            <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-              {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
-              <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
-                <div style={{ position: "absolute", left: 4 }}>
-                  <PlayerBubble p={SEA_OFF_LOS[0]} />
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
-                  {SEA_OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
-                </div>
-                <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <PlayerBubble p={SEA_OFF_SLOT[0]} />
-                  <PlayerBubble p={SEA_OFF_LOS[7]} />
-                </div>
-              </div>
-              {/* Shotgun backfield: QB behind C, RB to QB's right */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "43%", marginBottom: 0 }}>
-                <PlayerBubble p={SEA_OFF_QB[0]} />
-                <PlayerBubble p={SEA_OFF_RB[0]} />
-              </div>
-            </div>
-            <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
-              <FormationHeader
-                teamColor="#69BE28" teamName="SEAHAWKS"
-                subLabel="Offensive Formation" pillLabel="11 Personnel" pillType="off"
-                logo="/headshots/logo_sea.png"
-              />
-            </div>
-          </>
-        )}
+          </div>
+          <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
+            <FormationHeader
+              teamColor={offTeam.color} teamName={offTeam.name}
+              subLabel="Offensive Formation" pillLabel={offTeam.personnel} pillType="off"
+              logo={offTeam.logo}
+            />
+          </div>
+        </>
       </div>
 
       {/* ── Stats strip ── */}
@@ -608,7 +455,7 @@ export default function MatchupPage() {
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 2 }}>
           <span style={{ fontSize: 9, color: "#4B5563", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Pass Yds/G</span>
           <span style={{ fontSize: 15, fontWeight: 800, color: "#22C55E" }}>284.3</span>
-          <span style={{ fontSize: 9, color: "#374151" }}>{side === 0 ? "NE Off" : "SEA Off"}</span>
+          <span style={{ fontSize: 9, color: "#374151" }}>{side === 0 ? `${gameData.away.abbr} Off` : `${gameData.home.abbr} Off`}</span>
         </div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 2, borderLeft: "1px solid rgba(255,255,255,0.06)", borderRight: "1px solid rgba(255,255,255,0.06)" }}>
           <span style={{ fontSize: 9, color: "#4B5563", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Season</span>
@@ -618,7 +465,7 @@ export default function MatchupPage() {
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2, overflow: "hidden" }}>
           <span style={{ fontSize: 9, color: "#4B5563", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Pts Allowed</span>
           <span style={{ fontSize: 15, fontWeight: 800, color: "#22C55E" }}>18.2</span>
-          <span style={{ fontSize: 9, color: "#374151" }}>{side === 0 ? "SEA Def" : "NE Def"}</span>
+          <span style={{ fontSize: 9, color: "#374151" }}>{side === 0 ? `${gameData.home.abbr} Def` : `${gameData.away.abbr} Def`}</span>
         </div>
       </div>
 
@@ -656,9 +503,9 @@ export default function MatchupPage() {
           }}
         >
           {defTooltip.side === 0 ? (
-            <><strong>3-4 Base — Cover 3</strong><p style={{ margin: "6px 0 0" }}>{"Seattle's Mike Macdonald scheme features a three-man DL anchored by Leonard Williams and DeMarcus Lawrence, with Devon Witherspoon as a versatile CB/LB hybrid. Primary coverage is Cover 3 zone with safety bracket help over the top. Aggressive blitz packages off the edge."}</p></>
+            <><strong>{gameData.home.defFormation}</strong><p style={{ margin: "6px 0 0" }}>{gameData.home.defScheme}</p></>
           ) : (
-            <><strong>4-3 Base — Press Man</strong><p style={{ margin: "6px 0 0" }}>{"New England's base 4-3 applies heavy press coverage with Christian Gonzalez (98 OVR) shadowing the opponent's top receiver. Robert Spillane anchors the linebacker corps. Four-man rush relies on Christian Barmore and Harold Landry III to generate pressure without blitzing."}</p></>
+            <><strong>{gameData.away.defFormation}</strong><p style={{ margin: "6px 0 0" }}>{gameData.away.defScheme}</p></>
           )}
         </div>
       )}
