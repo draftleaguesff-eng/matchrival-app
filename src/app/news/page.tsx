@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import MatchRivalLogo from "@/components/MatchRivalLogo";
 
 interface NewsItem {
   id: string;
@@ -63,8 +64,8 @@ export default function NewsPage() {
     <div style={{ minHeight: "100vh", background: "#0D0F14", paddingBottom: 90, fontFamily: "var(--font-inter, Inter, sans-serif)" }}>
       {/* Header */}
       <div style={{ padding: "20px 16px 0", background: "#0D0F14" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
-          <span style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em" }}>Match<span style={{ color: "#F59E0B" }}>Rival</span></span>
+        <div style={{ marginBottom: 2 }}>
+          <MatchRivalLogo />
         </div>
         <div style={{ fontSize: 10, fontWeight: 700, color: "#4B5268", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16 }}>NEWS FEED</div>
 

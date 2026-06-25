@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
+import MatchRivalLogo from "@/components/MatchRivalLogo";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -84,21 +85,6 @@ function trend(rank: number): "up" | "down" | "flat" {
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-function Logo() {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-      <div style={{
-        width: 26, height: 26, background: "#3B82F6", borderRadius: 6,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 11, fontWeight: 900, color: "#fff",
-        boxShadow: "0 0 10px rgba(59,130,246,0.4)", flexShrink: 0,
-      }}>MR</div>
-      <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.03em" }}>
-        Match<span style={{ color: "#3B82F6" }}>.</span>Rival
-      </span>
-    </div>
-  );
-}
 
 function PosBadge({ pos }: { pos: string }) {
   return (
@@ -441,7 +427,7 @@ export default function RankingsPage() {
         {/* Top row */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
           <div>
-            <Logo />
+            <MatchRivalLogo />
             <span style={{ fontSize: 11, fontWeight: 700, color: "#4B5268", letterSpacing: "0.08em", textTransform: "uppercase", display: "block", marginTop: 2 }}>Draft Rankings</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
