@@ -59,7 +59,7 @@ function parseRSS(xml: string) {
     const description = block.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>|<description>(.*?)<\/description>/)?.[1] ?? "";
     const pubDate = block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] ?? "";
     const link = block.match(/<link>(.*?)<\/link>/)?.[1] ?? "";
-    if (title) items.push({ title, description: description.replace(/<[^>]+>/g, "").slice(0, 180), pubDate, link });
+    if (title) items.push({ title, description: description.replace(/<[^>]+>/g, "").slice(0, 400), pubDate, link });
   }
   return items;
 }
@@ -102,12 +102,14 @@ export async function GET() {
             body: item.description,
             time: timeAgo(item.pubDate),
             link: item.link,
+            isCurated: false,
           });
         }
       }
     }
+    const taggedCurated = (curated as object[]).map(i => ({ ...(i as object), isCurated: true }));
     const rssFiltered = allItems.filter((i: object) => !curatedLinks.has((i as { id: string }).id));
-    return NextResponse.json([...curated, ...rssFiltered].slice(0, 30));
+    return NextResponse.json([...taggedCurated, ...rssFiltered].slice(0, 30));
   } catch {
     return NextResponse.json([]);
   }

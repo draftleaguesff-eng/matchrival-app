@@ -12,6 +12,7 @@ interface NewsItem {
   body: string;
   time: string;
   link: string;
+  isCurated?: boolean;
 }
 
 const TAG_COLORS: Record<string, string> = {
@@ -52,6 +53,7 @@ export default function NewsPage() {
   const [items, setItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("All");
+  const [selectedItem, setSelectedItem] = useState<NewsItem | null>(null);
 
   useEffect(() => {
     fetch("/api/news")
@@ -98,7 +100,7 @@ export default function NewsPage() {
           <div style={{ textAlign: "center", padding: "60px 0", color: "#4B5268", fontSize: 14 }}>No news available right now.</div>
         )}
         {items.map(item => (
-          <a key={item.id} href={item.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block" }}>
+          <div key={item.id} onClick={() => setSelectedItem(item)} style={{ cursor: "pointer", display: "block" }}>
             <div style={{ background: "#13161F", borderRadius: 12, padding: "14px 14px 12px", marginBottom: 10, border: "1px solid rgba(255,255,255,0.05)" }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                 <TeamLogo abbr={item.abbr} />
@@ -113,14 +115,65 @@ export default function NewsPage() {
                   {item.body && <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5, marginBottom: 8 }}>{item.body}</div>}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontSize: 11, color: "#4B5268" }}>{item.time}</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" stroke="#4B5268" strokeWidth="1.8"/></svg>
+                    {!item.isCurated && <span style={{ fontSize: 12, color: "#4B5268" }}>↗</span>}
                   </div>
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
+
+      {selectedItem && (
+        <>
+          {/* Backdrop */}
+          <div
+            onClick={() => setSelectedItem(null)}
+            style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 60 }}
+          />
+          {/* Sheet */}
+          <div style={{
+            position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 70,
+            background: "#13161F", borderRadius: "20px 20px 0 0",
+            padding: "0 0 90px",
+            maxHeight: "85vh", overflowY: "auto",
+            border: "1px solid rgba(255,255,255,0.08)",
+          }}>
+            {/* Handle */}
+            <div style={{ display: "flex", justifyContent: "center", padding: "12px 0 4px" }}>
+              <div style={{ width: 36, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.15)" }} />
+            </div>
+            {/* Header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 16px 12px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <TeamLogo abbr={selectedItem.abbr} />
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: "#8892AA" }}>{selectedItem.team}</div>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: TAG_COLORS[selectedItem.tag] ?? "#6B7280", background: `${TAG_COLORS[selectedItem.tag] ?? "#6B7280"}1A`, border: `1px solid ${TAG_COLORS[selectedItem.tag] ?? "#6B7280"}40`, borderRadius: 4, padding: "2px 6px" }}>
+                    {selectedItem.tag}
+                  </span>
+                </div>
+              </div>
+              <button onClick={() => setSelectedItem(null)} style={{ background: "rgba(255,255,255,0.06)", border: "none", borderRadius: 8, width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#8892AA", fontSize: 18 }}>✕</button>
+            </div>
+            {/* Title */}
+            <div style={{ padding: "0 16px 12px", fontSize: 18, fontWeight: 800, color: "#FFFFFF", lineHeight: 1.3 }}>
+              {selectedItem.title}
+            </div>
+            {/* Body */}
+            <div style={{ padding: "0 16px 20px", fontSize: 14, color: "#C8CDD8", lineHeight: 1.7 }}>
+              {selectedItem.body}
+            </div>
+            {/* Time + source */}
+            <div style={{ padding: "0 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: 12, color: "#4B5268" }}>{selectedItem.time}</span>
+              <a href={selectedItem.link} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#3B82F6", textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
+                Read original ↗
+              </a>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
