@@ -412,11 +412,8 @@ export default function MatchupPage() {
 
       {/* ── Field ── */}
       <div style={{ position: "relative", background: fieldBg, overflow: "hidden", paddingTop: 16, paddingBottom: 16 }}>
-        {/* Zone labels — DEFENSE top, OFFENSE bottom */}
-        <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, top: 24, color: "#EF4444" }}>DEFENSE</span>
-        <span style={{ position: "absolute", fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.12, right: 14, bottom: 24, color: "#22C55E" }}>OFFENSE</span>
 
-        {side === 0 ? (
+{side === 0 ? (
           <>
             {/* ── SEA Defense — top ── */}
             <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
