@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 const RSS_URLS = [
   "https://www.espn.com/espn/rss/nfl/news",
@@ -72,6 +74,15 @@ function timeAgo(dateStr: string): string {
 
 export async function GET() {
   try {
+    let curated: object[] = [];
+    try {
+      const raw = readFileSync(join(process.cwd(), "public", "curated-news.json"), "utf-8");
+      curated = JSON.parse(raw);
+    } catch {
+      curated = [];
+    }
+    const curatedLinks = new Set((curated as { link?: string }[]).map(i => i.link));
+
     const results = await Promise.allSettled(
       RSS_URLS.map(url => fetch(url, { next: { revalidate: 300 } }).then(r => r.text()))
     );
@@ -95,7 +106,8 @@ export async function GET() {
         }
       }
     }
-    return NextResponse.json(allItems.slice(0, 30));
+    const rssFiltered = allItems.filter((i: object) => !curatedLinks.has((i as { id: string }).id));
+    return NextResponse.json([...curated, ...rssFiltered].slice(0, 30));
   } catch {
     return NextResponse.json([]);
   }
