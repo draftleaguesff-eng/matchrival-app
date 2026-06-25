@@ -64,12 +64,12 @@ interface Player {
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const NE_OFF_LOS: Player[] = [
   { display: "A.J. Brown",     initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Brown_A.J..jpg", rating: 89 },
-  { display: "J. Hudson III",  initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  headshot: "Hudson_James.jpg",      maxWidth: 42, rating: 63 },
-  { display: "A. Vera-Tucker", initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  headshot: "Vera-Tucker_Alijah.jpg", maxWidth: 42, rating: 83 },
-  { display: "B. Brown",       initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   headshot: "Brown_Ben.jpg",           maxWidth: 42, rating: 65 },
-  { display: "M. Onwenu",      initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  headshot: "Onwenu_Mike.jpg",         maxWidth: 42, rating: 86 },
-  { display: "M. Moses",       initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  headshot: "Moses_Morgan.jpg",        maxWidth: 42, rating: 82 },
-  { display: "H. Henry",       initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", maxWidth: 42, rating: 86 },
+  { display: "J. Hudson III",  initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  headshot: "Hudson_James.jpg",      maxWidth: 38, rating: 63 },
+  { display: "A. Vera-Tucker", initials: "AV", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  headshot: "Vera-Tucker_Alijah.jpg", maxWidth: 38, rating: 83 },
+  { display: "B. Brown",       initials: "BB", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   headshot: "Brown_Ben.jpg",           maxWidth: 38, rating: 65 },
+  { display: "M. Onwenu",      initials: "MO", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  headshot: "Onwenu_Mike.jpg",         maxWidth: 38, rating: 86 },
+  { display: "M. Moses",       initials: "MM", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  headshot: "Moses_Morgan.jpg",        maxWidth: 38, rating: 82 },
+  { display: "H. Henry",       initials: "HH", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Henry_Hunter.jpg", maxWidth: 38, rating: 86 },
   { display: "M. Hollins",     initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Hollins_Mack.jpg", rating: 77 },
 ];
 
@@ -118,12 +118,12 @@ const SEA_DEF_DL: Player[] = [
 // LOS row: WR · LT · LG · C · RG · RT · TE · WR
 const SEA_OFF_LOS: Player[] = [
   { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Smith-Njigba_Jaxon.jpg", rating: 95 },
-  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  headshot: "Cross_Charles.jpg",    maxWidth: 42, rating: 83 },
-  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  headshot: "Sundell_Jalen.jpg",    maxWidth: 42, rating: 69 },
-  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   headshot: "Oluwatimi_Olu.jpg",    maxWidth: 42, rating: 66 },
-  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  headshot: "Bradford_Anthony.jpg", maxWidth: 42, rating: 72 },
-  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  headshot: "Lucas_Abraham.jpg",    maxWidth: 42, rating: 83 },
-  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg", maxWidth: 42, rating: 75 },
+  { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",  headshot: "Cross_Charles.jpg",    maxWidth: 38, rating: 83 },
+  { display: "J. Sundell",    initials: "JS", ringType: "ol", badgeType: "ol",   badgeLabel: "LG",  headshot: "Sundell_Jalen.jpg",    maxWidth: 38, rating: 69 },
+  { display: "O. Oluwatimi",  initials: "OO", ringType: "ol", badgeType: "ol",   badgeLabel: "C",   headshot: "Oluwatimi_Olu.jpg",    maxWidth: 38, rating: 66 },
+  { display: "A. Bradford",   initials: "AB", ringType: "ol", badgeType: "ol",   badgeLabel: "RG",  headshot: "Bradford_Anthony.jpg", maxWidth: 38, rating: 72 },
+  { display: "A. Lucas",      initials: "AL", ringType: "ol", badgeType: "ol",   badgeLabel: "RT",  headshot: "Lucas_Abraham.jpg",    maxWidth: 38, rating: 83 },
+  { display: "AJ Barner",     initials: "AB", ringType: "te", badgeType: "te",   badgeLabel: "TE",  headshot: "Barner_AJ.jpg", maxWidth: 38, rating: 75 },
   { display: "C. Kupp",       initials: "CK", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",  headshot: "Kupp_Cooper.jpg", rating: 84 },
 ];
 
@@ -198,10 +198,10 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
 function PlayerBubble({ p }: { p: Player }) {
   const ring  = RING[p.ringType]  || RING.wr;
   const badge = BADGE[p.badgeType] || BADGE.wr;
-  const size  = p.size ?? 34;
+  const size  = p.size ?? 30;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 60, flexShrink: 0, overflow: "hidden" }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 56, flexShrink: 0, overflow: "hidden" }}>
       <div style={{
         width: size, height: size, borderRadius: "50%",
         border: `2px solid ${ring.border}`,
