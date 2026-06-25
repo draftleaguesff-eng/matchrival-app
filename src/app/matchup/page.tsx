@@ -176,7 +176,7 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
       <img
         src={src}
         alt={initials}
-        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: "50%" }}
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).style.display = "none";
           const sib = e.currentTarget.nextElementSibling as HTMLElement | null;
