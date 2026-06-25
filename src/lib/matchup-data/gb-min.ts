@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Green Bay's 4-3 pairs Rashan Gary (86 OVR) off the edge with Kenny Clark (88 OVR) as the space-eating NT. Jaire Alexander (90 OVR) plays aggressive press-man on the boundary. De'Vondre Campbell steadies the inside linebacker corps. Cover 3 zone with Keisean Nixon as the versatile nickel defender.",
     offense: {
       WR_LEFT:  { display: "C. Watson", initials: "CW", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 81 , headshot: "Watson_Christian.jpg" },
       LT:       { display: "D. Bakhtiari", initials: "DB", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 88, maxWidth: 36 },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 2 Zone Blitz",
     defScheme: "3-4 Base",
+    defDescription: "Minnesota's 3-4 under Brian Flores is aggressive and multiple — zone blitzes disguised as Cover 2 to confuse QBs. Jonathan Allen (88 OVR) anchors the 0-tech NT. Andrew Van Ginkel (82 OVR) is the primary edge threat off the right OLB spot. Harrison Smith (88 OVR) is the veteran centerfield safety with elite football IQ.",
     offense: {
       WR_LEFT:  { display: "J. Jefferson", initials: "JJ", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 99, nameBold: true , headshot: "Jefferson_Justin.jpg" },
       LT:       { display: "C. Darrisaw", initials: "CD", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 92, maxWidth: 36, nameBold: true , headshot: "Darrisaw_Christian.jpg" },

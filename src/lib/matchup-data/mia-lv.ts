@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Zone Blitz",
     defScheme: "3-4 Base",
+    defDescription: "Miami's 3-4 zone blitz scheme under Anthony Weaver generates confusion with multiple disguised pressures. Christian Wilkins (86 OVR) and Zach Sieler (83 OVR) form a dominant interior. Bradley Chubb (84 OVR) leads the edge rush. Jevon Holland (82 OVR) is a versatile box safety. Xavien Howard (84 OVR) handles the boundary corner in press.",
     offense: {
       WR_LEFT:  { display: "T. Hill", initials: "TH", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 96, nameBold: true , headshot: "Hill_Tyreek.jpg" },
       LT:       { display: "T. Armstead", initials: "TA", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 88, maxWidth: 36 , headshot: "Armstead_Terron.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Las Vegas' 4-3 lives and dies with Maxx Crosby (97 OVR) — a generational pass rusher who demands a chip or double team every snap. Behind Crosby, the Raiders' defensive depth is thin. Cover 3 zone with Nate Hobbs in the slot. The scheme is straightforward: get Crosby home and hope for turnovers.",
     offense: {
       WR_LEFT:  { display: "J. Meyers", initials: "JM", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 78 , headshot: "Meyers_Jakobi.jpg" },
       LT:       { display: "K. Miller", initials: "KM", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 91, maxWidth: 36, nameBold: true , headshot: "Miller_Kolton.jpg" },

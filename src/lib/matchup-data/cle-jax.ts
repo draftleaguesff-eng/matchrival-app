@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Myles Garrett (99 OVR) is the best defensive player in football and Cleveland's entire defensive identity. Denzel Ward (93 OVR) shadows #1 receivers in press man. Jeremiah Owusu-Koramoah (84 OVR) is a sideline-to-sideline rangy ILB. The Browns run Cover 3 but will play man behind Garrett's pressure.",
     offense: {
       WR_LEFT:  { display: "J. Jeudy", initials: "JJ", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 82 , headshot: "Jeudy_Jerry.jpg" },
       LT:       { display: "J. Wills Jr.", initials: "JW", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 79, maxWidth: 36 , headshot: "Wills Jr._Jedrick.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Zone Blitz",
     defScheme: "4-3 Base",
+    defDescription: "Jacksonville's 4-3 zone blitz scheme confuses protections with multiple looks. Josh Hines-Allen (90 OVR) is a premier edge rusher off the left side. Foyesade Oluokun (83 OVR) is one of the more underrated ILBs in football, leading the league in tackles multiple seasons. Tyson Campbell (82 OVR) handles the boundary corner.",
     offense: {
       WR_LEFT:  { display: "G. Davis", initials: "GD", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 80 , headshot: "Davis_Gabe.jpg" },
       LT:       { display: "A. Harrison", initials: "AH", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 79, maxWidth: 36 , headshot: "Harrison_Anton.jpg" },

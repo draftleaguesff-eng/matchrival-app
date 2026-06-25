@@ -504,9 +504,9 @@ export default function MatchupPage() {
           }}
         >
           {defTooltip.side === 0 ? (
-            <><strong>{gameData.home.defFormation}</strong><p style={{ margin: "6px 0 0" }}>{gameData.home.defScheme}</p></>
+            <><strong>{gameData.home.defScheme}</strong><p style={{ margin: "6px 0 0" }}>{gameData.home.defDescription}</p></>
           ) : (
-            <><strong>{gameData.away.defFormation}</strong><p style={{ margin: "6px 0 0" }}>{gameData.away.defScheme}</p></>
+            <><strong>{gameData.away.defScheme}</strong><p style={{ margin: "6px 0 0" }}>{gameData.away.defDescription}</p></>
           )}
         </div>
       )}

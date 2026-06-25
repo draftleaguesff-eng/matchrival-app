@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 2 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Baltimore's 3-4 is led by Roquan Smith (94 OVR), the most complete ILB in football. Trey Hendrickson (92 OVR) is the primary edge threat off the right side. Kyle Hamilton (91 OVR) can line up anywhere — SS, slot, or near-line. Marlon Humphrey (92 OVR) is a Pro Bowl corner. Cover 2 zone with bracket help over the top.",
     offense: {
       WR_LEFT:  { display: "Z. Flowers", initials: "ZF", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 88 , headshot: "Flowers_Zay.jpg" },
       LT:       { display: "R. Stanley", initials: "RS", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 90, maxWidth: 36, nameBold: true , headshot: "Stanley_Ronnie.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Indianapolis' 4-3 is anchored by DeForest Buckner (88 OVR) as the interior force at 3-tech. Kwity Paye rushes from the strong-side OLB. Zaire Franklin and E.J. Speed are physical inside linebackers in Cover 3 zone. The secondary is sound but unspectacular — pressure must create turnovers.",
     offense: {
       WR_LEFT:  { display: "M. Pittman Jr.", initials: "MP", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 84 , headshot: "Pittman Jr._Michael.jpg" },
       LT:       { display: "B. Raimann", initials: "BR", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 80, maxWidth: 36 , headshot: "Raimann_Bernhard.jpg" },

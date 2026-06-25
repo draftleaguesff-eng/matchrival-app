@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Arizona's 4-3 is built around Budda Baker (85 OVR) as the heartbeat safety who plays near the box. Josh Sweat (84 OVR) provides edge pressure from the SAM spot. Byron Murphy (82 OVR) plays the nickel with ball-hawk instincts. Cover 3 zone underneath with Budda as the single-high over the top.",
     offense: {
       WR_LEFT:  { display: "M. Harrison Jr.", initials: "MH", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 87 , headshot: "Harrison Jr._Marvin.jpg" },
       LT:       { display: "P. Johnson Jr.", initials: "PJ", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 82, maxWidth: 36 , headshot: "Johnson Jr._Paris.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 2 Zone",
     defScheme: "3-4 Base",
+    defDescription: "The Chargers' 3-4 is headlined by Khalil Mack (87 OVR) and Joey Bosa (83 OVR) as elite bookend OLBs — one of the most experienced edge tandems in the league. Derwin James (94 OVR) is an elite SS who plays near the line in an aggressive two-deep look. Cover 2 zone with James rotating into the box.",
     offense: {
       WR_LEFT:  { display: "Q. Johnston", initials: "QJ", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 78 , headshot: "Johnston_Quentin.jpg" },
       LT:       { display: "R. Slater", initials: "RS", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 90, maxWidth: 36, nameBold: true , headshot: "Slater_Rashawn.jpg" },

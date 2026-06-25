@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Denver's 3-4 is headlined by Pat Surtain II (97 OVR) — arguably the best corner in football, taking away an entire half of the field. Nik Bonitto (91 OVR) is a high-motor edge rusher off the left side. Zach Allen (87 OVR) anchors the interior. Talanoa Hufanga (86 OVR) is the single-high safety. Cover 3 zone with Surtain in press on the opponent's top WR.",
     offense: {
       WR_LEFT:  { display: "C. Sutton", initials: "CS", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 85 , headshot: "Sutton_Courtland.jpg" },
       LT:       { display: "G. Bolles", initials: "GB", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 89, maxWidth: 36 , headshot: "Bolles_Garett.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-2-5 Nickel — Cover 1 Man",
     defScheme: "4-2-5 Nickel",
+    defDescription: "Kansas City's 4-2-5 nickel plays physical Cover 1 man, leaning on Chris Jones (97 OVR) as an unblockable interior force. Trent McDuffie (90 OVR) shadows receivers in press. George Karlaftis (82 OVR) and Felix Anudike-Uzomah provide edge pressure. Nick Bolton (83 OVR) is the quarterback of the defense. Aggressive, physical, championship-tested.",
     offense: {
       WR_LEFT:  { display: "R. Rice", initials: "RR", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 84 , headshot: "Rice_Rashee.jpg" },
       LT:       { display: "J. Simmons", initials: "JS", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 75, maxWidth: 36 , headshot: "Simmons_Josh.jpg" },

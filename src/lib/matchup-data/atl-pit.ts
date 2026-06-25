@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Atlanta's 4-3 relies on A.J. Terrell (86 OVR) as its best cover corner and Jessie Bates III (88 OVR) as the centerfield safety. Arnold Ebiketie and James Pearce Jr. provide edge pressure off the perimeter. Cover 3 zone with Kaden Elliss and Troy Andersen as active interior linebackers.",
     offense: {
       WR_LEFT:  { display: "D. London", initials: "DL", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 91, nameBold: true , headshot: "London_Drake.jpg" },
       LT:       { display: "J. Matthews", initials: "JM", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 82, maxWidth: 36 , headshot: "Matthews_Jake.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 1 Zone Blitz",
     defScheme: "3-4 Base",
+    defDescription: "Pittsburgh's 3-4 is legendary. T.J. Watt (99 OVR) is a perennial DPOY candidate off the right edge. Cameron Heyward (94 OVR) remains the best veteran DT in the league. Minkah Fitzpatrick (93 OVR) is a center-field safety with elite instincts. The Steelers run Cover 1 robber and zone blitz packages to maximize their talent.",
     offense: {
       WR_LEFT:  { display: "D. Metcalf", initials: "DM", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 85 , headshot: "Metcalf_DK.jpg" },
       LT:       { display: "D. Moore Jr.", initials: "DM", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 76, maxWidth: 36 , headshot: "Moore Jr._Dan.jpg" },

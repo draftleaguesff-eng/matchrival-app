@@ -12,7 +12,8 @@ export const NE_SEA: GameMatchupData = {
     formation: "Shotgun",
     personnel: "11 Personnel",
     defFormation: "4-3 Base",
-    defScheme: "New England's base 4-3 applies heavy press coverage with Christian Gonzalez (98 OVR) shadowing the opponent's top receiver. Robert Spillane anchors the linebacker corps. Four-man rush relies on Christian Barmore and Harold Landry III to generate pressure without blitzing.",
+    defScheme: "4-3 Base",
+    defDescription: "New England's base 4-3 applies heavy press coverage with Christian Gonzalez (98 OVR) shadowing the opponent's top receiver. Robert Spillane anchors the linebacker corps. Four-man rush relies on Christian Barmore and Harold Landry III to generate pressure without blitzing.",
     offense: {
       WR_LEFT:  { display: "A.J. Brown",     initials: "AB", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",       headshot: "Brown_A.J..jpg",           rating: 89 },
       LT:       { display: "J. Hudson III",  initials: "JH", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",       headshot: "Hudson_James.jpg",         maxWidth: 36, rating: 63 },
@@ -50,7 +51,8 @@ export const NE_SEA: GameMatchupData = {
     formation: "Shotgun",
     personnel: "11 Personnel",
     defFormation: "3-4 Hybrid",
-    defScheme: "Seattle's Mike Macdonald scheme features a three-man DL anchored by Leonard Williams and DeMarcus Lawrence, with Devon Witherspoon as a versatile CB/LB hybrid. Primary coverage is Cover 3 zone with safety bracket help over the top. Aggressive blitz packages off the edge.",
+    defScheme: "3-4 Hybrid",
+    defDescription: "Seattle's Mike Macdonald scheme features a three-man DL anchored by Leonard Williams and DeMarcus Lawrence, with Devon Witherspoon as a versatile CB/LB hybrid. Primary coverage is Cover 3 zone with safety bracket help over the top. Aggressive blitz packages off the edge.",
     offense: {
       WR_LEFT:  { display: "JSN",           initials: "JN", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",       headshot: "Smith-Njigba_Jaxon.jpg", rating: 95 },
       LT:       { display: "C. Cross",      initials: "CC", ringType: "ol", badgeType: "ol",   badgeLabel: "LT",       headshot: "Cross_Charles.jpg",      maxWidth: 36, rating: 83 },

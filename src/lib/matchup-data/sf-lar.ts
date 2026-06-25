@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Nick Bosa anchors a 4-3 front that generates elite interior pressure. Fred Warner (92 OVR) quarterbacks the LB corps in Cover 3 zone, with Deommodore Lenoir and Renardo Green in off-coverage. The 49ers funnel everything to the middle and rely on Warner to clean it up.",
     offense: {
       WR_LEFT:  { display: "M. Evans", initials: "ME", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 88 , headshot: "Evans_Mike.jpg" },
       LT:       { display: "T. Williams", initials: "TW", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 97, maxWidth: 36, nameBold: true , headshot: "Williams_Trent.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "The Rams run a 3-4 base under Sean McVay's defensive staff, with Bryce Huff as the primary edge rusher off the left side. Cover 3 zone underneath with safeties Tre'Von Moehrig and Eric Scott Jr. splitting deep thirds. Kobie Turner provides interior push as the 3-tech.",
     offense: {
       WR_LEFT:  { display: "P. Nacua", initials: "PN", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 97, nameBold: true , headshot: "Nacua_Puka.jpg" },
       LT:       { display: "A. Jackson", initials: "AJ", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 79, maxWidth: 36 , headshot: "Jackson_Alaric.jpg" },

@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Demario Davis (90 OVR) is the heartbeat of New Orleans' 4-3 — a sideline-to-sideline ILB who diagnoses quickly. Cameron Jordan (84 OVR) remains effective off the edge at 36. Marshon Lattimore (84 OVR) is a shutdown corner in press man. Cover 3 zone with a hard edge-blitz tendency.",
     offense: {
       WR_LEFT:  { display: "C. Olave", initials: "CO", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 86 , headshot: "Olave_Chris.jpg" },
       LT:       { display: "T. Penning", initials: "TP", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 78, maxWidth: 36 , headshot: "Penning_Trevor.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Detroit's 3-4 features Aidan Hutchinson (93 OVR) as a top-5 edge rusher. Brian Branch (89 OVR) and Kerby Joseph (90 OVR) form one of the best safety duos in the league. Cover 3 zone with Branch operating as a hybrid box safety. Alim McNeill anchors the 0-tech.",
     offense: {
       WR_LEFT:  { display: "A. St. Brown", initials: "AS", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 96, nameBold: true , headshot: "St. Brown_Amon-Ra.jpg" },
       LT:       { display: "P. Sewell", initials: "PS", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 97, maxWidth: 36, nameBold: true , headshot: "Sewell_Penei.jpg" },

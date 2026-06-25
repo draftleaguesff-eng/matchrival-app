@@ -20,6 +20,7 @@ export interface TeamMatchupData {
   personnel: string;
   defFormation: string;
   defScheme: string;
+  defDescription: string;
   offense: {
     WR_LEFT: MatchupPlayer;
     LT: MatchupPlayer;

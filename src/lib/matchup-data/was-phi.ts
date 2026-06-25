@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-2-5 Nickel — Cover 3 Zone",
     defScheme: "4-2-5 Nickel",
+    defDescription: "Washington's 4-2-5 nickel base is built around Bobby Wagner (92 OVR) playing at SS/LB hybrid — a veteran presence who makes every defensive call. Da'Ron Payne (84 OVR) is the interior anchor. Odafe Oweh provides edge pressure. Emmanuel Forbes plays Cover 3 zone with two safeties splitting deep halves.",
     offense: {
       WR_LEFT:  { display: "T. McLaurin", initials: "TM", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 94, nameBold: true , headshot: "McLaurin_Terry.jpg" },
       LT:       { display: "L. Tunsil", initials: "LT", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 95, maxWidth: 36, nameBold: true , headshot: "Tunsil_Laremy.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Philadelphia's 3-4 is elite. Jalen Carter (89 OVR) is a force of nature at 1-tech. Zack Baun (88 OVR) breaks out as the do-everything ILB. Jonathan Greenard (85 OVR) and Nolan Smith pressure off the edges. Quinyon Mitchell (89 OVR) is a lockdown boundary corner. Cover 3 zone with deep safety help.",
     offense: {
       WR_LEFT:  { display: "D. Smith", initials: "DS", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 89 , headshot: "Smith_DeVonta.jpg" },
       LT:       { display: "J. Mailata", initials: "JM", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 96, maxWidth: 36, nameBold: true , headshot: "Mailata_Jordan.jpg" },

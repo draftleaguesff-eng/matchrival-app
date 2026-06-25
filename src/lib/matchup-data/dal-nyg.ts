@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Dallas' 3-4 features Quinnen Williams (90 OVR) as the premier interior disruptor — a 3-tech who can win one-on-one. Rashan Gary (82 OVR) provides edge pressure off the SAM OLB spot. DaRon Bland (87 OVR) is a ball-hawk corner. Cover 3 zone with Jayron Kearse as the box safety.",
     offense: {
       WR_LEFT:  { display: "C. Lamb", initials: "CL", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 95, nameBold: true , headshot: "Lamb_CeeDee.jpg" },
       LT:       { display: "T. Guyton", initials: "TG", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 73, maxWidth: 36 , headshot: "Guyton_Tyler.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "New York's 3-4 rebuilt around Dexter Lawrence (97 OVR) — the best NT in football who is virtually unblockable at the point of attack. Abdul Carter is the explosive edge prospect who disrupts as a rookie OLB. Brian Burns (89 OVR) rounds out a formidable front. Kayvon Thibodeaux provides contain. Cover 3 zone with safeties Tyler Nubin and Cordale Flott.",
     offense: {
       WR_LEFT:  { display: "M. Nabers", initials: "MN", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 88 , headshot: "Nabers_Malik.jpg" },
       LT:       { display: "A. Thomas", initials: "AT", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 88, maxWidth: 36 , headshot: "Thomas_Andrew.jpg" },

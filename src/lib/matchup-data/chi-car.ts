@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Montez Sweat (90 OVR) is the engine of Chicago's 4-3 pass rush, capable of winning from either side. Jaylon Johnson (86 OVR) plays press-man on the boundary while the interior pairs Grady Jarrett and Gervon Dexter. Cover 3 zone with Tremaine Edmunds dropping to the hook-curl.",
     offense: {
       WR_LEFT:  { display: "R. Odunze", initials: "RO", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 80 , headshot: "Odunze_Rome.jpg" },
       LT:       { display: "B. Jones", initials: "BJ", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 76, maxWidth: 36 , headshot: "Jones_Braxton.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Carolina's 4-3 relies on Derrick Brown (82 OVR) as the disruptive DT and Jaycee Horn (84 OVR) as a physical press corner. Shaq Thompson and Josey Jewell man the inside linebackers in a Cover 3 zone scheme. Carolina generates most of its pressure via Myles Murphy off the edge.",
     offense: {
       WR_LEFT:  { display: "T. McMillan", initials: "TM", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 82 , headshot: "McMillan_Tetairoa.jpg" },
       LT:       { display: "I. Ekwonu", initials: "IE", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 79, maxWidth: 36 , headshot: "Ekwonu_Ikem.jpg" },

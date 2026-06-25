@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 3 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Tampa Bay's 3-4 is built around Antoine Winfield Jr. (94 OVR) as the chess piece — lines up everywhere from box safety to near-line blitzer. Vita Vea (90 OVR) is an immovable 1-tech who demands double teams. Yaya Diaby generates edge pressure in Cover 3 zone with two-high safety looks.",
     offense: {
       WR_LEFT:  { display: "C. Godwin", initials: "CG", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 83 },
       LT:       { display: "T. Wirfs", initials: "TW", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 94, maxWidth: 36, nameBold: true , headshot: "Wirfs_Tristan.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Cincinnati's 4-3 pairs Sam Hubbard and Joseph Ossai as bookend DEs with Calijah Kancey providing interior quickness. Dax Hill (79 OVR) is a versatile SS who can match up in man. Germaine Pratt and Logan Wilson man the middle in Cover 3, with DJ Turner as the nickel.",
     offense: {
       WR_LEFT:  { display: "J. Chase", initials: "JC", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 99, nameBold: true , headshot: "Chase_Ja'Marr.jpg" },
       LT:       { display: "O. Brown Jr.", initials: "OB", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 84, maxWidth: 36 , headshot: "Brown Jr._Orlando.jpg" },

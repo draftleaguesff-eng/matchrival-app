@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 2 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Buffalo's 3-4 under Sean McDermott is disciplined two-gap football. Greg Rousseau (88 OVR) rushes from the SAM OLB spot while Ed Oliver (83 OVR) is the interior disruptor at 1-tech. Cover 2 zone emphasizes wide-side corner Taron Johnson in the nickel. Terrel Bernard commands the inside.",
     offense: {
       WR_LEFT:  { display: "D. Moore", initials: "DM", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 85 , headshot: "Moore_DJ.jpg" },
       LT:       { display: "D. Dawkins", initials: "DD", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 91, maxWidth: 36, nameBold: true , headshot: "Dawkins_Dion.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Houston's 4-3 features Will Anderson Jr. (91 OVR) and Danielle Hunter (91 OVR) as a terrifying bookend pass rush — one of the league's best. Derek Stingley Jr. (92 OVR) plays shadow coverage on the opponent's top receiver. Cover 3 zone with Jalen Pitre as an aggressive box safety.",
     offense: {
       WR_LEFT:  { display: "N. Collins", initials: "NC", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 88 , headshot: "Collins_Nico.jpg" },
       LT:       { display: "L. Tunsil", initials: "LT", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 94, maxWidth: 36, nameBold: true , headshot: "Tunsil_Laremy.jpg" },

@@ -11,6 +11,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "3-4 Base — Cover 2 Zone",
     defScheme: "3-4 Base",
+    defDescription: "Sauce Gardner (94 OVR) is the best pure corner in football and New York's defensive anchor. Quinnen Williams (88 OVR) is a dominant interior pass rusher at 3-tech. Haason Reddick provides pressure off the edge. C.J. Mosley and Quincy Williams patrol the middle in Cover 2 zone with Sauce locking down in press man.",
     offense: {
       WR_LEFT:  { display: "G. Wilson", initials: "GW", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 86 , headshot: "Wilson_Garrett.jpg" },
       LT:       { display: "M. Moses", initials: "MM", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 82, maxWidth: 36 , headshot: "Moses_Morgan.jpg" },
@@ -47,6 +48,7 @@ export const GAME_DATA: GameMatchupData = {
     personnel: "11 Personnel",
     defFormation: "4-3 Base — Cover 3 Zone",
     defScheme: "4-3 Base",
+    defDescription: "Tennessee's 4-3 is built around Jeffery Simmons (95 OVR) — the first-team All-Pro DT who broke the franchise sack record in 2025. L'Jarius Sneed (88 OVR) plays shadow corner. Azeez Al-Shaair is an instinctive ILB. Cover 3 zone with Amani Hooker as the run-support safety. Simple but effective.",
     offense: {
       WR_LEFT:  { display: "C. Ridley", initials: "CR", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 82 , headshot: "Ridley_Calvin.jpg" },
       LT:       { display: "J. Latham", initials: "JL", ringType: "ol", badgeType: "ol", badgeLabel: "LT", rating: 80, maxWidth: 36 , headshot: "Latham_JC.jpg" },
