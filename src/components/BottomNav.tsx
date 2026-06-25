@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Tab = "home" | "rankings" | "matchup" | "feed" | "profile";
+type Tab = "home" | "rankings" | "matchup" | "feed" | "news";
 
 function HomeIcon({ active }: { active: boolean }) {
   return (
@@ -45,12 +45,12 @@ function FeedIcon({ active }: { active: boolean }) {
   );
 }
 
-function ProfileIcon({ active }: { active: boolean }) {
+function NewsIcon({ active }: { active: boolean }) {
   const c = active ? "#3B82F6" : "#4B5268";
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="8" r="4" stroke={c} strokeWidth="1.8" />
-      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke={c} strokeWidth="1.8" strokeLinecap="round" />
+      <rect x="3" y="4" width="18" height="16" rx="2" stroke={c} strokeWidth="1.8" fill={active ? "rgba(59,130,246,0.15)" : "none"} />
+      <path d="M7 8h10M7 12h10M7 16h6" stroke={c} strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
@@ -60,7 +60,7 @@ const tabs: { id: Tab; label: string; href: string }[] = [
   { id: "rankings", label: "Rankings", href: "/rankings" },
   { id: "matchup",  label: "Matchup",  href: "/matchup" },
   { id: "feed",     label: "Feed",     href: "/feed" },
-  { id: "profile",  label: "Profile",  href: "/profile" },
+  { id: "news",     label: "News",     href: "/news" },
 ];
 
 export default function BottomNav() {
@@ -161,7 +161,7 @@ export default function BottomNav() {
               {tab.id === "home"     && <HomeIcon     active={isActive} />}
               {tab.id === "rankings" && <RankingsIcon active={isActive} />}
               {tab.id === "feed"     && <FeedIcon     active={isActive} />}
-              {tab.id === "profile"  && <ProfileIcon  active={isActive} />}
+              {tab.id === "news"     && <NewsIcon      active={isActive} />}
               <span
                 style={{
                   fontSize: 9,
