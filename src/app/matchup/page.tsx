@@ -311,7 +311,7 @@ function FormationHeader({
         </div>
       </div>
       {onPillClick ? (
-        <div style={{ position: "relative", display: "inline-block" }}>
+        <div>
           <button
             onClick={(e) => { e.stopPropagation(); onPillClick(); }}
             style={{ ...pillBase, background: "none", cursor: "pointer", textDecorationLine: "underline", textDecorationStyle: "dotted" }}
@@ -321,7 +321,7 @@ function FormationHeader({
           {tooltipContent && (
             <div
               onClick={(e) => e.stopPropagation()}
-              style={{ position: "absolute", zIndex: 50, top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: 6, width: 220, background: "#1a1d24", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "10px 12px", fontSize: 12, lineHeight: 1.5, color: "#c8cdd8", textAlign: "left" }}
+              style={{ position: "fixed", zIndex: 50, bottom: 80, left: "50%", transform: "translateX(-50%)", width: "calc(100vw - 32px)", maxWidth: 360, background: "#1a1d24", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "12px 14px", fontSize: 12, lineHeight: 1.5, color: "#c8cdd8", textAlign: "left" as const, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
             >
               {tooltipContent}
             </div>
