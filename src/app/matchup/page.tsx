@@ -281,14 +281,21 @@ function LOS() {
 }
 
 function FormationHeader({
-  teamColor, teamName, subLabel, pillLabel, pillType, logo,
+  teamColor, teamName, subLabel, pillLabel, pillType, logo, onPillClick, tooltipContent,
 }: {
   teamColor: string; teamName: string; subLabel: string;
   pillLabel: string; pillType: "off" | "def"; logo: string;
+  onPillClick?: () => void;
+  tooltipContent?: React.ReactNode;
 }) {
   const pillStyle = pillType === "off"
     ? { bg: "rgba(34,197,94,0.12)", color: "#22C55E", border: "1px solid rgba(34,197,94,0.2)" }
     : { bg: "rgba(239,68,68,0.12)", color: "#EF4444", border: "1px solid rgba(239,68,68,0.2)" };
+  const pillBase: React.CSSProperties = {
+    fontSize: 9, fontWeight: 800, letterSpacing: "0.06em", padding: "3px 9px",
+    borderRadius: 6, textTransform: "uppercase", flexShrink: 0,
+    background: pillStyle.bg, color: pillStyle.color, border: pillStyle.border,
+  };
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 14px 4px", minWidth: 0 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0, flex: 1, overflow: "hidden" }}>
@@ -303,9 +310,26 @@ function FormationHeader({
           </div>
         </div>
       </div>
-      <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.06em", padding: "3px 9px", borderRadius: 6, textTransform: "uppercase", flexShrink: 0, background: pillStyle.bg, color: pillStyle.color, border: pillStyle.border }}>
-        {pillLabel}
-      </span>
+      {onPillClick ? (
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <button
+            onClick={(e) => { e.stopPropagation(); onPillClick(); }}
+            style={{ ...pillBase, background: "none", cursor: "pointer", textDecorationLine: "underline", textDecorationStyle: "dotted" }}
+          >
+            {pillLabel}
+          </button>
+          {tooltipContent && (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              style={{ position: "absolute", zIndex: 50, top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: 6, width: 220, background: "#1a1d24", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "10px 12px", fontSize: 12, lineHeight: 1.5, color: "#c8cdd8", textAlign: "left" }}
+            >
+              {tooltipContent}
+            </div>
+          )}
+        </div>
+      ) : (
+        <span style={pillBase}>{pillLabel}</span>
+      )}
     </div>
   );
 }
@@ -314,6 +338,7 @@ function FormationHeader({
 
 export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = NE Off / SEA Def  |  1 = SEA Off / NE Def
+  const [defTooltip, setDefTooltip] = useState<null | 0 | 1>(null);
 
   const [zoom, setZoom] = useState(1);
   useEffect(() => {
@@ -332,7 +357,7 @@ export default function MatchupPage() {
   `;
 
   return (
-    <div style={{ maxWidth: 430, margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112, ...(zoom > 1 ? { zoom } as unknown as React.CSSProperties : {}) }}>
+    <div onClick={() => setDefTooltip(null)} style={{ maxWidth: 430, margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112, ...(zoom > 1 ? { zoom } as unknown as React.CSSProperties : {}) }}>
 
       {/* ── Sticky header ── */}
       <div style={{
@@ -421,6 +446,10 @@ export default function MatchupPage() {
                 teamColor="#69BE28" teamName="SEAHAWKS"
                 subLabel="Defensive Formation" pillLabel="3-4 Hybrid" pillType="def"
                 logo="/headshots/logo_sea.png"
+                onPillClick={() => setDefTooltip(defTooltip === 0 ? null : 0)}
+                tooltipContent={defTooltip === 0 ? (
+                  <><strong>3-4 Base — Cover 3</strong><p style={{ margin: "6px 0 0" }}>{"Seattle's Mike Macdonald scheme features a three-man DL anchored by Leonard Williams and DeMarcus Lawrence, with Devon Witherspoon as a versatile CB/LB hybrid. Primary coverage is Cover 3 zone with safety bracket help over the top. Aggressive blitz packages off the edge."}</p></>
+                ) : undefined}
               />
             </div>
             <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
@@ -485,8 +514,12 @@ export default function MatchupPage() {
             <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
               <FormationHeader
                 teamColor="#C8102E" teamName="PATRIOTS"
-                subLabel="Defensive Formation" pillLabel="3-4 Base" pillType="def"
+                subLabel="Defensive Formation" pillLabel="4-3 Base" pillType="def"
                 logo="/headshots/logo_ne.png"
+                onPillClick={() => setDefTooltip(defTooltip === 1 ? null : 1)}
+                tooltipContent={defTooltip === 1 ? (
+                  <><strong>4-3 Base — Press Man</strong><p style={{ margin: "6px 0 0" }}>{"New England's base 4-3 applies heavy press coverage with Christian Gonzalez (98 OVR) shadowing the opponent's top receiver. Robert Spillane anchors the linebacker corps. Four-man rush relies on Christian Barmore and Harold Landry III to generate pressure without blitzing."}</p></>
+                ) : undefined}
               />
             </div>
             <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
