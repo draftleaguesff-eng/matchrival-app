@@ -327,9 +327,19 @@ function FormationHeader({
 
 // ── Main page ──────────────────────────────────────────────────────────────────
 
+const MATCHUP_GAMES = [
+  { time: "Wed · 8:20 PM ET", away: "NE",  home: "SEA", awayLogo: "/headshots/logo_ne.png",                               homeLogo: "/headshots/logo_sea.png",                              available: true  },
+  { time: "Sun · 1:00 PM ET", away: "KC",  home: "BAL", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",     homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",    available: false },
+  { time: "Sun · 1:00 PM ET", away: "BUF", home: "MIA", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",    homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",    available: false },
+  { time: "Sun · 4:25 PM ET", away: "DAL", home: "PHI", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",    homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",    available: false },
+  { time: "Sun · 4:25 PM ET", away: "DET", home: "SF",  awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",    homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",     available: false },
+  { time: "Mon · 8:15 PM ET", away: "GB",  home: "CHI", awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",     homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",    available: false },
+];
+
 export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = NE Off / SEA Def  |  1 = SEA Off / NE Def
   const [defTooltip, setDefTooltip] = useState<null | { side: 0 | 1; x: number; y: number }>(null);
+  const [selectedGame, setSelectedGame] = useState(0);
 
   const [zoom, setZoom] = useState(1);
   useEffect(() => {
@@ -370,37 +380,47 @@ export default function MatchupPage() {
         </button>
       </div>
 
-      {/* ── Scoreboard ── */}
-      <div style={{ background: "linear-gradient(180deg,#111318 0%,#0E1016 100%)", padding: "16px 16px 12px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {/* NE — away */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, flex: "1 1 0", minWidth: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/headshots/logo_ne.png" alt="NE" style={{ width: 44, height: 44, objectFit: "contain" }} />
-            <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: "-0.03em", color: "#C8102E" }}>NE</span>
-            <span style={{ fontSize: 10, color: "#4B5563", fontWeight: 500 }}>Away · 0–0</span>
-          </div>
-          {/* Score center */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, flex: "1 1 0", maxWidth: 150 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 36, fontWeight: 900, color: "#F1F5F9", letterSpacing: "-0.04em" }}>0</span>
-              <span style={{ fontSize: 20, color: "#334155" }}>–</span>
-              <span style={{ fontSize: 36, fontWeight: 900, color: "#F1F5F9", letterSpacing: "-0.04em" }}>0</span>
-            </div>
-            <div style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.3)", color: "#F59E0B", fontSize: 9, fontWeight: 800, letterSpacing: "0.1em", padding: "3px 10px", borderRadius: 20, textTransform: "uppercase" }}>
-              Wed · 8:20 PM ET
-            </div>
-            <div style={{ fontSize: 11, color: "#64748B", textAlign: "center" }}>Sep 9 · Opening Night</div>
-          </div>
-          {/* SEA — home */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, flex: "1 1 0", minWidth: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/headshots/logo_sea.png" alt="SEA" style={{ width: 44, height: 44, objectFit: "contain" }} />
-            <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: "-0.03em", color: "#69BE28" }}>SEA</span>
-            <span style={{ fontSize: 10, color: "#4B5563", fontWeight: 500 }}>Home · 0–0</span>
-          </div>
+      {/* ── Game Picker ── */}
+      <div style={{ background: "#0A0C10", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "12px 0 10px" }}>
+        <div style={{ fontSize: 10, fontWeight: 700, color: "#4B5268", letterSpacing: "0.1em", textTransform: "uppercase", padding: "0 16px 8px" }}>Week 1 · 2026</div>
+        <div style={{ display: "flex", gap: 8, overflowX: "auto", scrollbarWidth: "none", padding: "0 16px" }}>
+          {MATCHUP_GAMES.map((g, i) => {
+            const isSelected = i === selectedGame;
+            const isAvailable = g.available;
+            return (
+              <div
+                key={i}
+                onClick={() => isAvailable && setSelectedGame(i)}
+                style={{
+                  flexShrink: 0, width: 130, borderRadius: 12, padding: "10px 12px",
+                  background: isSelected ? "rgba(59,130,246,0.08)" : "#141720",
+                  border: `1px solid ${isSelected ? "rgba(59,130,246,0.4)" : "rgba(255,255,255,0.06)"}`,
+                  cursor: isAvailable ? "pointer" : "default",
+                  opacity: isAvailable ? 1 : 0.4,
+                  position: "relative",
+                }}
+              >
+                {isSelected && (
+                  <div style={{ position: "absolute", top: 6, right: 8, width: 6, height: 6, borderRadius: "50%", background: "#3B82F6", boxShadow: "0 0 6px rgba(59,130,246,0.8)" }} />
+                )}
+                <div style={{ fontSize: 8, fontWeight: 700, color: isSelected ? "#3B82F6" : "#4B5268", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{g.time}</div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 5 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={g.awayLogo} alt={g.away} width={18} height={18} style={{ objectFit: "contain" }} />
+                    <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.away}</span>
+                  </div>
+                  <span style={{ fontSize: 9, color: "#334155", fontWeight: 600 }}>@</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={g.homeLogo} alt={g.home} width={18} height={18} style={{ objectFit: "contain" }} />
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.home}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
-        <div style={{ fontSize: 10, color: "#374151", textAlign: "center", marginTop: 10 }}>Lumen Field · Seattle, WA</div>
       </div>
 
       {/* ── Side toggle ── */}
