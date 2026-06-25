@@ -164,12 +164,9 @@ export default function NewsPage() {
             <div style={{ padding: "0 16px 20px", fontSize: 14, color: "#C8CDD8", lineHeight: 1.7 }}>
               {selectedItem.body}
             </div>
-            {/* Time + source */}
-            <div style={{ padding: "0 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            {/* Time */}
+            <div style={{ padding: "0 16px" }}>
               <span style={{ fontSize: 12, color: "#4B5268" }}>{selectedItem.time}</span>
-              <a href={selectedItem.link} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#3B82F6", textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
-                Read original ↗
-              </a>
             </div>
           </div>
         </>
