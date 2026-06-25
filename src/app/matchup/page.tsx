@@ -281,12 +281,11 @@ function LOS() {
 }
 
 function FormationHeader({
-  teamColor, teamName, subLabel, pillLabel, pillType, logo, onPillClick, tooltipContent,
+  teamColor, teamName, subLabel, pillLabel, pillType, logo, onPillClick,
 }: {
   teamColor: string; teamName: string; subLabel: string;
   pillLabel: string; pillType: "off" | "def"; logo: string;
-  onPillClick?: () => void;
-  tooltipContent?: React.ReactNode;
+  onPillClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   const pillStyle = pillType === "off"
     ? { bg: "rgba(34,197,94,0.12)", color: "#22C55E", border: "1px solid rgba(34,197,94,0.2)" }
@@ -313,19 +312,11 @@ function FormationHeader({
       {onPillClick ? (
         <div>
           <button
-            onClick={(e) => { e.stopPropagation(); onPillClick(); }}
+            onClick={(e) => { e.stopPropagation(); onPillClick(e); }}
             style={{ ...pillBase, background: "none", cursor: "pointer", textDecorationLine: "underline", textDecorationStyle: "dotted" }}
           >
             {pillLabel}
           </button>
-          {tooltipContent && (
-            <div
-              onClick={(e) => e.stopPropagation()}
-              style={{ position: "fixed", zIndex: 50, bottom: 80, left: "50%", transform: "translateX(-50%)", width: "calc(100vw - 32px)", maxWidth: 360, background: "#1a1d24", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "12px 14px", fontSize: 12, lineHeight: 1.5, color: "#c8cdd8", textAlign: "left" as const, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
-            >
-              {tooltipContent}
-            </div>
-          )}
         </div>
       ) : (
         <span style={pillBase}>{pillLabel}</span>
@@ -338,7 +329,7 @@ function FormationHeader({
 
 export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = NE Off / SEA Def  |  1 = SEA Off / NE Def
-  const [defTooltip, setDefTooltip] = useState<null | 0 | 1>(null);
+  const [defTooltip, setDefTooltip] = useState<null | { side: 0 | 1; x: number; y: number }>(null);
 
   const [zoom, setZoom] = useState(1);
   useEffect(() => {
@@ -446,10 +437,10 @@ export default function MatchupPage() {
                 teamColor="#69BE28" teamName="SEAHAWKS"
                 subLabel="Defensive Formation" pillLabel="3-4 Hybrid" pillType="def"
                 logo="/headshots/logo_sea.png"
-                onPillClick={() => setDefTooltip(defTooltip === 0 ? null : 0)}
-                tooltipContent={defTooltip === 0 ? (
-                  <><strong>3-4 Base — Cover 3</strong><p style={{ margin: "6px 0 0" }}>{"Seattle's Mike Macdonald scheme features a three-man DL anchored by Leonard Williams and DeMarcus Lawrence, with Devon Witherspoon as a versatile CB/LB hybrid. Primary coverage is Cover 3 zone with safety bracket help over the top. Aggressive blitz packages off the edge."}</p></>
-                ) : undefined}
+                onPillClick={(e) => {
+                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  setDefTooltip(defTooltip?.side === 0 ? null : { side: 0, x: rect.left + rect.width / 2, y: rect.bottom });
+                }}
               />
             </div>
             <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
@@ -516,10 +507,10 @@ export default function MatchupPage() {
                 teamColor="#C8102E" teamName="PATRIOTS"
                 subLabel="Defensive Formation" pillLabel="4-3 Base" pillType="def"
                 logo="/headshots/logo_ne.png"
-                onPillClick={() => setDefTooltip(defTooltip === 1 ? null : 1)}
-                tooltipContent={defTooltip === 1 ? (
-                  <><strong>4-3 Base — Press Man</strong><p style={{ margin: "6px 0 0" }}>{"New England's base 4-3 applies heavy press coverage with Christian Gonzalez (98 OVR) shadowing the opponent's top receiver. Robert Spillane anchors the linebacker corps. Four-man rush relies on Christian Barmore and Harold Landry III to generate pressure without blitzing."}</p></>
-                ) : undefined}
+                onPillClick={(e) => {
+                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  setDefTooltip(defTooltip?.side === 1 ? null : { side: 1, x: rect.left + rect.width / 2, y: rect.bottom });
+                }}
               />
             </div>
             <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
@@ -609,6 +600,38 @@ export default function MatchupPage() {
         </div>
         <span style={{ fontSize: 10, color: "#F87171", fontWeight: 600 }}>⚠ Shoulder</span>
       </div>
+
+      {/* ── Formation popover ── */}
+      {defTooltip !== null && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            position: "fixed",
+            zIndex: 50,
+            top: defTooltip.y + 8,
+            left: Math.min(
+              Math.max(defTooltip.x - 110, 8),
+              (typeof window !== "undefined" ? window.innerWidth : 430) - 228
+            ),
+            width: 220,
+            background: "#1a1d24",
+            border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: 10,
+            padding: "12px 14px",
+            fontSize: 12,
+            lineHeight: 1.5,
+            color: "#c8cdd8",
+            textAlign: "left" as const,
+            boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+          }}
+        >
+          {defTooltip.side === 0 ? (
+            <><strong>3-4 Base — Cover 3</strong><p style={{ margin: "6px 0 0" }}>{"Seattle's Mike Macdonald scheme features a three-man DL anchored by Leonard Williams and DeMarcus Lawrence, with Devon Witherspoon as a versatile CB/LB hybrid. Primary coverage is Cover 3 zone with safety bracket help over the top. Aggressive blitz packages off the edge."}</p></>
+          ) : (
+            <><strong>4-3 Base — Press Man</strong><p style={{ margin: "6px 0 0" }}>{"New England's base 4-3 applies heavy press coverage with Christian Gonzalez (98 OVR) shadowing the opponent's top receiver. Robert Spillane anchors the linebacker corps. Four-man rush relies on Christian Barmore and Harold Landry III to generate pressure without blitzing."}</p></>
+          )}
+        </div>
+      )}
 
     </div>
   );
