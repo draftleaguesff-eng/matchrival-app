@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "L. Ogunjobi", initials: "LO", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 80 , headshot: "Ogunjobi_Larry.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "Pass Protection",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "T.J. Watt (99) vs ATL's OLine — could wreck the game inside the first two drives, analysts say",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "M. Penix Jr. (72) vs T.J. Watt (99) — worst possible debut environment for Penix; Watt generates pressure every other snap",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "B. Robinson (93) vs P. Queen (80) — RB in space and catching out of backfield",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "K. Pitts (84) creates mismatches vs P. Queen (80) — TE vs linebacker coverage",
+      },
+      {
+        label: "Slot Matchup",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "K. Hodge (72) vs J. Ramsey (87) — slot matchup in the middle of the field",
+      },
+    ],
+    verdict: "Watt (99) + Heyward (94) make life miserable for Penix on primetime debut — PIT covers at home",
+  },
 };

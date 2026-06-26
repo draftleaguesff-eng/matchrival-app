@@ -76,4 +76,15 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "S. Okuayinonu", initials: "SO", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 70 , headshot: "Okuayinonu_Sam.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "J. Simmons (95) at NT vs NYJ's interior — dominant presence that makes TEN's defense legitimately scary all game",
+      },
+    ],
+    verdict: "Saleh's revenge game — lowest total of Week 1 (39.5), defensive grind, Titans win at home",
+  },
 };

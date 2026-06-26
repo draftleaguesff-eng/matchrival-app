@@ -84,30 +84,36 @@ export const NE_SEA: GameMatchupData = {
   matchupSummary: {
     grades: [
       {
-        label: "WR vs Secondary",
-        awayGrade: "B+",
-        homeGrade: "C",
-        note: "A.J. Brown (89) vs J. Jobe (77) — NE receiving corps has the edge; SEA secondary avg 75.0 vs NE WR avg 78.0",
+        label: "Pass Protection",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "NE's patchwork OLine (avg 75.8) faces D. Witherspoon (91) off the edge — pressure expected inside the first two drives",
       },
       {
         label: "QB vs Pass Rush",
         awayGrade: "A",
         homeGrade: "C-",
-        note: "D. Maye (93) vs D. Witherspoon (91) — elite QB handles pressure; Maye's pocket poise neutralizes the edge rush",
+        note: "D. Maye (93) vs D. Witherspoon (91) — QB faces elite edge pressure",
       },
       {
-        label: "OL vs Run Defense",
+        label: "WR1 vs CB1",
         awayGrade: "C-",
         homeGrade: "A",
-        note: "M. Onwenu (86) vs L. Williams (88) — SEA's DLine (avg 84.3) dominates NE's patchwork OLine (avg 75.8)",
+        note: "JSN (95) vs C. Davis (85) — individual star matchup defines this position battle",
       },
       {
         label: "TE Matchup",
         awayGrade: "A",
         homeGrade: "C-",
-        note: "H. Henry (86) exploits mismatches vs D. Thomas (75) and E. Jones (83) — best mismatch on the field",
+        note: "H. Henry (86) exploits mismatches — SEA's inside linebackers (avg 79.0) are overmatched in coverage",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "Z. Charbonnet (82) vs K.J. Britt (71) — RB in space and catching out of backfield",
       },
     ],
-    verdict: "NE holds the edge — Maye and Henry exploit coverage mismatches, but SEA's dominant front seven will make the trenches a battle",
+    verdict: "SEA defending champs at home — but Maye and Henry create real mismatches in the passing game",
   },
 };

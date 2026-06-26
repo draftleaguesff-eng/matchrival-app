@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "M. Edwards Jr.", initials: "ME", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 74 , headshot: "Edwards Jr._Mario.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "J. Allen (99) vs HOU's elite pass rush (Anderson 91 + Hunter 91) — Allen's quick release is the great equalizer",
+      },
+      {
+        label: "Pass Protection",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "D. Dawkins (91) vs W. Anderson Jr. (91) — analysts say whoever wins this single rep determines the game's tone",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "D. Moore (85) vs D. Stingley Jr. (92) — individual star matchup defines this position battle",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "J. Cook (89) vs C. Harris (78) — RB in space and catching out of backfield",
+      },
+      {
+        label: "Slot Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "K. Shakir (82) vs J. Ward (76) — slot matchup in the middle of the field",
+      },
+    ],
+    verdict: "Elite-on-elite — Allen's experience edge is the difference in Q4; Bills edge a close one",
+  },
 };

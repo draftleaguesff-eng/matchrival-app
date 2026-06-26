@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "J. Hunt", initials: "JH", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 73 , headshot: "Hunt_Jalyx.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "OL vs Run Defense",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "L. Johnson (99) leads OLine vs D. Payne (84) — trench battle defines the run game",
+      },
+      {
+        label: "Pass Protection",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "L. Johnson (99) anchors pass pro vs O. Oweh (80) — edge pressure matchup",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "S. Barkley (99) vs WAS's front — legendary 2025 season continues; D. Payne (84) is the only real hope for containing him",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Hurts (86) vs O. Oweh (80) — QB faces elite edge pressure",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "D. Goedert (87) creates mismatches vs J. Davis (74) — TE vs linebacker coverage",
+      },
+    ],
+    verdict: "PHI dominant at home — Barkley (99) + Hurts impose their will; Daniels' health is WAS's swing factor",
+  },
 };

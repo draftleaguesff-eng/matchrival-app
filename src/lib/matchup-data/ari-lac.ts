@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "O. Ogbonnia", initials: "OO", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 76 , headshot: "Ogbonnia_Otito.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "Pass Protection",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "K. Mack (87) + J. Bosa (83) vs ARI's OLine — most one-sided pass rush matchup on the slate per analyst consensus",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "T. McBride (92) creates mismatches vs K. Murray Jr. (76) — TE vs linebacker coverage",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "M. Harrison Jr. (87) vs A. Samuel Jr. (80) — ARI's best weapon vs LAC's CB1; Harrison has to win this if ARI has any shot",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Herbert (89) vs J. Sweat (84) — QB faces elite edge pressure",
+      },
+      {
+        label: "Slot Matchup",
+        awayGrade: "C+",
+        homeGrade: "B",
+        note: "L. McConkey (84) vs B. Murphy Jr. (82) — slot matchup in the middle of the field",
+      },
+    ],
+    verdict: "Largest spread of the week — LAC's Mack/Bosa/James triple threat too much; Chargers win by 17+",
+  },
 };

@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "D. Reader", initials: "DR", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 80 , headshot: "Reader_DJ.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "OL vs Run Defense",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "P. Sewell (97) leads OLine vs B. Bresee (79) — trench battle defines the run game",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Gibbs (95) vs NO's LBs — D. Davis (90) is the lone matchup; analysts say Gibbs makes it look easy in the first half",
+      },
+      {
+        label: "WR vs Secondary",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "A. St. Brown (96) vs M. Lattimore (84) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "A. St. Brown (96) vs NO's secondary — explosive WR1 debut in a game DET should control from wire to wire",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "A. Hutchinson (93) vs NO's OLine — Shough will be running for his life early per analysts; worst possible debut test",
+      },
+    ],
+    verdict: "DET averaged 9.5-pt margin at Ford Field in 2025 — Shough faces the wrong defense in Week 1",
+  },
 };

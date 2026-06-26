@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "D. Odeyingbo", initials: "DO", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 76 , headshot: "Odeyingbo_Dayo.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "L. Jackson (99) vs D. Buckner (88) + K. Paye (80) — Jackson's mobility is historically the great equalizer against any pass rush",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "D. Henry (98) vs IND's interior — Q. Nelson (92) paves the way; CBS calls it an irresistible force vs immovable object",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "M. Pittman Jr. (84) vs M. Humphrey (92) — individual star matchup defines this position battle",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "M. Andrews (91) creates mismatches vs Z. Franklin (78) — TE vs linebacker coverage",
+      },
+      {
+        label: "WR vs Secondary",
+        awayGrade: "B+",
+        homeGrade: "C",
+        note: "M. Pittman Jr. (84) vs M. Humphrey (92) — receiving corps tests the opposing secondary",
+      },
+    ],
+    verdict: "Lamar + Henry open 2026 with a statement — Daniel Jones' Achilles recovery is IND's biggest question mark",
+  },
 };

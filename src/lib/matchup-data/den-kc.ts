@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "C. Omenihu", initials: "CO", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 76 , headshot: "Omenihu_Charles.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "P. Mahomes (95) at Arrowhead vs N. Bonitto (91) — even post-ACL, Mahomes' pocket presence and timing make DEN's rush look ordinary",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "R. Rice (84) vs P. Surtain II (97) — individual star matchup defines this position battle",
+      },
+      {
+        label: "WR vs Secondary",
+        awayGrade: "B+",
+        homeGrade: "C",
+        note: "J. Waddle (88) vs T. McDuffie (90) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "T. Kelce (93) vs DEN linebackers — Singleton (76) overmatched in coverage; Kelce finds the soft spot every time in critical moments",
+      },
+      {
+        label: "Slot Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "M. Mims Jr. (80) vs N. Williams (73) — slot matchup in the middle of the field",
+      },
+    ],
+    verdict: "Mahomes at Arrowhead in the opener — Surtain (97) limits Rice, but Kelce finds the soft spot every time",
+  },
 };

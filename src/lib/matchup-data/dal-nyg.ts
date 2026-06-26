@@ -76,4 +76,33 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "D. Davidson", initials: "DD", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 72 , headshot: "Davidson_D.J..jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "OL vs Run Defense",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "T. Smith (80) leads OLine vs D. Lawrence (97) — trench battle defines the run game",
+      },
+      {
+        label: "WR vs Secondary",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "C. Lamb (95) vs P. Adebo (78) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "C. Lamb (95) vs P. Adebo (78) — Lamb in the slot creates immediate mismatches; Adebo hasn't been elite since 2023",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "J. Dart (72) vs R. Gary (82) — QB faces elite edge pressure",
+      },
+    ],
+    verdict: "Cowboys 11-1 all-time in opener vs NYG — Lamb (95) too much for a Giants team learning Harbaugh's system",
+  },
 };

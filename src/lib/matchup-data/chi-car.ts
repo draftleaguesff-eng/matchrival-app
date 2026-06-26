@@ -76,4 +76,27 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "S. Tuttle", initials: "ST", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 73 , headshot: "Tuttle_Shy.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "C. Williams (82) vs D. Johnson (74) — QB faces elite edge pressure",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "B+",
+        homeGrade: "C",
+        note: "T. McMillan (82) vs J. Johnson (86) — individual star matchup defines this position battle",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "B+",
+        homeGrade: "C",
+        note: "C. Kmet (82) creates mismatches vs S. Thompson (78) — TE vs linebacker coverage",
+      },
+    ],
+    verdict: "CHI's OLine upgrade with Thuney (92) gives Williams a clean pocket — Bears cover",
+  },
 };

@@ -59,7 +59,7 @@ export const GAME_DATA: GameMatchupData = {
       TE:       { display: "T. Hockenson", initials: "TH", ringType: "te", badgeType: "te", badgeLabel: "TE", rating: 88 , headshot: "Hockenson_T.J..jpg" },
       SLOT:     { display: "J. Nailor", initials: "JN", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", rating: 74 , headshot: "Nailor_Jalen.jpg" },
       WR_RIGHT: { display: "J. Addison", initials: "JA", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 84 , headshot: "Addison_Jordan.jpg" },
-      QB:       { display: "J. McCarthy", initials: "JM", ringType: "qb", badgeType: "qb", badgeLabel: "QB", rating: 74, nameBold: true , headshot: "McCarthy_J.J..jpg" },
+      QB:       { display: "K. Murray", initials: "KM", ringType: "qb", badgeType: "qb", badgeLabel: "QB", rating: 83, nameBold: true , headshot: "Murray_Kyler.jpg" },
       RB:       { display: "A. Jones", initials: "AJ", ringType: "rb", badgeType: "rb", badgeLabel: "RB", rating: 80 , headshot: "Jones_Aaron.jpg" },
     },
     defense: {
@@ -75,5 +75,40 @@ export const GAME_DATA: GameMatchupData = {
       NT:      { display: "J. Allen", initials: "JA", ringType: "nt", badgeType: "nt", badgeLabel: "NT", rating: 88 , headshot: "Allen_Jonathan.jpg" },
       DE_R:    { display: "D. Lowry", initials: "DL", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 75 , headshot: "Lowry_Dean.jpg" },
     },
+  },
+  matchupSummary: {
+    grades: [
+      {
+        label: "WR vs Secondary",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Jefferson (99) vs J. Alexander (90) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Jefferson (99) vs J. Alexander (90) — #1 marquee individual matchup of Week 1 per analyst consensus; two top-10 players head-to-head",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "J. Jacobs (90) vs J. Hicks (76) — RB in space and catching out of backfield",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "T. Hockenson (88) creates mismatches vs D. Campbell (80) — TE vs linebacker coverage",
+      },
+      {
+        label: "Slot Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "J. Reed (81) vs M. Blackmon (73) — slot matchup in the middle of the field",
+      },
+    ],
+    verdict: "Near pick'em — Jefferson vs Alexander is the marquee duel; sharp money on MIN, but Love edges it",
   },
 };

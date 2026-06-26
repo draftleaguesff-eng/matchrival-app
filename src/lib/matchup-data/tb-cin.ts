@@ -76,4 +76,33 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "J. Ossai", initials: "JO", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 76 , headshot: "Ossai_Joseph.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "WR vs Secondary",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Chase (99) vs Z. McCollum (74) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Burrow (95) vs Y. Diaby (80) — QB faces elite edge pressure",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "J. Chase (99) vs A. Winfield Jr. (94) bracket — analysts say Chase sees 140+ yards unless TB double-teams constantly",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "C. Brown (78) vs J. Trotter (72) — RB in space and catching out of backfield",
+      },
+    ],
+    verdict: "Highest total of Week 1 (50.5) — Burrow-Chase too dynamic, but Mayfield keeps it close through three quarters",
+  },
 };

@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "R. Robertson-Harris", initials: "RR", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 73 , headshot: "Robertson-Harris_Roy.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "T. Lawrence (80) vs M. Garrett (99) — QB faces elite edge pressure",
+      },
+      {
+        label: "Pass Protection",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "M. Garrett (99) vs A. Harrison (79) LT — analysts say if Garrett wins this battle, CLE can stay in it; most likely he does",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "T. Hunter (84) slot debut vs M. Emerson Jr. (76) — Travis Hunter's first full NFL season under immediate spotlight",
+      },
+      {
+        label: "RB in Space",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "T. Etienne Jr. (85) vs J. Owusu-Koramoah (84) — RB in space and catching out of backfield",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "D. Njoku (84) creates mismatches vs F. Oluokun (83) — TE vs linebacker coverage",
+      },
+    ],
+    verdict: "JAX on 8-game win streak — Garrett (99) vs Harrison is the battle, but CLE's offense can't keep pace",
+  },
 };

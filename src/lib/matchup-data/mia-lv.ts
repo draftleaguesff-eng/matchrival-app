@@ -22,7 +22,7 @@ export const GAME_DATA: GameMatchupData = {
       TE:       { display: "D. Smythe", initials: "DS", ringType: "te", badgeType: "te", badgeLabel: "TE", rating: 73 , headshot: "Smythe_Durham.jpg" },
       SLOT:     { display: "R. Cracraft", initials: "RC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT", rating: 72 , headshot: "Cracraft_River.jpg" },
       WR_RIGHT: { display: "B. Berrios", initials: "BB", ringType: "wr", badgeType: "wr", badgeLabel: "WR", rating: 72 , headshot: "Berrios_Braxton.jpg" },
-      QB:       { display: "T. Tagovailoa", initials: "TT", ringType: "qb", badgeType: "qb", badgeLabel: "QB", rating: 88, nameBold: true , headshot: "Tagovailoa_Tua.jpg" },
+      QB:       { display: "M. Willis", initials: "MW", ringType: "qb", badgeType: "qb", badgeLabel: "QB", rating: 74, nameBold: true , headshot: "Willis_Malik.jpg" },
       RB:       { display: "D. Achane", initials: "DA", ringType: "rb", badgeType: "rb", badgeLabel: "RB", rating: 83 , headshot: "Achane_De'Von.jpg" },
     },
     defense: {
@@ -75,5 +75,40 @@ export const GAME_DATA: GameMatchupData = {
       NT:      { display: "A. Butler", initials: "AB", ringType: "nt", badgeType: "nt", badgeLabel: "NT", rating: 72 , headshot: "Butler_Adam.jpg" },
       DE_R:    { display: "C. Snowden", initials: "CS", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 70 , headshot: "Snowden_Charles.jpg" },
     },
+  },
+  matchupSummary: {
+    grades: [
+      {
+        label: "Pass Protection",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "T. Armstead (88) anchors pass pro vs M. Crosby (97) — edge pressure matchup",
+      },
+      {
+        label: "WR vs Secondary",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "T. Hill (96) vs N. Hobbs (74) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "M. Willis (74) vs M. Crosby (97) — QB faces elite edge pressure",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "T. Hill (96) vs N. Hobbs (74) — most glaring individual mismatch of Week 1; Hill runs free and MIA builds an early lead",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "B. Bowers (93) vs MIA's LBs — too fast for second-level defenders; analysts say 100+ yards is a realistic over/under",
+      },
+    ],
+    verdict: "Hill runs free early; Crosby vs Armstead is LV's only hope — MIA wins, LV covers",
   },
 };

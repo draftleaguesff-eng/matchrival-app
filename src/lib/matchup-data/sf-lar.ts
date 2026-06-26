@@ -76,4 +76,39 @@ export const GAME_DATA: GameMatchupData = {
       DE_R:    { display: "M. Hoecht", initials: "MH", ringType: "de", badgeType: "de", badgeLabel: "DE", rating: 75 , headshot: "Hoecht_Michael.jpg" },
     },
   },
+  matchupSummary: {
+    grades: [
+      {
+        label: "WR vs Secondary",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "P. Nacua (97) vs D. Lenoir (79) — receiving corps tests the opposing secondary",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "G. Kittle (97) creates massive mismatches — LAR's interior LBs (avg 72.5) simply can't cover him",
+      },
+      {
+        label: "WR1 vs CB1",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "P. Nacua (97) vs D. Lenoir (79) — analysts calling Nacua the WR1 breakout of the year; SF secondary has no real answer",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "B. Purdy (88) vs B. Huff (82) — QB faces elite edge pressure",
+      },
+      {
+        label: "Pass Protection",
+        awayGrade: "B+",
+        homeGrade: "C",
+        note: "S. Avila (86) anchors pass pro vs N. Bosa (97) — edge pressure matchup",
+      },
+    ],
+    verdict: "LAR favored but SF is a live underdog — Trent Williams (97) at LT is the difference maker if healthy",
+  },
 };
