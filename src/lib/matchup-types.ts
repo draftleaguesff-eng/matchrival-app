@@ -49,8 +49,21 @@ export interface TeamMatchupData {
   };
 }
 
+export interface MatchupGrade {
+  label: string;
+  awayGrade: string;
+  homeGrade: string;
+  note: string;
+}
+
+export interface MatchupSummaryData {
+  grades: MatchupGrade[];
+  verdict: string;
+}
+
 export interface GameMatchupData {
   id: string;
   away: TeamMatchupData;
   home: TeamMatchupData;
+  matchupSummary?: MatchupSummaryData;
 }

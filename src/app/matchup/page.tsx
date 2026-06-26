@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import type { GameMatchupData } from "@/lib/matchup-types";
+import type { GameMatchupData, MatchupSummaryData } from "@/lib/matchup-types";
 import { NE_SEA } from "@/lib/matchup-data/ne-sea";
 import { ALL_GAMES } from "@/lib/matchup-data";
 
@@ -242,6 +242,95 @@ const MATCHUP_GAMES = [
   { time: "Mon · Sep 14 · 8:15 PM", away: "DEN", home: "KC",  awayLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",             homeLogo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",               available: true},
 ];
 
+// ── Matchup Summary Card ───────────────────────────────────────────────────────
+
+function gradeStyle(g: string): { color: string; bg: string } {
+  if (g === "A+" || g === "A")   return { color: "#F59E0B", bg: "rgba(245,158,11,0.12)" };
+  if (g === "B+" || g === "B")   return { color: "#22C55E", bg: "rgba(34,197,94,0.12)" };
+  if (g === "B-" || g === "C+")  return { color: "#3B82F6", bg: "rgba(59,130,246,0.12)" };
+  if (g === "C"  || g === "C-")  return { color: "#6B7280", bg: "rgba(107,114,128,0.12)" };
+  return { color: "#EF4444", bg: "rgba(239,68,68,0.12)" };
+}
+
+function MatchupSummaryCard({ summary, awayAbbr, homeAbbr, awayColor, homeColor }: {
+  summary: MatchupSummaryData;
+  awayAbbr: string;
+  homeAbbr: string;
+  awayColor: string;
+  homeColor: string;
+}) {
+  return (
+    <div style={{
+      background: "#13161F",
+      borderRadius: 14,
+      border: "1px solid rgba(255,255,255,0.06)",
+      margin: "12px 12px 0",
+      padding: "14px 14px 12px",
+    }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+        <span style={{
+          fontSize: 11, fontWeight: 700, color: "#4B5268",
+          letterSpacing: "0.1em", textTransform: "uppercase" as const,
+          whiteSpace: "nowrap" as const,
+        }}>
+          Matchup Summary
+        </span>
+        <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.05)" }} />
+      </div>
+
+      {/* Grade rows */}
+      {summary.grades.map((grade, i) => {
+        const awayGs = gradeStyle(grade.awayGrade);
+        const homeGs = gradeStyle(grade.homeGrade);
+        const isLast = i === summary.grades.length - 1;
+        return (
+          <div key={i}>
+            {/* Three-column row */}
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              {/* Away */}
+              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 5 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: awayColor, minWidth: 24 }}>{awayAbbr}</span>
+                <span style={{
+                  fontSize: 12, fontWeight: 700, color: awayGs.color,
+                  background: awayGs.bg, borderRadius: 4, padding: "2px 8px",
+                }}>{grade.awayGrade}</span>
+              </div>
+              {/* Center label */}
+              <span style={{ fontSize: 11, color: "#8892AA", textAlign: "center" as const, flex: 1.6, lineHeight: 1.3 }}>
+                {grade.label}
+              </span>
+              {/* Home */}
+              <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 5 }}>
+                <span style={{
+                  fontSize: 12, fontWeight: 700, color: homeGs.color,
+                  background: homeGs.bg, borderRadius: 4, padding: "2px 8px",
+                }}>{grade.homeGrade}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: homeColor, minWidth: 28, textAlign: "right" as const }}>{homeAbbr}</span>
+              </div>
+            </div>
+            {/* Note */}
+            <p style={{ fontSize: 11, color: "#4B5268", margin: "4px 0 0", lineHeight: 1.4 }}>
+              {grade.note}
+            </p>
+            {/* Separator */}
+            {!isLast && (
+              <div style={{ height: 1, background: "rgba(255,255,255,0.04)", margin: "10px 0" }} />
+            )}
+          </div>
+        );
+      })}
+
+      {/* Verdict */}
+      <div style={{ marginTop: 12, borderLeft: "3px solid #3B82F6", paddingLeft: 10 }}>
+        <p style={{ fontSize: 12, color: "#8892AA", fontStyle: "italic", margin: 0, lineHeight: 1.4 }}>
+          {summary.verdict}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = away Off / home Def  |  1 = home Off / away Def
   const [defTooltip, setDefTooltip] = useState<null | { side: 0 | 1; x: number; y: number }>(null);
@@ -451,33 +540,16 @@ export default function MatchupPage() {
         </>
       </div>
 
-      {/* ── Stats strip ── */}
-      <div style={{ display: "flex", background: "#0E1016", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "10px 16px", gap: 0 }}>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 2 }}>
-          <span style={{ fontSize: 9, color: "#4B5563", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Pass Yds/G</span>
-          <span style={{ fontSize: 15, fontWeight: 800, color: "#22C55E" }}>284.3</span>
-          <span style={{ fontSize: 9, color: "#374151" }}>{side === 0 ? `${gameData.away.abbr} Off` : `${gameData.home.abbr} Off`}</span>
-        </div>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 2, borderLeft: "1px solid rgba(255,255,255,0.06)", borderRight: "1px solid rgba(255,255,255,0.06)" }}>
-          <span style={{ fontSize: 9, color: "#4B5563", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Season</span>
-          <span style={{ fontSize: 11, color: "#374151", marginTop: 3, fontWeight: 800 }}>PRE-SEASON</span>
-          <span style={{ fontSize: 9, color: "#374151" }}>No data yet</span>
-        </div>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2, overflow: "hidden" }}>
-          <span style={{ fontSize: 9, color: "#4B5563", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Pts Allowed</span>
-          <span style={{ fontSize: 15, fontWeight: 800, color: "#22C55E" }}>18.2</span>
-          <span style={{ fontSize: 9, color: "#374151" }}>{side === 0 ? `${gameData.home.abbr} Def` : `${gameData.away.abbr} Def`}</span>
-        </div>
-      </div>
-
-      {/* ── Injury strip ── */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", background: "rgba(239,68,68,0.04)", borderTop: "1px solid rgba(239,68,68,0.08)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: "#94A3B8" }}>
-          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#EF4444", display: "inline-block" }} />
-          <span><span style={{ fontWeight: 700, color: "#F1F5F9" }}>D. Maye</span> — Questionable</span>
-        </div>
-        <span style={{ fontSize: 10, color: "#F87171", fontWeight: 600 }}>⚠ Shoulder</span>
-      </div>
+      {/* ── Matchup Summary ── */}
+      {gameData.matchupSummary && (
+        <MatchupSummaryCard
+          summary={gameData.matchupSummary}
+          awayAbbr={gameData.away.abbr}
+          homeAbbr={gameData.home.abbr}
+          awayColor={gameData.away.color}
+          homeColor={gameData.home.color}
+        />
+      )}
 
       {/* ── Formation popover ── */}
       {defTooltip !== null && (

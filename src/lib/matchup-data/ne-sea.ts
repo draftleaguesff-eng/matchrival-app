@@ -80,4 +80,34 @@ export const NE_SEA: GameMatchupData = {
       DE_R:    { display: "D. Lawrence",    initials: "DL", ringType: "de",  badgeType: "de",  badgeLabel: "RDE · #0",  headshot: "Lawrence_DeMarcus.jpg", rating: 87 },
     },
   },
+
+  matchupSummary: {
+    grades: [
+      {
+        label: "WR vs Secondary",
+        awayGrade: "B+",
+        homeGrade: "C",
+        note: "A.J. Brown (89) vs J. Jobe (77) — NE receiving corps has the edge; SEA secondary avg 75.0 vs NE WR avg 78.0",
+      },
+      {
+        label: "QB vs Pass Rush",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "D. Maye (93) vs D. Witherspoon (91) — elite QB handles pressure; Maye's pocket poise neutralizes the edge rush",
+      },
+      {
+        label: "OL vs Run Defense",
+        awayGrade: "C-",
+        homeGrade: "A",
+        note: "M. Onwenu (86) vs L. Williams (88) — SEA's DLine (avg 84.3) dominates NE's patchwork OLine (avg 75.8)",
+      },
+      {
+        label: "TE Matchup",
+        awayGrade: "A",
+        homeGrade: "C-",
+        note: "H. Henry (86) exploits mismatches vs D. Thomas (75) and E. Jones (83) — best mismatch on the field",
+      },
+    ],
+    verdict: "NE holds the edge — Maye and Henry exploit coverage mismatches, but SEA's dominant front seven will make the trenches a battle",
+  },
 };
