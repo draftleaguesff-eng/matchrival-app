@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -179,54 +182,63 @@ function SectionHeader({ title, link }: { title: string; link: string }) {
 // ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
-  return (
-    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+  const [isDesktop, setIsDesktop] = useState(false);
 
-      {/* ── Header ── */}
-      <header style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "18px 16px 14px",
-        position: "sticky", top: 0, zIndex: 10,
-        background: "#0D0F14",
-        borderBottom: "1px solid #1A1F2E",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{
-            width: 28, height: 28, background: "#3B82F6", borderRadius: 7,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 11, fontWeight: 900, color: "#fff",
-            boxShadow: "0 0 12px rgba(59,130,246,0.4)", flexShrink: 0,
-          }}>MR</div>
-          <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.03em", color: "#E8EBF4" }}>
-            Match<span style={{ color: "#3B82F6" }}>Rival</span>
-          </span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{
-            width: 34, height: 34, borderRadius: 9,
-            background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)",
-            display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
-            cursor: "pointer",
-          }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8892AA" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/>
-            </svg>
-            <div style={{ position: "absolute", top: 6, right: 6, width: 6, height: 6, borderRadius: "50%", background: "#EF4444", border: "1.5px solid #0D0F14" }} />
-          </div>
-        </div>
-      </header>
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
-      {/* ── Greeting ── */}
-      <div style={{ padding: "16px 16px 4px" }}>
-        <div style={{ fontSize: 11, fontWeight: 600, color: "#4B5268", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 3 }}>
-          Welcome back
-        </div>
-        <div style={{ fontSize: 20, fontWeight: 800, color: "#E8EBF4", letterSpacing: "-0.03em" }}>
-          JDawg 👋
+  const header = (
+    <header style={{
+      display: "flex", alignItems: "center", justifyContent: "space-between",
+      padding: "18px 16px 14px",
+      position: "sticky", top: 0, zIndex: 10,
+      background: "#0D0F14",
+      borderBottom: "1px solid #1A1F2E",
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{
+          width: 28, height: 28, background: "#3B82F6", borderRadius: 7,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: 11, fontWeight: 900, color: "#fff",
+          boxShadow: "0 0 12px rgba(59,130,246,0.4)", flexShrink: 0,
+        }}>MR</div>
+        <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.03em", color: "#E8EBF4" }}>
+          Match<span style={{ color: "#3B82F6" }}>Rival</span>
+        </span>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{
+          width: 34, height: 34, borderRadius: 9,
+          background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)",
+          display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
+          cursor: "pointer",
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8892AA" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/>
+          </svg>
+          <div style={{ position: "absolute", top: 6, right: 6, width: 6, height: 6, borderRadius: "50%", background: "#EF4444", border: "1.5px solid #0D0F14" }} />
         </div>
       </div>
+    </header>
+  );
 
-      {/* ── Games Today ── */}
+  const greeting = (
+    <div style={{ padding: "16px 16px 4px" }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: "#4B5268", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 3 }}>
+        Welcome back
+      </div>
+      <div style={{ fontSize: 20, fontWeight: 800, color: "#E8EBF4", letterSpacing: "-0.03em" }}>
+        JDawg 👋
+      </div>
+    </div>
+  );
+
+  const gamesSection = (
+    <>
       <SectionHeader title="Games Today" link="Full Schedule →" />
       <div style={{ display: "flex", gap: 10, overflowX: "auto", scrollbarWidth: "none", padding: "0 16px 4px" }}>
         {GAMES.map((g, i) => (
@@ -241,15 +253,12 @@ export default function HomePage() {
               width: 150,
             }}
           >
-            {/* Time / live badge */}
             <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: g.isLive ? "#22C55E" : "#4B5268", marginBottom: 10, display: "flex", alignItems: "center", gap: 4 }}>
               {g.isLive && (
                 <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 4px rgba(34,197,94,0.8)", display: "inline-block" }} />
               )}
               {g.time}
             </div>
-
-            {/* Home team */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
                 <div style={{ width: 22, height: 22, borderRadius: 4, background: "#1C2133", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 7, fontWeight: 900, color: "#4B5268" }}>
@@ -261,10 +270,7 @@ export default function HomePage() {
                 {g.home.score !== undefined ? g.home.score : "—"}
               </span>
             </div>
-
             <div style={{ height: 1, background: "#1A1F2E", margin: "7px 0" }} />
-
-            {/* Away team */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
                 <div style={{ width: 22, height: 22, borderRadius: 4, background: "#1C2133", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 7, fontWeight: 900, color: "#4B5268" }}>
@@ -279,8 +285,11 @@ export default function HomePage() {
           </div>
         ))}
       </div>
+    </>
+  );
 
-      {/* ── Injury Alerts ── */}
+  const injurySection = (
+    <>
       <SectionHeader title="🚨 Injury Alerts" link="See All →" />
       <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: 8 }}>
         {INJURIES.map((inj, i) => (
@@ -292,7 +301,6 @@ export default function HomePage() {
               display: "flex", alignItems: "center", gap: 12,
             }}
           >
-            {/* Headshot */}
             <div style={{
               width: 40, height: 40, borderRadius: "50%",
               overflow: "hidden", flexShrink: 0,
@@ -302,7 +310,6 @@ export default function HomePage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={inj.headshot} alt={inj.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
             </div>
-            {/* Info */}
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#E8EBF4" }}>{inj.name}</span>
@@ -318,11 +325,96 @@ export default function HomePage() {
               </div>
               <div style={{ fontSize: 10.5, color: "#4B5268", fontWeight: 500, lineHeight: 1.35 }}>{inj.desc}</div>
             </div>
-            {/* Time */}
             <span style={{ fontSize: 9, color: "#4B5268", flexShrink: 0 }}>{inj.ago}</span>
           </div>
         ))}
       </div>
+    </>
+  );
+
+  const newsSection = (
+    <>
+      <SectionHeader title="📰 Top News" link="See All →" />
+      <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: 1 }}>
+        {NEWS.map((n, i) => (
+          <div
+            key={i}
+            style={{
+              background: "#141720", border: "1px solid #1A1F2E",
+              padding: "13px 14px",
+              display: "flex", gap: 12, alignItems: "flex-start",
+              borderRadius: i === 0 ? "14px 14px 0 0" : i === NEWS.length - 1 ? "0 0 14px 14px" : 0,
+            }}
+          >
+            <div style={{ width: 58, height: 52, borderRadius: 8, flexShrink: 0, overflow: "hidden", background: "#1C2133", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 22, lineHeight: 1 }}>{n.emoji}</span>
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B82F6" }}>{n.source}</span>
+                <div style={{ width: 2, height: 2, borderRadius: "50%", background: "#4B5268" }} />
+                <span style={{ fontSize: 9, color: "#4B5268", fontWeight: 500 }}>{n.ago}</span>
+              </div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#E8EBF4", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{n.headline}</div>
+              <span style={{ display: "inline-block", marginTop: 5, fontSize: 8, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", padding: "2px 6px", borderRadius: 4, background: n.tagBg, color: n.tagColor }}>
+                {n.tagLabel}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+
+  if (isDesktop) {
+    return (
+      <div style={{ display: "flex", height: "100vh", overflow: "hidden", background: "#0D0F14", maxWidth: 1200, margin: "0 auto" }}>
+        {/* Left column */}
+        <div style={{ flex: 1, minWidth: 0, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+          {header}
+          {greeting}
+          {gamesSection}
+          {injurySection}
+          {newsSection}
+          <div style={{ height: 24 }} />
+        </div>
+
+        {/* Right column — Trending */}
+        <div style={{ width: 340, flexShrink: 0, borderLeft: "1px solid rgba(255,255,255,0.07)", overflowY: "auto", padding: "20px 20px 24px" }}>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "#E8EBF4", letterSpacing: "-0.01em", marginBottom: 4 }}>🔥 Trending</div>
+          <div style={{ fontSize: 10, color: "#4B5268", marginBottom: 16 }}>Ownership movement this week</div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {TRENDING.map((t, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderBottom: i < TRENDING.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+                <div style={{ width: 44, height: 44, borderRadius: "50%", overflow: "hidden", background: "#1C2133", border: `2px solid ${POS_RING[t.posClass]}`, flexShrink: 0 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.headshot} alt={t.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#E8EBF4", letterSpacing: "-0.01em", marginBottom: 3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{t.name}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    <span style={{ fontSize: 7, fontWeight: 800, letterSpacing: "0.06em", padding: "1.5px 4px", borderRadius: 3, textTransform: "uppercase", background: POS_BADGE_BG[t.posClass], color: POS_BADGE_COLOR[t.posClass] }}>{t.pos}</span>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: "#4B5268" }}>{t.team}</span>
+                  </div>
+                </div>
+                <div style={{ fontSize: 12, fontWeight: 800, color: t.dir === "up" ? "#22C55E" : "#EF4444", flexShrink: 0 }}>
+                  {t.dir === "up" ? "↑" : "↓"} {t.pct}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Mobile
+  return (
+    <div style={{ maxWidth: 480, margin: "0 auto" }}>
+      {header}
+      {greeting}
+      {gamesSection}
+      {injurySection}
 
       {/* ── Trending Players ── */}
       <SectionHeader title="🔥 Trending" link="See All →" />
@@ -353,40 +445,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* ── Top News ── */}
-      <SectionHeader title="📰 Top News" link="See All →" />
-      <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: 1 }}>
-        {NEWS.map((n, i) => (
-          <div
-            key={i}
-            style={{
-              background: "#141720", border: "1px solid #1A1F2E",
-              padding: "13px 14px",
-              display: "flex", gap: 12, alignItems: "flex-start",
-              borderRadius: i === 0 ? "14px 14px 0 0" : i === NEWS.length - 1 ? "0 0 14px 14px" : 0,
-            }}
-          >
-            {/* Thumb */}
-            <div style={{ width: 58, height: 52, borderRadius: 8, flexShrink: 0, overflow: "hidden", background: "#1C2133", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontSize: 22, lineHeight: 1 }}>{n.emoji}</span>
-            </div>
-            {/* Body */}
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B82F6" }}>{n.source}</span>
-                <div style={{ width: 2, height: 2, borderRadius: "50%", background: "#4B5268" }} />
-                <span style={{ fontSize: 9, color: "#4B5268", fontWeight: 500 }}>{n.ago}</span>
-              </div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#E8EBF4", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{n.headline}</div>
-              <span style={{ display: "inline-block", marginTop: 5, fontSize: 8, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", padding: "2px 6px", borderRadius: 4, background: n.tagBg, color: n.tagColor }}>
-                {n.tagLabel}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Bottom padding */}
+      {newsSection}
       <div style={{ height: 24 }} />
     </div>
   );
