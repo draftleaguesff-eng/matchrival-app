@@ -32,3 +32,8 @@ body {
 }
 
 ::-webkit-scrollbar { width: 0; height: 0; }
+
+@media (min-width: 768px) {
+  .mobile-only { display: none !important; }
+  body { padding-bottom: 0; }
+}

@@ -26,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full">
         {children}
-        <BottomNav />
+        <div className="mobile-only"><BottomNav /></div>
       </body>
     </html>
   );

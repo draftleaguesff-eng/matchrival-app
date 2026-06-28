@@ -337,6 +337,13 @@ export default function MatchupPage() {
   const [selectedGame, setSelectedGame] = useState(0);
   const gameData: GameMatchupData = ALL_GAMES[selectedGame] ?? NE_SEA;
 
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const awayOff = gameData.away.offense;
   const homeOff = gameData.home.offense;
@@ -372,6 +379,284 @@ export default function MatchupPage() {
     linear-gradient(180deg, #040D05 0%, #050E06 40%, #050E06 60%, #040D05 100%)
   `;
 
+  // ── Shared JSX blocks ──────────────────────────────────────────────────────
+
+  const gameCarouselChips = MATCHUP_GAMES.map((g, i) => {
+    const isSelected = i === selectedGame;
+    const isAvailable = g.available;
+    return (
+      <div
+        key={i}
+        onClick={() => isAvailable && setSelectedGame(i)}
+        style={{
+          flexShrink: 0, width: 130, borderRadius: 12, padding: "10px 12px",
+          background: isSelected ? "rgba(59,130,246,0.08)" : "#141720",
+          border: `1px solid ${isSelected ? "rgba(59,130,246,0.4)" : "rgba(255,255,255,0.06)"}`,
+          cursor: isAvailable ? "pointer" : "default",
+          opacity: isAvailable ? 1 : 0.4,
+          position: "relative" as const,
+        }}
+      >
+        {isSelected && (
+          <div style={{ position: "absolute", top: 6, right: 8, width: 6, height: 6, borderRadius: "50%", background: "#3B82F6", boxShadow: "0 0 6px rgba(59,130,246,0.8)" }} />
+        )}
+        <div style={{ fontSize: 8, fontWeight: 700, color: isSelected ? "#3B82F6" : "#4B5268", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{g.time}</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 5 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={g.awayLogo} alt={g.away} width={18} height={18} style={{ objectFit: "contain" }} />
+            <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.away}</span>
+          </div>
+          <span style={{ fontSize: 9, color: "#334155", fontWeight: 600 }}>@</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={g.homeLogo} alt={g.home} width={18} height={18} style={{ objectFit: "contain" }} />
+          <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.home}</span>
+        </div>
+      </div>
+    );
+  });
+
+  const sideToggleButtons = [
+    { label: `${gameData.away.abbr} Off vs ${gameData.home.abbr} Def`, pipColor: gameData.away.color },
+    { label: `${gameData.home.abbr} Off vs ${gameData.away.abbr} Def`, pipColor: gameData.home.color },
+  ];
+
+  const formationField = (
+    <div style={{ position: "relative", background: fieldBg, overflow: "hidden", paddingTop: 16, paddingBottom: 16, width: "100%" }}>
+      <>
+        {/* ── Defense — top ── */}
+        <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
+          <FormationHeader
+            teamColor={defTeam.color} teamName={defTeam.name}
+            subLabel="Defensive Formation" pillLabel={defTeam.defFormation} pillType="def"
+            logo={defTeam.logo}
+            onPillClick={(e) => {
+              const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+              setDefTooltip(defTooltip?.side === side ? null : { side, x: rect.left + rect.width / 2, y: rect.bottom });
+            }}
+          />
+        </div>
+        <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
+          {/* Safeties — deep */}
+          <div style={{ marginBottom: 12 }}>
+            <FormationRow players={DEF_SAF} justify="center" gap={60} />
+          </div>
+          {/* LBs */}
+          <div style={{ marginBottom: 12 }}>
+            <FormationRow players={DEF_LB} justify="space-evenly" padding="0 24px" />
+          </div>
+          {/* DL + CBs at LOS */}
+          <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
+            <div style={{ position: "absolute", left: 4 }}>
+              <PlayerBubble p={DEF_CB.left} />
+            </div>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
+              {DEF_DL.map((p, i) => <PlayerBubble key={i} p={p} />)}
+            </div>
+            <div style={{ position: "absolute", right: 4 }}>
+              <PlayerBubble p={DEF_CB.right} />
+            </div>
+          </div>
+        </div>
+
+        <LOS />
+
+        {/* ── Offense — bottom ── */}
+        <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
+          {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
+          <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
+            <div style={{ position: "absolute", left: 4 }}>
+              <PlayerBubble p={OFF_LOS[0]} />
+            </div>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
+              {OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
+            </div>
+            <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
+              <PlayerBubble p={OFF_SLOT[0]} />
+              <PlayerBubble p={OFF_LOS[7]} />
+            </div>
+          </div>
+          {/* Shotgun backfield: QB behind C, RB to QB's right */}
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "43%", marginBottom: 0 }}>
+            <PlayerBubble p={OFF_QB} />
+            <PlayerBubble p={OFF_RB} />
+          </div>
+        </div>
+        <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
+          <FormationHeader
+            teamColor={offTeam.color} teamName={offTeam.name}
+            subLabel="Offensive Formation" pillLabel={offTeam.personnel} pillType="off"
+            logo={offTeam.logo}
+          />
+        </div>
+      </>
+    </div>
+  );
+
+  const defPopover = defTooltip !== null && (
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        position: "fixed",
+        zIndex: 50,
+        top: defTooltip.y + 8,
+        left: Math.min(
+          Math.max(defTooltip.x - 110, 8),
+          (typeof window !== "undefined" ? window.innerWidth : 430) - 228
+        ),
+        width: 220,
+        background: "#1a1d24",
+        border: "1px solid rgba(255,255,255,0.12)",
+        borderRadius: 10,
+        padding: "12px 14px",
+        fontSize: 12,
+        lineHeight: 1.5,
+        color: "#c8cdd8",
+        textAlign: "left" as const,
+        boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+      }}
+    >
+      {defTooltip.side === 0 ? (
+        <><strong>{gameData.home.defScheme}</strong><p style={{ margin: "6px 0 0" }}>{gameData.home.defDescription}</p></>
+      ) : (
+        <><strong>{gameData.away.defScheme}</strong><p style={{ margin: "6px 0 0" }}>{gameData.away.defDescription}</p></>
+      )}
+    </div>
+  );
+
+  // ── Desktop layout (≥ 768px) ──────────────────────────────────────────────
+
+  if (isDesktop) {
+    return (
+      <div
+        onClick={() => setDefTooltip(null)}
+        style={{ display: "flex", height: "100vh", overflow: "hidden", background: "#0D0F14" }}
+      >
+        {/* ── Left panel ── */}
+        <div style={{
+          width: 360, flexShrink: 0,
+          borderRight: "1px solid rgba(255,255,255,0.07)",
+          overflowY: "auto",
+          display: "flex", flexDirection: "column", gap: 0,
+          background: "#0D0F14",
+        }}>
+          {/* Brand header */}
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "16px 16px 12px",
+            borderBottom: "1px solid rgba(255,255,255,0.06)",
+          }}>
+            <Link href="/" style={{ display: "flex", alignItems: "center", gap: 6, color: "#94A3B8", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6" /></svg>
+              Week 1
+            </Link>
+            <span style={{ fontSize: 12, fontWeight: 800, color: "#E8EBF4", letterSpacing: "0.1em", textTransform: "uppercase" }}>Matchup</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#4B5268" }}>NFL · 2026</span>
+          </div>
+
+          {/* Game carousel */}
+          <div style={{ padding: "12px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "#0A0C10" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "#4B5268", letterSpacing: "0.1em", textTransform: "uppercase", padding: "0 16px 8px" }}>Week 1 · 2026</div>
+            <div style={{ display: "flex", gap: 8, overflowX: "auto", scrollbarWidth: "none", padding: "0 16px" }}>
+              {gameCarouselChips}
+            </div>
+          </div>
+
+          {/* Away vs Home matchup header */}
+          <div style={{ padding: "14px 16px 0" }}>
+            <div style={{
+              background: "#13161F", borderRadius: 12,
+              border: "1px solid rgba(255,255,255,0.06)",
+              padding: "14px 16px",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                {/* Away team */}
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={gameData.away.logo} alt={gameData.away.abbr} style={{ width: 32, height: 32, objectFit: "contain" }} />
+                  <div>
+                    <div style={{ fontSize: 15, fontWeight: 800, color: gameData.away.color }}>{gameData.away.abbr}</div>
+                    <div style={{ fontSize: 10, color: "#4B5268", fontWeight: 500 }}>Away</div>
+                  </div>
+                </div>
+                {/* VS divider */}
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: 11, color: "#334155", fontWeight: 700 }}>@</div>
+                  <div style={{ fontSize: 9, color: "#4B5268", fontWeight: 600, marginTop: 2 }}>
+                    {MATCHUP_GAMES[selectedGame]?.time.split(" · ")[0]}
+                  </div>
+                </div>
+                {/* Home team */}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, flexDirection: "row-reverse" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={gameData.home.logo} alt={gameData.home.abbr} style={{ width: 32, height: 32, objectFit: "contain" }} />
+                  <div style={{ textAlign: "right" }}>
+                    <div style={{ fontSize: 15, fontWeight: 800, color: gameData.home.color }}>{gameData.home.abbr}</div>
+                    <div style={{ fontSize: 10, color: "#4B5268", fontWeight: 500 }}>Home</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Offense / Defense toggle */}
+          <div style={{ padding: "12px 16px 0" }}>
+            <div style={{
+              background: "#13161F", borderRadius: 12,
+              border: "1px solid rgba(255,255,255,0.06)",
+              overflow: "hidden",
+            }}>
+              {sideToggleButtons.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSide(i as 0 | 1)}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 9, width: "100%",
+                    padding: "12px 14px",
+                    background: side === i ? "rgba(59,130,246,0.08)" : "none",
+                    border: "none",
+                    borderLeft: side === i ? "3px solid #3B82F6" : "3px solid transparent",
+                    borderBottom: i === 0 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                    fontSize: 12, fontWeight: 600,
+                    color: side === i ? "#E2E8F0" : "#4B5563",
+                    cursor: "pointer", textAlign: "left" as const,
+                  }}
+                >
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: opt.pipColor, display: "inline-block", flexShrink: 0 }} />
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Matchup Summary */}
+          {gameData.matchupSummary && (
+            <div style={{ padding: "0 4px 20px" }}>
+              <MatchupSummaryCard
+                summary={gameData.matchupSummary}
+                awayAbbr={gameData.away.abbr}
+                homeAbbr={gameData.home.abbr}
+                awayColor={gameData.away.color}
+                homeColor={gameData.home.color}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* ── Right panel — formation field ── */}
+        <div style={{ flex: 1, minWidth: 400, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+          {formationField}
+        </div>
+
+        {defPopover}
+      </div>
+    );
+  }
+
+  // ── Mobile layout (unchanged) ─────────────────────────────────────────────
+
   return (
     <div onClick={() => setDefTooltip(null)} style={{ maxWidth: 480, width: "100%", margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112 }}>
 
@@ -399,51 +684,13 @@ export default function MatchupPage() {
       <div style={{ background: "#0A0C10", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "12px 0 10px" }}>
         <div style={{ fontSize: 10, fontWeight: 700, color: "#4B5268", letterSpacing: "0.1em", textTransform: "uppercase", padding: "0 16px 8px" }}>Week 1 · 2026</div>
         <div style={{ display: "flex", gap: 8, overflowX: "auto", scrollbarWidth: "none", padding: "0 16px" }}>
-          {MATCHUP_GAMES.map((g, i) => {
-            const isSelected = i === selectedGame;
-            const isAvailable = g.available;
-            return (
-              <div
-                key={i}
-                onClick={() => isAvailable && setSelectedGame(i)}
-                style={{
-                  flexShrink: 0, width: 130, borderRadius: 12, padding: "10px 12px",
-                  background: isSelected ? "rgba(59,130,246,0.08)" : "#141720",
-                  border: `1px solid ${isSelected ? "rgba(59,130,246,0.4)" : "rgba(255,255,255,0.06)"}`,
-                  cursor: isAvailable ? "pointer" : "default",
-                  opacity: isAvailable ? 1 : 0.4,
-                  position: "relative",
-                }}
-              >
-                {isSelected && (
-                  <div style={{ position: "absolute", top: 6, right: 8, width: 6, height: 6, borderRadius: "50%", background: "#3B82F6", boxShadow: "0 0 6px rgba(59,130,246,0.8)" }} />
-                )}
-                <div style={{ fontSize: 8, fontWeight: 700, color: isSelected ? "#3B82F6" : "#4B5268", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{g.time}</div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 5 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={g.awayLogo} alt={g.away} width={18} height={18} style={{ objectFit: "contain" }} />
-                    <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.away}</span>
-                  </div>
-                  <span style={{ fontSize: 9, color: "#334155", fontWeight: 600 }}>@</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={g.homeLogo} alt={g.home} width={18} height={18} style={{ objectFit: "contain" }} />
-                  <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.home}</span>
-                </div>
-              </div>
-            );
-          })}
+          {gameCarouselChips}
         </div>
       </div>
 
       {/* ── Side toggle ── */}
       <div style={{ display: "flex", background: "#0E1016", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "0 4px" }}>
-        {[
-          { label: `${gameData.away.abbr} Off vs ${gameData.home.abbr} Def`, pipColor: gameData.away.color },
-          { label: `${gameData.home.abbr} Off vs ${gameData.away.abbr} Def`, pipColor: gameData.home.color },
-        ].map((opt, i) => (
+        {sideToggleButtons.map((opt, i) => (
           <button
             key={i}
             onClick={() => setSide(i as 0 | 1)}
@@ -462,76 +709,7 @@ export default function MatchupPage() {
       </div>
 
       {/* ── Field ── */}
-      <div style={{ position: "relative", background: fieldBg, overflow: "hidden", paddingTop: 16, paddingBottom: 16 }}>
-
-<>
-          {/* ── Defense — top ── */}
-          <div style={{ background: "linear-gradient(180deg,rgba(239,68,68,0.05) 0%,transparent 100%)" }}>
-            <FormationHeader
-              teamColor={defTeam.color} teamName={defTeam.name}
-              subLabel="Defensive Formation" pillLabel={defTeam.defFormation} pillType="def"
-              logo={defTeam.logo}
-              onPillClick={(e) => {
-                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                setDefTooltip(defTooltip?.side === side ? null : { side, x: rect.left + rect.width / 2, y: rect.bottom });
-              }}
-            />
-          </div>
-          <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
-            {/* Safeties — deep */}
-            <div style={{ marginBottom: 12 }}>
-              <FormationRow players={DEF_SAF} justify="center" gap={60} />
-            </div>
-            {/* LBs */}
-            <div style={{ marginBottom: 12 }}>
-              <FormationRow players={DEF_LB} justify="space-evenly" padding="0 24px" />
-            </div>
-            {/* DL + CBs at LOS */}
-            <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
-              <div style={{ position: "absolute", left: 4 }}>
-                <PlayerBubble p={DEF_CB.left} />
-              </div>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
-                {DEF_DL.map((p, i) => <PlayerBubble key={i} p={p} />)}
-              </div>
-              <div style={{ position: "absolute", right: 4 }}>
-                <PlayerBubble p={DEF_CB.right} />
-              </div>
-            </div>
-          </div>
-
-          <LOS />
-
-          {/* ── Offense — bottom ── */}
-          <div style={{ padding: "20px 4px 55px", background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.04) 100%)" }}>
-            {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
-            <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
-              <div style={{ position: "absolute", left: 4 }}>
-                <PlayerBubble p={OFF_LOS[0]} />
-              </div>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
-                {OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
-              </div>
-              <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
-                <PlayerBubble p={OFF_SLOT[0]} />
-                <PlayerBubble p={OFF_LOS[7]} />
-              </div>
-            </div>
-            {/* Shotgun backfield: QB behind C, RB to QB's right */}
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "43%", marginBottom: 0 }}>
-              <PlayerBubble p={OFF_QB} />
-              <PlayerBubble p={OFF_RB} />
-            </div>
-          </div>
-          <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
-            <FormationHeader
-              teamColor={offTeam.color} teamName={offTeam.name}
-              subLabel="Offensive Formation" pillLabel={offTeam.personnel} pillType="off"
-              logo={offTeam.logo}
-            />
-          </div>
-        </>
-      </div>
+      {formationField}
 
       {/* ── Matchup Summary ── */}
       {gameData.matchupSummary && (
@@ -545,36 +723,7 @@ export default function MatchupPage() {
       )}
 
       {/* ── Formation popover ── */}
-      {defTooltip !== null && (
-        <div
-          onClick={(e) => e.stopPropagation()}
-          style={{
-            position: "fixed",
-            zIndex: 50,
-            top: defTooltip.y + 8,
-            left: Math.min(
-              Math.max(defTooltip.x - 110, 8),
-              (typeof window !== "undefined" ? window.innerWidth : 430) - 228
-            ),
-            width: 220,
-            background: "#1a1d24",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: 10,
-            padding: "12px 14px",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "#c8cdd8",
-            textAlign: "left" as const,
-            boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-          }}
-        >
-          {defTooltip.side === 0 ? (
-            <><strong>{gameData.home.defScheme}</strong><p style={{ margin: "6px 0 0" }}>{gameData.home.defDescription}</p></>
-          ) : (
-            <><strong>{gameData.away.defScheme}</strong><p style={{ margin: "6px 0 0" }}>{gameData.away.defDescription}</p></>
-          )}
-        </div>
-      )}
+      {defPopover}
 
     </div>
   );
