@@ -337,13 +337,6 @@ export default function MatchupPage() {
   const [selectedGame, setSelectedGame] = useState(0);
   const gameData: GameMatchupData = ALL_GAMES[selectedGame] ?? NE_SEA;
 
-  const [zoom, setZoom] = useState(1);
-  useEffect(() => {
-    const update = () => setZoom(window.innerWidth > 430 ? window.innerWidth / 430 : 1);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
 
   const awayOff = gameData.away.offense;
   const homeOff = gameData.home.offense;
@@ -380,7 +373,7 @@ export default function MatchupPage() {
   `;
 
   return (
-    <div onClick={() => setDefTooltip(null)} style={{ maxWidth: 430, margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112, ...(zoom > 1 ? { zoom } as unknown as React.CSSProperties : {}) }}>
+    <div onClick={() => setDefTooltip(null)} style={{ maxWidth: 480, width: "100%", margin: "0 auto", background: "#0D0F14", minHeight: "100vh", paddingBottom: 112 }}>
 
       {/* ── Sticky header ── */}
       <div style={{
