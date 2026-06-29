@@ -116,8 +116,8 @@ export default function BottomNav() {
               >
                 <div
                   style={{
-                    width: 65,
-                    height: 65,
+                    width: 54,
+                    height: 54,
                     borderRadius: "50%",
                     background: "#141720",
                     border: "1.5px solid rgba(245,158,11,0.30)",
@@ -128,7 +128,7 @@ export default function BottomNav() {
                     overflow: "hidden",
                   }}
                 >
-                  <Image src="/matchup-icon.png" alt="Matchup" width={86} height={86} style={{ objectFit: "cover", flexShrink: 0 }} />
+                  <Image src="/matchup-icon.png" alt="Matchup" width={96} height={96} style={{ objectFit: "cover", flexShrink: 0 }} />
                 </div>
                 <span
                   style={{
