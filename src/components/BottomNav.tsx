@@ -125,9 +125,10 @@ export default function BottomNav() {
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: "0 4px 20px rgba(0,0,0,0.5), 0 0 12px rgba(245,158,11,0.12)",
+                    overflow: "hidden",
                   }}
                 >
-                  <Image src="/matchup-icon.png" alt="Matchup" width={54} height={54} style={{ borderRadius: "50%", objectFit: "cover" }} />
+                  <Image src="/matchup-icon.png" alt="Matchup" width={72} height={72} style={{ objectFit: "cover", flexShrink: 0 }} />
                 </div>
                 <span
                   style={{
