@@ -407,7 +407,8 @@ export default function MatchupPage() {
             <img src={g.awayLogo} alt={g.away} width={18} height={18} style={{ objectFit: "contain" }} />
             <span style={{ fontSize: 11, fontWeight: 800, color: "#E8EBF4" }}>{g.away}</span>
           </div>
-          <span style={{ fontSize: 9, color: "#334155", fontWeight: 600 }}>@</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/matchup-icon.png" alt="vs" style={{ width: 14, height: 14, objectFit: "contain", opacity: 0.7 }} />
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -582,9 +583,10 @@ export default function MatchupPage() {
                   </div>
                 </div>
                 {/* VS divider */}
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 11, color: "#334155", fontWeight: 700 }}>@</div>
-                  <div style={{ fontSize: 9, color: "#4B5268", fontWeight: 600, marginTop: 2 }}>
+                <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/matchup-icon.png" alt="vs" style={{ width: 36, height: 36, objectFit: "contain", opacity: 0.85 }} />
+                  <div style={{ fontSize: 9, color: "#4B5268", fontWeight: 600 }}>
                     {MATCHUP_GAMES[selectedGame]?.time.split(" · ")[0]}
                   </div>
                 </div>
