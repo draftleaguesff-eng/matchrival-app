@@ -127,7 +127,7 @@ export default function BottomNav() {
                     boxShadow: "0 4px 20px rgba(0,0,0,0.5), 0 0 12px rgba(245,158,11,0.12)",
                   }}
                 >
-                  <Image src="/matchup-icon.png" alt="Matchup" width={30} height={30} />
+                  <Image src="/matchup-icon.png" alt="Matchup" width={54} height={54} style={{ borderRadius: "50%", objectFit: "cover" }} />
                 </div>
                 <span
                   style={{
