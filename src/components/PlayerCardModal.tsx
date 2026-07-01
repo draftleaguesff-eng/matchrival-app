@@ -48,6 +48,7 @@ interface PlayerCardData {
   posRank: string;
   adp: number;
   adpTrend: number;
+  rating: number;
   yearStats: YearStat[];
   strengths: string[];
   risks: string[];
@@ -227,18 +228,19 @@ export default function PlayerCardModal({
                 borderBottom: "1px solid rgba(255,255,255,0.06)",
               }}>
                 {[
-                  { label: "Ht",   value: card.height },
-                  { label: "Wt",   value: card.weight },
-                  { label: "Age",  value: `${card.age}` },
-                  { label: "Exp",  value: `${card.experience}yr` },
-                  { label: "Bye",  value: `Wk ${card.byeWeek}` },
+                  { label: "Ht",     value: card.height },
+                  { label: "Wt",     value: card.weight },
+                  { label: "Age",    value: `${card.age}` },
+                  { label: "Exp",    value: `${card.experience}yr` },
+                  { label: "Bye",    value: `Wk ${card.byeWeek}` },
+                  { label: "Rating", value: `${card.rating}` },
                 ].map((item, i, arr) => (
                   <div key={item.label} style={{
                     flex: 1, textAlign: "center", minWidth: 0,
                     borderRight: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
                   }}>
                     <div style={{ fontSize: 7.5, fontWeight: 700, color: "#4B5268", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
-                    <div style={{ fontSize: 12, fontWeight: 800, color: "#E8EBF4" }}>{item.value}</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: item.label === "Rating" ? "#3B82F6" : "#E8EBF4" }}>{item.value}</div>
                   </div>
                 ))}
               </div>

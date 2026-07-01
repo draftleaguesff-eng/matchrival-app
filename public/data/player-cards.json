@@ -16,6 +16,7 @@
     "posRank": "RB31",
     "adp": 75,
     "adpTrend": 0,
+    "rating": 77,
     "yearStats": [
       { "season": "2025", "gp": 14, "car": 130, "yds": 603, "ypc": 4.6, "rushTd": 7, "tgt": 37, "rec": 32, "recYds": 345, "recTd": 2, "fpts": 181.8 },
       { "season": "2024", "gp": 15, "car": 207, "yds": 801, "ypc": 3.9, "rushTd": 7, "tgt": 41, "rec": 33, "recYds": 168, "recTd": 1, "fpts": 177.9 },
