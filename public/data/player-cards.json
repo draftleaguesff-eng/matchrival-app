@@ -1,0 +1,53 @@
+{
+  "Stevenson_Rhamondre": {
+    "name": "Rhamondre Stevenson",
+    "firstName": "Rhamondre",
+    "lastName": "Stevenson",
+    "position": "RB",
+    "team": "NE",
+    "number": 38,
+    "age": 26,
+    "byeWeek": 14,
+    "height": "6'0\"",
+    "weight": "228 lbs",
+    "college": "Oklahoma",
+    "experience": 4,
+    "rank": 18,
+    "posRank": "RB8",
+    "adp": 22.4,
+    "adpTrend": 4,
+    "pointsLast": 211.3,
+    "pointsProj": 248.0,
+    "stats": [
+      { "label": "Rush Att", "value": "249" },
+      { "label": "Rush Yds", "value": "1,040" },
+      { "label": "Rush TD",  "value": "7" },
+      { "label": "Targets",  "value": "58" },
+      { "label": "Rec Yds",  "value": "421" },
+      { "label": "PPR Pts",  "value": "211.3" }
+    ],
+    "strengths": [
+      "Elite receiving back — 58 targets in 2023",
+      "Workhorse role, 249 carries last season",
+      "Consistent volume as Drake Maye's outlet"
+    ],
+    "risks": [
+      "O-line rebuild around Drake Maye",
+      "Competition from Antonio Gibson",
+      "Injury history (missed 3 games in 2023)"
+    ],
+    "analysis": "Stevenson profiles as a high-floor RB2 with upside. New England's commitment to a ground game supporting Drake Maye's development should keep his carries high. The receiving role is the differentiator in PPR — he's a legitimate pass-game weapon out of the backfield. Target 225+ carries and 55+ targets for another 200+ point season.",
+    "news": [
+      {
+        "date": "Jun 15",
+        "headline": "Stevenson fully healthy entering camp",
+        "detail": "Per coach press conference, Stevenson had no injury limitations during OTAs and is expected to be the clear starter Week 1."
+      },
+      {
+        "date": "May 28",
+        "headline": "Patriots commit to Stevenson as featured back",
+        "detail": "Coaching staff confirmed Stevenson will handle the bulk of carries and remain the primary receiving back in Drake Maye's offense."
+      }
+    ]
+  }
+}

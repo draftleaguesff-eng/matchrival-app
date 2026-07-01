@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import type { GameMatchupData, MatchupSummaryData } from "@/lib/matchup-types";
+import PlayerCardModal from "@/components/PlayerCardModal";
 import { NE_SEA } from "@/lib/matchup-data/ne-sea";
 import { ALL_GAMES } from "@/lib/matchup-data";
 
@@ -60,6 +61,7 @@ interface Player {
   maxWidth?: number;
   nameBold?: boolean;
   rating?: number;
+  cardKey?: string;
 }
 
 
@@ -91,13 +93,14 @@ function PlayerImage({ src, initials, color }: { src: string; initials: string; 
   );
 }
 
-function PlayerBubble({ p }: { p: Player }) {
+function PlayerBubble({ p, onBubbleClick }: { p: Player; onBubbleClick?: (key: string) => void }) {
   const ring  = RING[p.ringType]  || RING.wr;
   const badge = BADGE[p.badgeType] || BADGE.wr;
   const size  = p.size ?? 28;
+  const handleClick = p.cardKey && onBubbleClick ? () => onBubbleClick(p.cardKey!) : undefined;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 52, flexShrink: 0, overflow: "hidden" }}>
+    <div onClick={handleClick} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, maxWidth: p.maxWidth ?? 52, flexShrink: 0, overflow: "hidden", cursor: handleClick ? "pointer" : "default" }}>
       <div style={{
         width: size, height: size, borderRadius: "50%",
         border: `2px solid ${ring.border}`,
@@ -145,12 +148,13 @@ function PlayerBubble({ p }: { p: Player }) {
   );
 }
 
-function FormationRow({ players, justify = "space-evenly", padded = false, gap, padding }: {
+function FormationRow({ players, justify = "space-evenly", padded = false, gap, padding, onBubbleClick }: {
   players: Player[];
   justify?: "space-evenly" | "center" | "space-between";
   padded?: boolean;
   gap?: number;
   padding?: string;
+  onBubbleClick?: (key: string) => void;
 }) {
   return (
     <div style={{
@@ -159,7 +163,7 @@ function FormationRow({ players, justify = "space-evenly", padded = false, gap, 
       padding: padding ?? (padded ? "0 8px" : undefined),
       gap,
     }}>
-      {players.map((p, i) => <PlayerBubble key={i} p={p} />)}
+      {players.map((p, i) => <PlayerBubble key={i} p={p} onBubbleClick={onBubbleClick} />)}
     </div>
   );
 }
@@ -335,6 +339,7 @@ export default function MatchupPage() {
   const [side, setSide] = useState<0 | 1>(0); // 0 = away Off / home Def  |  1 = home Off / away Def
   const [defTooltip, setDefTooltip] = useState<null | { side: 0 | 1; x: number; y: number }>(null);
   const [selectedGame, setSelectedGame] = useState(0);
+  const [openCardKey, setOpenCardKey] = useState<string | null>(null);
   const gameData: GameMatchupData = ALL_GAMES[selectedGame] ?? NE_SEA;
 
   const [isDesktop, setIsDesktop] = useState(false);
@@ -442,22 +447,22 @@ export default function MatchupPage() {
         <div style={{ padding: "24px 4px 4px", background: "linear-gradient(180deg,rgba(239,68,68,0.04) 0%,transparent 100%)" }}>
           {/* Safeties — deep */}
           <div style={{ marginBottom: 12 }}>
-            <FormationRow players={DEF_SAF} justify="center" gap={60} />
+            <FormationRow players={DEF_SAF} justify="center" gap={60} onBubbleClick={key => setOpenCardKey(key)} />
           </div>
           {/* LBs */}
           <div style={{ marginBottom: 12 }}>
-            <FormationRow players={DEF_LB} justify="space-evenly" padding="0 24px" />
+            <FormationRow players={DEF_LB} justify="space-evenly" padding="0 24px" onBubbleClick={key => setOpenCardKey(key)} />
           </div>
           {/* DL + CBs at LOS */}
           <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px" }}>
             <div style={{ position: "absolute", left: 4 }}>
-              <PlayerBubble p={DEF_CB.left} />
+              <PlayerBubble p={DEF_CB.left} onBubbleClick={key => setOpenCardKey(key)} />
             </div>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 28 }}>
-              {DEF_DL.map((p, i) => <PlayerBubble key={i} p={p} />)}
+              {DEF_DL.map((p, i) => <PlayerBubble key={i} p={p} onBubbleClick={key => setOpenCardKey(key)} />)}
             </div>
             <div style={{ position: "absolute", right: 4 }}>
-              <PlayerBubble p={DEF_CB.right} />
+              <PlayerBubble p={DEF_CB.right} onBubbleClick={key => setOpenCardKey(key)} />
             </div>
           </div>
         </div>
@@ -469,20 +474,20 @@ export default function MatchupPage() {
           {/* LOS row: WR-L pinned left | OL+TE centered | SLOT+WR-R pinned right */}
           <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "0 4px", marginBottom: 54 }}>
             <div style={{ position: "absolute", left: 4 }}>
-              <PlayerBubble p={OFF_LOS[0]} />
+              <PlayerBubble p={OFF_LOS[0]} onBubbleClick={key => setOpenCardKey(key)} />
             </div>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
-              {OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} />)}
+              {OFF_LOS.slice(1, 7).map((p, i) => <PlayerBubble key={i} p={p} onBubbleClick={key => setOpenCardKey(key)} />)}
             </div>
             <div style={{ position: "absolute", right: 4, display: "flex", alignItems: "flex-start", gap: 10 }}>
-              <PlayerBubble p={OFF_SLOT[0]} />
-              <PlayerBubble p={OFF_LOS[7]} />
+              <PlayerBubble p={OFF_SLOT[0]} onBubbleClick={key => setOpenCardKey(key)} />
+              <PlayerBubble p={OFF_LOS[7]} onBubbleClick={key => setOpenCardKey(key)} />
             </div>
           </div>
           {/* Shotgun backfield: QB behind C, RB to QB's right */}
           <div style={{ display: "flex", alignItems: "flex-start", gap: 12, paddingLeft: "43%", marginBottom: 0 }}>
-            <PlayerBubble p={OFF_QB} />
-            <PlayerBubble p={OFF_RB} />
+            <PlayerBubble p={OFF_QB} onBubbleClick={key => setOpenCardKey(key)} />
+            <PlayerBubble p={OFF_RB} onBubbleClick={key => setOpenCardKey(key)} />
           </div>
         </div>
         <div style={{ background: "linear-gradient(180deg,transparent 0%,rgba(34,197,94,0.05) 100%)" }}>
@@ -653,6 +658,7 @@ export default function MatchupPage() {
         </div>
 
         {defPopover}
+        <PlayerCardModal playerKey={openCardKey} onClose={() => setOpenCardKey(null)} />
       </div>
     );
   }
@@ -727,6 +733,7 @@ export default function MatchupPage() {
       {/* ── Formation popover ── */}
       {defPopover}
 
+      <PlayerCardModal playerKey={openCardKey} onClose={() => setOpenCardKey(null)} />
     </div>
   );
 }

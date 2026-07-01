@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import MatchRivalLogo from "@/components/MatchRivalLogo";
+import PlayerCardModal from "@/components/PlayerCardModal";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -49,6 +50,10 @@ const POS_BADGE_COLOR: Record<string, string> = {
   K:   "#94A3B8",
   DST: "#F87171",
 };
+
+function toCardKey(p: Player): string {
+  return `${p.last_name}_${p.first_name}`;
+}
 
 function getTier(rank: number): { label: string; color: string } | null {
   if (rank === 1)   return { label: "⚡ Tier 1 — Elite",     color: "#F59E0B" };
@@ -99,7 +104,7 @@ function PosBadge({ pos }: { pos: string }) {
 function StarButton({ starred, onToggle }: { starred: boolean; onToggle: () => void }) {
   return (
     <button
-      onClick={onToggle}
+      onClick={e => { e.stopPropagation(); onToggle(); }}
       style={{ width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "none", border: "none", cursor: "pointer", padding: 0 }}
     >
       <svg width="14" height="14" viewBox="0 0 24 24">
@@ -140,6 +145,7 @@ export default function RankingsPage() {
   const [myRankings, setMyRankings] = useState<number[]>([]);
   const [editedMoves, setEditedMoves] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [openCardKey, setOpenCardKey] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/data/top350_rankings.json")
@@ -394,7 +400,8 @@ export default function RankingsPage() {
             </div>
           </div>
         )}
-        <PlayerList players={filtered} posRanks={posRanks} mode="draft" watchlist={watchlist} drafted={drafted} onToggleWatchlist={toggleWatchlist} onToggleDrafted={toggleDrafted} showTiers />
+        <PlayerList players={filtered} posRanks={posRanks} mode="draft" watchlist={watchlist} drafted={drafted} onToggleWatchlist={toggleWatchlist} onToggleDrafted={toggleDrafted} showTiers onPlayerClick={key => setOpenCardKey(key)} />
+        <PlayerCardModal playerKey={openCardKey} onClose={() => setOpenCardKey(null)} />
       </div>
     );
   }
@@ -428,7 +435,8 @@ export default function RankingsPage() {
             ))}
           </div>
         </div>
-        <MyRankingsList myRankingsPlayers={myRankingsPlayers} myRankings={myRankings} players={players} watchlist={watchlist} onToggleWatchlist={toggleWatchlist} onMovePlayer={movePlayer} />
+        <MyRankingsList myRankingsPlayers={myRankingsPlayers} myRankings={myRankings} players={players} watchlist={watchlist} onToggleWatchlist={toggleWatchlist} onMovePlayer={movePlayer} onPlayerClick={key => setOpenCardKey(key)} />
+        <PlayerCardModal playerKey={openCardKey} onClose={() => setOpenCardKey(null)} />
       </div>
     );
   }
@@ -473,10 +481,10 @@ export default function RankingsPage() {
           {/* Scrollable content */}
           <div style={{ overflowY: "auto", flex: 1 }}>
             {mode === "myRankings" ? (
-              <MyRankingsList myRankingsPlayers={myRankingsPlayers} myRankings={myRankings} players={players} watchlist={watchlist} onToggleWatchlist={toggleWatchlist} onMovePlayer={movePlayer} />
+              <MyRankingsList myRankingsPlayers={myRankingsPlayers} myRankings={myRankings} players={players} watchlist={watchlist} onToggleWatchlist={toggleWatchlist} onMovePlayer={movePlayer} onPlayerClick={key => setOpenCardKey(key)} />
             ) : (
               <>
-                <PlayerList players={filtered} posRanks={posRanks} mode={mode} watchlist={watchlist} drafted={drafted} onToggleWatchlist={toggleWatchlist} onToggleDrafted={toggleDrafted} showTiers={mode === "draft"} onEnterMyRankings={() => setMode("myRankings")} />
+                <PlayerList players={filtered} posRanks={posRanks} mode={mode} watchlist={watchlist} drafted={drafted} onToggleWatchlist={toggleWatchlist} onToggleDrafted={toggleDrafted} showTiers={mode === "draft"} onEnterMyRankings={() => setMode("myRankings")} onPlayerClick={key => setOpenCardKey(key)} />
                 {filtered.length === 0 && (
                   <div style={{ textAlign: "center", padding: "60px 20px", color: "#4B5268", fontSize: 14 }}>
                     {mode === "watchlist" ? "No players starred yet — tap ★ to add to watchlist" : "No players found"}
@@ -486,6 +494,8 @@ export default function RankingsPage() {
             )}
           </div>
         </div>
+
+        <PlayerCardModal playerKey={openCardKey} onClose={() => setOpenCardKey(null)} />
       </div>
     );
   }
@@ -541,13 +551,15 @@ export default function RankingsPage() {
         </div>
       </div>
 
-      <PlayerList players={filtered} posRanks={posRanks} mode={mode} watchlist={watchlist} drafted={drafted} onToggleWatchlist={toggleWatchlist} onToggleDrafted={toggleDrafted} showTiers={false} onEnterMyRankings={() => setMode("myRankings")} />
+      <PlayerList players={filtered} posRanks={posRanks} mode={mode} watchlist={watchlist} drafted={drafted} onToggleWatchlist={toggleWatchlist} onToggleDrafted={toggleDrafted} showTiers={false} onEnterMyRankings={() => setMode("myRankings")} onPlayerClick={key => setOpenCardKey(key)} />
 
       {filtered.length === 0 && (
         <div style={{ textAlign: "center", padding: "60px 20px", color: "#4B5268", fontSize: 14 }}>
           {mode === "watchlist" ? "No players starred yet — tap ★ to add to watchlist" : "No players found"}
         </div>
       )}
+
+      <PlayerCardModal playerKey={openCardKey} onClose={() => setOpenCardKey(null)} />
     </div>
   );
 }
@@ -561,9 +573,10 @@ interface MyRankingsListProps {
   watchlist: Set<number>;
   onToggleWatchlist: (rank: number) => void;
   onMovePlayer: (idx: number, dir: -1 | 1) => void;
+  onPlayerClick?: (key: string) => void;
 }
 
-function MyRankingsList({ myRankingsPlayers, myRankings, players, watchlist, onToggleWatchlist, onMovePlayer }: MyRankingsListProps) {
+function MyRankingsList({ myRankingsPlayers, myRankings, players, watchlist, onToggleWatchlist, onMovePlayer, onPlayerClick }: MyRankingsListProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {myRankingsPlayers.map((p, idx) => {
@@ -571,8 +584,12 @@ function MyRankingsList({ myRankingsPlayers, myRankings, players, watchlist, onT
         const currentPos = myRankings.indexOf(p.rank);
         const delta = originalRank - currentPos;
         return (
-          <div key={p.rank} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.035)", background: "transparent" }}>
-            <button onClick={() => onMovePlayer(myRankings.indexOf(p.rank), -1)} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, opacity: 0.35 }}>
+          <div
+            key={p.rank}
+            onClick={() => onPlayerClick?.(toCardKey(p))}
+            style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.035)", background: "transparent", cursor: onPlayerClick ? "pointer" : "default" }}
+          >
+            <button onClick={e => { e.stopPropagation(); onMovePlayer(myRankings.indexOf(p.rank), -1); }} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, opacity: 0.35 }}>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="5" r="1.5" fill="#E8EBF4"/><circle cx="9" cy="12" r="1.5" fill="#E8EBF4"/><circle cx="9" cy="19" r="1.5" fill="#E8EBF4"/><circle cx="15" cy="5" r="1.5" fill="#E8EBF4"/><circle cx="15" cy="12" r="1.5" fill="#E8EBF4"/><circle cx="15" cy="19" r="1.5" fill="#E8EBF4"/></svg>
             </button>
             <span style={{ fontSize: 12, fontWeight: 800, color: idx < 12 ? "#F59E0B" : "#4B5268", minWidth: 22, textAlign: "right", flexShrink: 0 }}>{idx + 1}</span>
@@ -616,9 +633,10 @@ interface PlayerListProps {
   onToggleDrafted: (rank: number, p: Player) => void;
   showTiers: boolean;
   onEnterMyRankings?: () => void;
+  onPlayerClick?: (key: string) => void;
 }
 
-function PlayerList({ players, posRanks, mode, watchlist, drafted, onToggleWatchlist, onToggleDrafted, showTiers }: PlayerListProps) {
+function PlayerList({ players, posRanks, mode, watchlist, drafted, onToggleWatchlist, onToggleDrafted, showTiers, onPlayerClick }: PlayerListProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {players.map((p) => {
@@ -627,7 +645,10 @@ function PlayerList({ players, posRanks, mode, watchlist, drafted, onToggleWatch
         return (
           <div key={p.rank}>
             {tier && <TierDivider label={tier.label} color={tier.color} />}
-            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.035)", opacity: isDrafted ? 0.32 : 1, position: "relative" }}>
+            <div
+              onClick={() => onPlayerClick?.(toCardKey(p))}
+              style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.035)", opacity: isDrafted ? 0.32 : 1, position: "relative", cursor: onPlayerClick ? "pointer" : "default" }}
+            >
               <span style={{ fontSize: 12, fontWeight: 800, color: p.rank <= 12 ? "#F59E0B" : "#4B5268", minWidth: 22, textAlign: "right", flexShrink: 0, letterSpacing: "-0.02em" }}>
                 {p.rank}
               </span>
@@ -658,7 +679,7 @@ function PlayerList({ players, posRanks, mode, watchlist, drafted, onToggleWatch
                 <StarButton starred={watchlist.has(p.rank)} onToggle={() => onToggleWatchlist(p.rank)} />
                 {mode === "draft" ? (
                   <button
-                    onClick={() => onToggleDrafted(p.rank, p)}
+                    onClick={e => { e.stopPropagation(); onToggleDrafted(p.rank, p); }}
                     style={{ width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", background: isDrafted ? "rgba(239,68,68,0.15)" : "rgba(34,197,94,0.10)", border: isDrafted ? "1px solid rgba(239,68,68,0.30)" : "1px solid rgba(34,197,94,0.25)", borderRadius: 4, cursor: "pointer", fontSize: 9, fontWeight: 800, color: isDrafted ? "#EF4444" : "#22C55E", padding: 0 }}
                   >
                     {isDrafted ? "✕" : "✓"}

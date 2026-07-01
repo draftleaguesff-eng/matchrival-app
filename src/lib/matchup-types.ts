@@ -9,6 +9,7 @@ export interface MatchupPlayer {
   maxWidth?: number;
   nameBold?: boolean;
   rating?: number;
+  cardKey?: string;
 }
 
 export interface TeamMatchupData {
