@@ -16,7 +16,16 @@ const POS_RING: Record<string, string> = {
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
-interface Stat     { label: string; value: string }
+interface YearStat {
+  season: string;
+  gp: number;
+  car: number;
+  yds: number;
+  td: number;
+  rec: number;
+  recYds: number;
+  fpts: number;
+}
 interface NewsItem { date: string; headline: string; detail: string }
 
 interface PlayerCardData {
@@ -36,9 +45,7 @@ interface PlayerCardData {
   posRank: string;
   adp: number;
   adpTrend: number;
-  pointsLast: number;
-  pointsProj: number;
-  stats: Stat[];
+  yearStats: YearStat[];
   strengths: string[];
   risks: string[];
   analysis: string;
@@ -81,7 +88,6 @@ export default function PlayerCardModal({
 
   const posColor = card ? (POS_COLOR[card.position] || "#94A3B8") : "#94A3B8";
   const posRing  = card ? (POS_RING[card.position]  || "rgba(148,163,184,0.35)") : "rgba(148,163,184,0.35)";
-  const maxProj  = card ? Math.max(card.pointsProj, card.pointsLast) : 1;
 
   return (
     <>
@@ -234,44 +240,45 @@ export default function PlayerCardModal({
                 ))}
               </div>
 
-              {/* ── Section 5: Season stats grid ── */}
+              {/* ── Stats: 3-year table ── */}
               <div style={{ padding: "14px 0 0" }}>
-                <div style={{ fontSize: 7.5, fontWeight: 800, color: "#4B5268", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>2025 Season Stats</div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
-                  {card.stats.map(s => (
-                    <div key={s.label} style={{
-                      background: "#141720",
-                      border: "1px solid rgba(255,255,255,0.06)",
-                      borderRadius: 8, padding: "8px 10px",
-                    }}>
-                      <div style={{ fontSize: 7.5, fontWeight: 700, color: "#4B5268", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>{s.label}</div>
-                      <div style={{ fontSize: 15, fontWeight: 900, color: "#E8EBF4", letterSpacing: "-0.02em" }}>{s.value}</div>
-                    </div>
-                  ))}
+                <div style={{ fontSize: 7.5, fontWeight: 800, color: "#4B5268", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>
+                  Stats
                 </div>
-              </div>
-
-              {/* ── Section 6: Projection vs last year bars ── */}
-              <div style={{ padding: "16px 0 0" }}>
-                <div style={{ fontSize: 7.5, fontWeight: 800, color: "#4B5268", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>PPR Points — Projected vs Actual</div>
-                {[
-                  { label: "2026 Proj",   value: card.pointsProj, color: "#3B82F6" },
-                  { label: "2025 Actual", value: card.pointsLast, color: "#4B5268" },
-                ].map(bar => (
-                  <div key={bar.label} style={{ marginBottom: 8 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 10, fontWeight: 600, color: "#8892AA" }}>{bar.label}</span>
-                      <span style={{ fontSize: 11, fontWeight: 800, color: bar.color }}>{bar.value}</span>
-                    </div>
-                    <div style={{ height: 4, background: "rgba(255,255,255,0.05)", borderRadius: 2, overflow: "hidden" }}>
-                      <div style={{
-                        height: "100%", borderRadius: 2,
-                        width: `${(bar.value / maxProj) * 100}%`,
-                        background: bar.color,
-                      }} />
-                    </div>
-                  </div>
-                ))}
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 340 }}>
+                    <thead>
+                      <tr style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                        {["Season","GP","Car","Yds","TD","Rec","Rec Yds","FPTS"].map((h, i) => (
+                          <th key={h} style={{
+                            fontSize: 7.5, fontWeight: 700, letterSpacing: "0.09em",
+                            textTransform: "uppercase", color: "#4B5268",
+                            textAlign: i === 0 ? "left" : "right",
+                            padding: i === 0 ? "5px 6px 5px 8px" : "5px 6px",
+                            whiteSpace: "nowrap",
+                          }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {card.yearStats.map((row, idx) => (
+                        <tr key={row.season} style={{
+                          background: idx === 0 ? "rgba(255,255,255,0.03)" : idx % 2 === 0 ? "rgba(255,255,255,0.01)" : "transparent",
+                          borderBottom: "1px solid rgba(255,255,255,0.04)",
+                        }}>
+                          <td style={{ fontSize: 11.5, fontWeight: 700, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px 6px 6px 8px", textAlign: "left" }}>{row.season}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.gp}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.car}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.yds.toLocaleString()}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.td}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.rec}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.recYds}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 800, color: "#22C55E", padding: "6px 8px 6px 6px", textAlign: "right" }}>{row.fpts.toFixed(1)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               {/* ── Section 7: Strengths ── */}

@@ -16,15 +16,10 @@
     "posRank": "RB8",
     "adp": 22.4,
     "adpTrend": 4,
-    "pointsLast": 211.3,
-    "pointsProj": 248.0,
-    "stats": [
-      { "label": "Rush Att", "value": "249" },
-      { "label": "Rush Yds", "value": "1,040" },
-      { "label": "Rush TD",  "value": "7" },
-      { "label": "Targets",  "value": "58" },
-      { "label": "Rec Yds",  "value": "421" },
-      { "label": "PPR Pts",  "value": "211.3" }
+    "yearStats": [
+      { "season": "2025", "gp": 15, "car": 201, "yds": 895, "td": 6, "rec": 31, "recYds": 242, "fpts": 186.3 },
+      { "season": "2024", "gp": 14, "car": 188, "yds": 764, "td": 4, "rec": 24, "recYds": 187, "fpts": 148.6 },
+      { "season": "2023", "gp": 13, "car": 210, "yds": 869, "td": 4, "rec": 30, "recYds": 214, "fpts": 158.2 }
     ],
     "strengths": [
       "Elite receiving back — 58 targets in 2023",
