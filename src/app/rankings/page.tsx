@@ -52,7 +52,7 @@ const POS_BADGE_COLOR: Record<string, string> = {
 };
 
 function toCardKey(p: Player): string {
-  return `${p.last_name}_${p.first_name}`;
+  return `${p.last_name.toLowerCase()}_${p.first_name.toLowerCase()}`;
 }
 
 function getTier(rank: number): { label: string; color: string } | null {

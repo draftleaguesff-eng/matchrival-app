@@ -25,7 +25,7 @@ export const NE_SEA: GameMatchupData = {
       SLOT:     { display: "E. Chism III",   initials: "EC", ringType: "wr", badgeType: "slot", badgeLabel: "SLOT",     headshot: "Chism_Efton.jpg",          rating: 68 },
       WR_RIGHT: { display: "M. Hollins",     initials: "MH", ringType: "wr", badgeType: "wr",   badgeLabel: "WR",       headshot: "Hollins_Mack.jpg",         rating: 77 },
       QB:       { display: "D. Maye",        initials: "DM", ringType: "qb", badgeType: "qb",   badgeLabel: "QB · #10", headshot: "Maye_Drake.jpg",   nameBold: true, rating: 93 },
-      RB:       { display: "R. Stevenson",   initials: "RS", ringType: "rb", badgeType: "rb",   badgeLabel: "RB · #38", headshot: "Stevenson_Rhamondre.jpg",  rating: 77, cardKey: "Stevenson_Rhamondre" },
+      RB:       { display: "R. Stevenson",   initials: "RS", ringType: "rb", badgeType: "rb",   badgeLabel: "RB · #38", headshot: "Stevenson_Rhamondre.jpg",  rating: 77, cardKey: "stevenson_rhamondre" },
     },
     defense: {
       CB_LEFT: { display: "C. Davis",    initials: "CD", ringType: "cb",  badgeType: "cb",  badgeLabel: "CB · #7",   headshot: "Davis_Carlton.jpg",      rating: 85 },

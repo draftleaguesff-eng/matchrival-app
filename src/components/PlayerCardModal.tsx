@@ -21,9 +21,12 @@ interface YearStat {
   gp: number;
   car: number;
   yds: number;
-  td: number;
+  ypc: number;
+  rushTd: number;
+  tgt: number;
   rec: number;
   recYds: number;
+  recTd: number;
   fpts: number;
 }
 interface NewsItem { date: string; headline: string; detail: string }
@@ -246,10 +249,10 @@ export default function PlayerCardModal({
                   Stats
                 </div>
                 <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
-                  <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 340 }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
                     <thead>
                       <tr style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-                        {["Season","GP","Car","Yds","TD","Rec","Rec Yds","FPTS"].map((h, i) => (
+                        {["Season","GP","Car","Yds","YPC","Rush TD","Tgt","Rec","Rec Yds","Rec TD","FPTS"].map((h, i) => (
                           <th key={h} style={{
                             fontSize: 7.5, fontWeight: 700, letterSpacing: "0.09em",
                             textTransform: "uppercase", color: "#4B5268",
@@ -270,9 +273,12 @@ export default function PlayerCardModal({
                           <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.gp}</td>
                           <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.car}</td>
                           <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.yds.toLocaleString()}</td>
-                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.td}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.ypc.toFixed(1)}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.rushTd}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.tgt}</td>
                           <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.rec}</td>
-                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.recYds}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.recYds.toLocaleString()}</td>
+                          <td style={{ fontSize: 11.5, fontWeight: 600, color: idx === 0 ? "#E8EBF4" : "#8892AA", padding: "6px", textAlign: "right" }}>{row.recTd}</td>
                           <td style={{ fontSize: 11.5, fontWeight: 800, color: "#22C55E", padding: "6px 8px 6px 6px", textAlign: "right" }}>{row.fpts.toFixed(1)}</td>
                         </tr>
                       ))}

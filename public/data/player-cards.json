@@ -1,47 +1,47 @@
 {
-  "Stevenson_Rhamondre": {
+  "stevenson_rhamondre": {
     "name": "Rhamondre Stevenson",
     "firstName": "Rhamondre",
     "lastName": "Stevenson",
     "position": "RB",
     "team": "NE",
     "number": 38,
-    "age": 26,
-    "byeWeek": 14,
+    "age": 28,
+    "byeWeek": 11,
     "height": "6'0\"",
-    "weight": "228 lbs",
+    "weight": "227 lbs",
     "college": "Oklahoma",
-    "experience": 4,
-    "rank": 18,
-    "posRank": "RB8",
-    "adp": 22.4,
-    "adpTrend": 4,
+    "experience": 5,
+    "rank": 81,
+    "posRank": "RB31",
+    "adp": 75,
+    "adpTrend": 0,
     "yearStats": [
-      { "season": "2025", "gp": 15, "car": 201, "yds": 895, "td": 6, "rec": 31, "recYds": 242, "fpts": 186.3 },
-      { "season": "2024", "gp": 14, "car": 188, "yds": 764, "td": 4, "rec": 24, "recYds": 187, "fpts": 148.6 },
-      { "season": "2023", "gp": 13, "car": 210, "yds": 869, "td": 4, "rec": 30, "recYds": 214, "fpts": 158.2 }
+      { "season": "2025", "gp": 14, "car": 130, "yds": 603, "ypc": 4.6, "rushTd": 7, "tgt": 37, "rec": 32, "recYds": 345, "recTd": 2, "fpts": 181.8 },
+      { "season": "2024", "gp": 15, "car": 207, "yds": 801, "ypc": 3.9, "rushTd": 7, "tgt": 41, "rec": 33, "recYds": 168, "recTd": 1, "fpts": 177.9 },
+      { "season": "2023", "gp": 12, "car": 156, "yds": 619, "ypc": 4.0, "rushTd": 4, "tgt": 51, "rec": 38, "recYds": 238, "recTd": 0, "fpts": 147.7 }
     ],
     "strengths": [
-      "Elite receiving back — 58 targets in 2023",
-      "Workhorse role, 249 carries last season",
-      "Consistent volume as Drake Maye's outlet"
+      "Workhorse role — 207 carries and 41 targets in 2024",
+      "Strong red zone usage — 7 rush TDs in both 2024 and 2025",
+      "Reliable pass-catcher; 69 receptions in 2022 peak season"
     ],
     "risks": [
-      "O-line rebuild around Drake Maye",
-      "Competition from Antonio Gibson",
-      "Injury history (missed 3 games in 2023)"
+      "Shared backfield with TreVeyon Henderson (missed time late 2025)",
+      "Patriots O-line ranked bottom-5 in run blocking (2024)",
+      "Low ADP upside — consensus RB31, limited ceiling on bad offense"
     ],
-    "analysis": "Stevenson profiles as a high-floor RB2 with upside. New England's commitment to a ground game supporting Drake Maye's development should keep his carries high. The receiving role is the differentiator in PPR — he's a legitimate pass-game weapon out of the backfield. Target 225+ carries and 55+ targets for another 200+ point season.",
+    "analysis": "Stevenson is a high-volume RB2 with a capped ceiling on a rebuilding Patriots offense. His value comes from sheer touches — double-digit carries and 35-40 targets annually. The red zone TD rate (7 TDs in each of the last two seasons) keeps his floor livable. In PPR, he's a solid RB2/flex with handcuff appeal if Henderson misses time. 2026 projection: ~149 PPR points (FantasyPros consensus).",
     "news": [
       {
-        "date": "Jun 15",
-        "headline": "Stevenson fully healthy entering camp",
-        "detail": "Per coach press conference, Stevenson had no injury limitations during OTAs and is expected to be the clear starter Week 1."
+        "date": "Jun 2026",
+        "headline": "Stevenson entering 2026 as RB1 on depth chart",
+        "detail": "Patriots staff confirmed Stevenson leads the backfield heading into camp despite Henderson's presence. Volume expected to remain high."
       },
       {
-        "date": "May 28",
-        "headline": "Patriots commit to Stevenson as featured back",
-        "detail": "Coaching staff confirmed Stevenson will handle the bulk of carries and remain the primary receiving back in Drake Maye's offense."
+        "date": "May 2026",
+        "headline": "Toe injury from 2025 fully healed",
+        "detail": "Stevenson missed 3 games in Week 8 with a toe injury in 2025. Cleared medically with no limitations reported at OTAs."
       }
     ]
   }
