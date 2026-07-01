@@ -204,7 +204,9 @@ export default function PlayerCardModal({
                   { label: "Pos Rank", value: card.posRank,        color: posColor },
                   {
                     label: "ADP",
-                    value: `${card.adp}  ${card.adpTrend > 0 ? `↑${card.adpTrend}` : card.adpTrend < 0 ? `↓${Math.abs(card.adpTrend)}` : "—"}`,
+                    value: card.adpTrend === 0
+                      ? `${card.adp}`
+                      : `${card.adp} ${card.adpTrend > 0 ? `↑${card.adpTrend}` : `↓${Math.abs(card.adpTrend)}`}`,
                     color: card.adpTrend > 0 ? "#22C55E" : card.adpTrend < 0 ? "#EF4444" : "#8892AA",
                   },
                 ].map(chip => (
